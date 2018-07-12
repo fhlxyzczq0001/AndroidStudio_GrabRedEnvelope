@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#FFFFFF</color><!--应用的主要色调，actionBar默认使用该颜色，Toolbar导航栏的底色-->
+    <color name="colorPrimaryDark">#BFBFBF</color> <!--colorPrimaryDark 应用的主要暗色调，statusBarColor默认使用该颜色-->
+    <color name="colorAccent">#BFBFBF</color><!--colorAccent CheckBox，RadioButton，SwitchCompat等一般控件的选中效果默认采用该颜色-->
+
+    <!--项目主色-->
+    <color name="app_color">#E34D34</color>
+    <!--界面背景色-->
+    <color name="app_actBg">#F3F3F3</color>
+    <!--主题灰色-->
+    <color name="app_gray">#3A3A3C</color>
+    <!--分割线-->
+    <color name="divid_color">#DBDBDB</color>
+    <!-- 全透明-->
+    <color name="transparent">#00000000</color>
+    <!--默认字体颜色-->
+    <color name="app_text_normal_color">#333333</color>
+    <!--淡灰色1-->
+    <color name="app_text_gray1">#666666</color>
+    <!--淡灰色2-->
+    <color name="app_text_gray2">#888888</color>
+    <!--分割线颜色-->
+    <color name="app_line_gray">#eeeeee</color>
+    <!--顶部通知栏背景色，半透明-->
+    <color name="act_systemBarColor_whiteToolBar">#BFBFBF</color>
+    <color name="act_systemBarColor_appColorToolBar">#00000000</color>
+    <!--弹窗悬浮背景色，半透明-->
+    <color name="act_dialog_background">#80000000</color>
+</resources>

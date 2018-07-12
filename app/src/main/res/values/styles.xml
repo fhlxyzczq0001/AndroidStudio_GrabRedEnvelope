@@ -1,0 +1,20 @@
+<resources>
+    <!-- Base application theme. -->
+    <!--<style name="AppTheme" parent="AppTheme.Base">
+    </style>
+
+    <style name="AppTheme.Base" parent="Theme.AppCompat">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="colorPrimary">@color/colorPrimary</item>&lt;!&ndash; toolbar 颜色 &ndash;&gt;
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>&lt;!&ndash; 状态栏颜色 &ndash;&gt;
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowBackground">@color/dim_foreground_material_dark</item>
+    </style>-->
+    <!--冷启动渲染样式-->
+    <style name="AppMainSplashTheme" parent="AppTheme">
+        <item name="android:windowBackground">@drawable/bg_main_splash</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowIsTranslucent">false</item>
+    </style>
+</resources>

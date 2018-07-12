@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--解封账号列表的item布局-->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/x20"
+    android:background="@drawable/drawable_shape_white_bg_radius5"
+    android:orientation="vertical">
+
+    <LinearLayout android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:gravity="center_vertical"
+                  android:orientation="horizontal"
+                  android:padding="@dimen/x20"
+                  >
+
+        <ImageView
+            android:layout_width="@dimen/x90"
+            android:layout_height="@dimen/x90"
+            android:background="#EBE49C"/>
+
+        <LinearLayout android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:gravity="center_vertical"
+                      android:orientation="vertical">
+            <TextView
+                android:id="@+id/tvName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x30"
+                android:text="银子"
+                android:textColor="#333333"
+                android:textSize="@dimen/x28"/>
+        </LinearLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:paddingRight="@dimen/x20" >
+            <CheckBox
+                android:id="@+id/cb"
+                android:layout_width="@dimen/x70"
+                android:layout_height="@dimen/x70"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:button="@null"
+                android:background="@drawable/drawable_selector_switch_check_bj"/>
+        </RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>
+

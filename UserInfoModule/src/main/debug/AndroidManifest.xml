@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest package="com.ddtkj.userinfomodule"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <application
+        android:name=".Base.Application.debug.UserInfo_Application"
+        android:allowBackup="true"
+        android:label="@string/app_name"
+        android:icon="@mipmap/icon_launcher"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <!--主Activity-->
+        <activity
+            android:name=".MVP.View.Implement.Activity.UserInfo_Act_MainActivity_View"
+            android:theme="@style/AppDefaultStyle"
+            android:launchMode="singleTask"
+        />
+    </application>
+</manifest>

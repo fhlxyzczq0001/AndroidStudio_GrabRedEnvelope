@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest package="com.ddtkj.grabRedEnvelopeModule"
+          xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <application
+        android:allowBackup="true"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <!--主Activity-->
+        <activity
+            android:name="com.ddtkj.grabRedEnvelopeModule.MVP.View.Implement.Activity.GrabRedEnvelopeModule_Act_MainActivity_View"
+            android:theme="@style/AppDefaultStyle"
+            android:launchMode="singleTask"
+        />
+        <!--红包房间列表Activity-->
+        <activity
+            android:name="com.ddtkj.grabRedEnvelopeModule.MVP.View.Implement.Activity.GrabRedEnvelopeModule_Act_RedRoom_List_View"
+            android:theme="@style/AppDefaultStyle"
+            android:launchMode="singleTask"
+        />
+        <!--红包群列表Activity-->
+        <activity
+            android:name="com.ddtkj.grabRedEnvelopeModule.MVP.View.Implement.Activity.GrabRedEnvelopeModule_Act_RedGroup_List_View"
+            android:theme="@style/AppDefaultStyle"
+            android:launchMode="singleTask"
+        />
+        <!--红包详情列表Activity-->
+        <activity
+            android:name="com.ddtkj.grabRedEnvelopeModule.MVP.View.Implement.Activity.GrabRedEnvelopeModule_Act_RedInfo_List_View"
+            android:theme="@style/AppDefaultStyle"
+            android:launchMode="singleTask"
+        />
+        <!--公告列表Activity-->
+        <activity
+            android:name="com.ddtkj.grabRedEnvelopeModule.MVP.View.Implement.Activity.GrabRedEnvelopeModule_Act_Announcement_List_View"
+            android:theme="@style/AppDefaultStyle"
+            android:launchMode="singleTask"
+        />
+        <!--公告详情Activity-->
+        <activity
+            android:name="com.ddtkj.grabRedEnvelopeModule.MVP.View.Implement.Activity.GrabRedEnvelopeModule_Act_AnnouncementInfo_View"
+            android:theme="@style/AppDefaultStyle"
+            android:launchMode="singleTask"
+        />
+    </application>
+
+</manifest>

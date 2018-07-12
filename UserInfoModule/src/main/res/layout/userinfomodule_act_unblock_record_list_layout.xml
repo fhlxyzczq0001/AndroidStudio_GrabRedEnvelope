@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--解封账号记录列表的布局-->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+    <include layout="@layout/common_customview_toolbar_layout"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_red_group"
+        android:orientation="vertical">
+
+        <LinearLayout android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="5dp"
+                      android:layout_marginLeft="@dimen/x130"
+                      android:layout_marginRight="@dimen/x130"
+                      android:layout_marginTop="@dimen/x70"
+        android:background="@drawable/drawable_shape_white_bg_radius5">
+            <ImageView
+                android:id="@+id/imgBtnSearch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x10"
+                app:srcCompat="@drawable/drawable_svg_icon_search"/>
+
+            <com.customview.lib.ClearEditText
+                android:id="@+id/cetSearch"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:padding="0dp"
+                android:gravity="center"
+                android:background="@color/white"
+                android:hint="搜索"
+                android:textColorHint="@color/app_text_gray2"
+                android:textColor="#333333"
+                android:textSize="@dimen/x23" >
+            </com.customview.lib.ClearEditText>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x10"
+                android:visibility="invisible"
+                app:srcCompat="@drawable/drawable_svg_icon_search"/>
+        </LinearLayout>
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/refreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/x80"
+        android:layout_marginTop="@dimen/x20"
+        android:layout_marginRight="@dimen/x80"
+        android:layout_marginBottom="@dimen/x10"
+        app:srlEnableAutoLoadMore="true"
+        app:srlEnableLoadMore="true"
+        app:srlEnableLoadMoreWhenContentNotFull="true"
+        app:srlEnableScrollContentWhenLoaded="true"
+        app:srlEnableFooterFollowWhenLoadFinished="true"
+    >
+        <!--PullToRefreshRecyclerView列表-->
+        <RelativeLayout android:id="@+id/lyPullRecy"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+            <com.customview.lib.EmptyRecyclerView
+                android:id="@+id/emptyRecycle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:overScrollMode="never"
+            />
+        </RelativeLayout>
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+    </LinearLayout>
+</LinearLayout>
+

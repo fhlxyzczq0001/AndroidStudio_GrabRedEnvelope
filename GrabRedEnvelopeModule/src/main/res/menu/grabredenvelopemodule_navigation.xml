@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/jsdloanmodule_2_TitleHome"
+        android:icon="@drawable/grabredenvelopemodule_drawable_svg_icon_redenvelope"
+        android:title="@string/grabredenvelopemodule_title_home" />
+    <item
+        android:id="@+id/jsdloanmodule_2_TitleUser"
+        android:icon="@drawable/grabredenvelopemodule_drawable_svg_icon_user"
+        android:title="@string/grabredenvelopemodule_title_user" />
+</menu>

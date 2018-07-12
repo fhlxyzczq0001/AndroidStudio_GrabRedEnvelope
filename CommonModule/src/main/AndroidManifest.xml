@@ -1,0 +1,37 @@
+<manifest package="com.ddtkj.commonmodule"
+
+          xmlns:android="http://schemas.android.com/apk/res/android"
+>
+
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
+    <!-- 硬件加速对X5视频播放非常重要，建议开启 -->
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <application android:allowBackup="true"
+                 android:label="@string/app_name"
+                 android:supportsRtl="true"
+    >
+        <!--网络异常显示的Activity-->
+        <activity
+            android:name="com.ddtkj.commonmodule.MVP.View.Implement.Activity.Common_Act_NetworkError_Implement"
+            android:theme="@style/AppDefaultStyle"
+        />
+        <!--WebView的Activity-->
+        <activity
+            android:name="com.ddtkj.commonmodule.MVP.View.Implement.Activity.Common_Act_BaseAgentWebX5_View"
+            android:theme="@style/AppDefaultStyle"
+            android:launchMode="singleTask"
+        />
+        <!--支付的Activity-->
+        <!--Android 7.0适配-应用之间共享文件(FileProvider)-->
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="${applicationId}.fileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+    </application>
+
+</manifest>

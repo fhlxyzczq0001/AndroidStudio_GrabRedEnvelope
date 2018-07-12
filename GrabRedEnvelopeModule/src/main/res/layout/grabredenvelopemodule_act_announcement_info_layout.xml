@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--公告详情的布局-->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <include layout="@layout/common_customview_toolbar_layout"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_redroom"
+        android:orientation="vertical">
+        <ScrollView android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/white"
+                    android:layout_marginLeft="@dimen/x80"
+                    android:layout_marginTop="@dimen/x70"
+                    android:layout_marginRight="@dimen/x80"
+                    android:layout_marginBottom="@dimen/x220"
+        android:scrollbars="none">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="10dp"
+    >
+       <TextView
+           android:id="@+id/tvTitle"
+           android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+       android:textColor="@color/black"
+       android:textSize="@dimen/x32"
+       android:singleLine="true"
+       android:ellipsize="end"
+                 android:gravity="center"
+                 android:layout_marginTop="@dimen/x20"
+       />
+
+        <TextView
+            android:id="@+id/tvTime"
+            android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:textColor="@color/app_text_gray2"
+                  android:textSize="@dimen/x25"
+                  android:singleLine="true"
+                  android:ellipsize="end"
+                  android:gravity="center"
+                  android:layout_marginTop="@dimen/x10"
+                  />
+
+        <TextView
+            android:id="@+id/tvInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#333333"
+            android:textSize="@dimen/x28"
+            android:gravity="left|center_vertical"
+            android:layout_marginTop="@dimen/x20"
+            android:lineSpacingExtra="@dimen/x15"/>
+    </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+</LinearLayout>
+

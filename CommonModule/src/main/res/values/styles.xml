@@ -1,0 +1,66 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="AppTheme.Base">
+    </style>
+
+    <style name="AppTheme.Base" parent="Theme.AppCompat">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="colorPrimary">@color/white</item><!-- toolbar 颜色 -->
+        <item name="android:textColorPrimary">@color/account_text_gray</item> <!-- textColor 定义标题文字的颜色 -->
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item><!-- 状态栏颜色 -->
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowBackground">@color/dim_foreground_material_dark</item>
+    </style>
+    <!--========================默认Activity布局===================================-->
+    <style name="AppDefaultStyle" parent="@style/AppTheme.Base">
+        <!-- 让Activity屏幕透明 -->
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <!-- 禁用掉多点触控 -->
+        <item name="android:windowEnableSplitTouch">false</item>
+        <!--
+  设置不能同时选择2个同级view的方法，就是在这个2个view的父一层的layout中设置
+　　android : splitMotionEvents = "false"
+        -->
+        <item name="android:splitMotionEvents">true</item>
+        <!--android:windowSoftInputMode="adjustPan"可以讓界面不被彈出的鍵盤擠上去-->
+        <item name="android:windowSoftInputMode">adjustPan</item>
+        <!--android:screenOrientation强制竖屏-->
+        <item name="android:screenOrientation">portrait</item>
+        <item name="android:hardwareAccelerated">true</item>
+        <!--当横竖屏切换的时候会直接调用onCreate方法中的onConfigurationChanged方法，而不是重新执行onCreate方法，如果没有使用这个属性就会重新调用onCreate方法了-->
+        <item name="android:configChanges">orientation|keyboardHidden|screenSize</item>
+        <item name="android:background">@color/transparent</item>
+        <item name="android:label">@string/app_name</item>
+        <item name="android:launchMode">singleTask</item><!--启动模式-->
+    </style>
+
+    <!--=============================通用水平导航样式===========================================-->
+    <style name="Common_CustomTabPageIndicator.Text" parent="android:TextAppearance.Medium">
+        <item name="android:typeface">monospace</item>
+        <item name="android:textSize">@dimen/x28</item>
+        <item name="android:textColor">?android:textColorSecondary</item>
+        <item name="textAllCaps">true</item>
+    </style>
+    <!--========================popwindow从底部进入退出动画=========================-->
+    <style name="AppCommon_PopwindowSlidebottomAnimStyle">
+        <item name="android:windowEnterAnimation">@anim/anim_popshow</item>
+        <!-- 指定显示的动画xml -->
+        <item name="android:windowExitAnimation">@anim/anim_pophidden</item>
+        <!-- 指定消失的动画xml -->
+    </style>
+    <!-- 支付界面 -->
+    <style name="AppCommonPayTheme" parent="AppBaseTheme">
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+    <style name="popup_anim_style">
+        <item name="android:windowEnterAnimation">@anim/anim_popshow</item>
+        <item name="android:windowExitAnimation">@anim/anim_pophidden</item>
+    </style>
+
+</resources>

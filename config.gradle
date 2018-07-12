@@ -1,0 +1,91 @@
+ext {
+    android=[ compileSdkVersion = 26,
+              buildToolsVersion = "26.0.2",
+              minSdkVersion = 14,
+              targetSdkVersion = 24,
+              versionCode = 101,
+              versionName = "1.0.1",
+              sourceCompatibility = JavaVersion.VERSION_1_7,
+              targetCompatibility = JavaVersion.VERSION_1_7
+    ]
+
+    dependencies = [
+//========================com===========================
+//v7包
+      appcompatV7: 'com.android.support:appcompat-v7:26.1.0',
+//v4包
+      supportV4: 'com.android.support:support-v4:26.1.0',
+//design
+      design:'com.android.support:design:26.1.0',
+//recyclerview
+      recyclerview:'com.android.support:recyclerview-v7:26.1.0',
+//cardview
+      cardview : 'com.android.support:cardview-v7:26.1.0',
+//解决65536
+      multidex: 'com.android.support:multidex:1.0.1',
+//json解析框架
+      fastjson:'com.alibaba:fastjson:1.2.12',
+//图片压缩框架
+      Luban:'top.zibin:Luban:1.0.9',
+//eventbus通信框架
+      eventbus:'org.greenrobot:eventbus:3.0.0',
+//极光推送 此处以JPush 3.0.0 版本为例。
+      jpush: 'cn.jiguang.sdk:jpush:3.0.9',
+//极光推送 此处以JCore 1.0.0 版本为例。
+      core:'cn.jiguang.sdk:jcore:1.1.7',
+//腾讯bugly热修复
+      buglyUpgrad:'com.tencent.bugly:crashreport_upgrade:latest.release',
+      buglyTinker:'com.tencent.tinker:tinker-android-lib:1.9.6', // 指定tinker依赖版本（注：应用升级1.3.5版本起，不再内置tinker）
+      buglyRelease: 'com.tencent.bugly:nativecrashreport:latest.release',//其中latest.release指代最新版本号，也可以指定明确的版本号，例如2.2.0
+//开源动画库
+      nineoldandroids: 'com.nineoldandroids:library:2.4.0',
+//Rxpermissions权限管理框架
+      Rxpermissions: 'com.tbruyelle.rxpermissions:rxpermissions:0.9.0@aar',
+//路由框架
+      Router:'com.chenenyu.router:router:1.3.1',
+      RouterCompiler:'com.chenenyu.router:compiler:1.3.0',
+//美团新一代打包
+      MeiTuanWalle:'com.meituan.android.walle:library:latest.release',
+//阿里Httpdns
+      ALiHttpDns: 'com.aliyun.ams:alicloud-android-httpdns:latest.release',
+//==========================CommonLib===========================
+//系统异常显示默认activity
+      CommonLibraryCustomActivityOnCarsh:':AndroidStudio_CommonLibrary:customActivityOnCarsh',
+//首页轮播图
+      CommonLibraryViewpagerLibrary:':AndroidStudio_CommonLibrary:viewpager_library',
+//网络请求框架
+      CommonLibraryRxretrofit_Library:':AndroidStudio_CommonLibrary:rxretrofitlibrary',
+//本地照片展示框架
+      CommonLibraryImagepicker:':AndroidStudio_CommonLibrary:imagepicker',
+//首页滚动菜单设置
+      CommonLibraryHomeMenuViewpager:':AndroidStudio_CommonLibrary:homemenuviewpager',
+//引导页框架
+      CommonLibraryGuideLib:':AndroidStudio_CommonLibrary:guide_lib',
+//友盟分享
+      CommonLibraryUnmengShareLibrarys:':AndroidStudio_CommonLibrary:unmeng_share_librarys',
+//3级联动
+      CommonLibraryWheelviewLibrary:':AndroidStudio_CommonLibrary:wheelview_library',
+//下载动画
+      CommonLibraryDownloadAnimLibrary:':AndroidStudio_CommonLibrary:download_anim_library',
+//glide图片库
+      CommonLibraryGlideLibrary:':AndroidStudio_CommonLibrary:glide_library',
+//通用适配器
+      CommonLibrarySuperadapter:':AndroidStudio_CommonLibrary:superadapter',
+//快速设置界面条目
+      CommonLibraryLsettingviewlibrary:':AndroidStudio_CommonLibrary:lsettingviewlibrary',
+//工具类集合
+      CommonLibraryUtilsLib:':AndroidStudio_CommonLibrary:UtilsLib',
+//自定义View集合
+      CommonLibraryCustomViewLib:':AndroidStudio_CommonLibrary:CustomViewLib',
+//加载动画对话框
+      CommonLibraryShapeLoading:':AndroidStudio_CommonLibrary:shapeloading',
+//弹出对话框
+      CommonLibraryMyDialog:':AndroidStudio_CommonLibrary:myDialog',
+//用户授权
+      CommonLibraryPermissionLibrary:':AndroidStudio_CommonLibrary:permission_library',
+//下拉菜单
+      CommonLibraryPopSpinnerLibrary:':AndroidStudio_CommonLibrary:PopSpinnerLibrary',
+//刷新框架
+      CommonLibrarySmartRefreshLayout:':AndroidStudio_CommonLibrary:SmartRefreshLayout',
+    ]
+}

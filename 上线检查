@@ -1,0 +1,8 @@
+1.检查gradle.properties中Post请求和Dns是否开启；
+2.修改config.gradle中版本号；
+3.检查极光推送功能是否放开——主Application CommonApplication Common_SharePer_UserInfo 消息接收开关；key
+4.检查接口域名和微信域名是否正确；
+5.检查Common_PublicMsg中三方账号是否正确  https和bugly
+6.维护页路径
+7.检查更新接口，确保更新接口没有问题
+8.file_paths.xml文件包名

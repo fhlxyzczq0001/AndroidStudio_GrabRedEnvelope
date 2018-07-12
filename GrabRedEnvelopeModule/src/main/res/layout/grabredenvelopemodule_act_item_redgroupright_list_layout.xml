@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--红包群列表的item布局-->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/x10"
+    android:layout_marginRight="@dimen/x10"
+    android:layout_marginTop="@dimen/x20"
+    android:orientation="vertical">
+
+    <RelativeLayout android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tvTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="65dp"
+            android:layout_gravity="center"
+            android:background="@drawable/drawable_shape_white_bg_radius5"
+            android:paddingBottom="@dimen/x5"
+            android:paddingLeft="@dimen/x15"
+            android:paddingRight="@dimen/x15"
+            android:paddingTop="@dimen/x5"
+            android:text="2018年4月4日 上午12：00：00"
+            android:textColor="@color/app_text_normal_color"
+            android:textSize="@dimen/x23"/>
+
+        <!-- 头像 -->
+        <FrameLayout
+            android:id="@+id/flIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvTime"
+            android:layout_marginTop="@dimen/x10"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/x10"
+        >
+            <com.customview.lib.CircleImageView
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="5dip"
+                android:src="@drawable/common_shap_white_round_radius55"
+                app:border_color="@color/white"
+                app:border_width="2dip"/>
+            <!-- 头像 -->
+            <com.customview.lib.CircleImageView
+                android:id="@+id/civUserIcon"
+                android:layout_width="55dip"
+                android:layout_height="55dip"
+                android:layout_marginTop="5dip"
+                android:src="@mipmap/icon_launcher"
+                app:border_color="@color/app_color"
+                app:border_width="2dip"/>
+        </FrameLayout>
+
+        <ImageView
+            android:id="@+id/imgBtnRedEnvelope"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvTime"
+            android:layout_marginRight="@dimen/x10"
+            android:layout_marginTop="@dimen/x40"
+            android:layout_toLeftOf="@+id/flIcon"
+            android:src="@drawable/icon_redenvelope"/>
+    </RelativeLayout>
+</LinearLayout>
+

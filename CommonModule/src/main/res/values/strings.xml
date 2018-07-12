@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">CommonModule</string>
+    <string name="kf_mobile">400-080-3000</string>
+    <!-- 网络请求 -->
+    <string name="ERROR_MESSAGE">请求失败，请检查网络连接是否正常！</string>
+    <string name="CANCLE_MESSAGE">请求取消！</string>
+    <string name="TRUE_MESSAGE">请求成功！</string>
+
+</resources>
