@@ -41,7 +41,7 @@ public class Common_PublicMsg {
 	 * 腾讯热更新配置信息
 	 * 晋商贷借款测试 4592a7e4e6  晋商贷借款生产正式  6a25fcca4b
 	 */
-	public static final String TENCENT_BUGLY_APPKEY = "6a25fcca4b";//腾讯热更新APPKEY
+	public static final String TENCENT_BUGLY_APPKEY = "748a062498";//腾讯热更新APPKEY
 	/**
 	 *AES加密串
 	 */
