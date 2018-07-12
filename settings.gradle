@@ -1,5 +1,5 @@
 include ':app', ':AndroidStudio_CommonLibrary', ':CommonModule', ':UserInfoModule', ':GrabRedEnvelopeModule'
-project(':AndroidStudio_CommonLibrary').projectDir = new File('D:\\AS_WS\\AndroidStudio_CommonLibrary/')
+project(':AndroidStudio_CommonLibrary').projectDir = new File('../AndroidStudio_CommonLibrary/')
 include ':AndroidStudio_CommonLibrary:rxretrofitlibrary',//网络请求框架
         ':AndroidStudio_CommonLibrary:UtilsLib',//工具类集合
         ':AndroidStudio_CommonLibrary:CustomViewLib',//自定义View集合
