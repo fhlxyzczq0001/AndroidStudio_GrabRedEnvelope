@@ -24,7 +24,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/x20"
-                android:text="微信充值"
                 android:textColor="#333333"
                 android:textSize="@dimen/x28"/>
             <TextView
@@ -33,7 +32,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/x20"
                 android:layout_marginTop="@dimen/x5"
-                android:text="07-02 22:07"
                 android:textColor="@color/app_text_gray2"
                 android:textSize="@dimen/x22"/>
         </LinearLayout>
@@ -42,7 +40,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="right|center_vertical"
-            android:text="0.29元"
             android:layout_marginRight="@dimen/x10"
             android:textColor="#333333"
             android:textSize="@dimen/x25"/>

@@ -30,26 +30,110 @@ public class Common_HttpPath {
      * 上传图片
      */
     public static String URL_API_UPLOAD_FILE_PIC = "member/borrow/uploadFilePic.html";
-    //================================借款业务相关=================================================
+    //================================业务相关=================================================
     /**
      *房间列表
      */
-    public static String URL_INVEST_LIST = Common_HostPath.HTTP_HOST_PROJECT+"index/conVersion.html";
+    public static String URL_API_REDPACKET_HOUSEINFO = Common_HostPath.HTTP_HOST_PROJECT+"api/redpacket/houseinfo";
+    /**
+     *进入红包房间
+     */
+    public static String URL_API_REDPACKET_HOUSEIN= Common_HostPath.HTTP_HOST_PROJECT+"api/redpacket/housein";
+    /**
+     *退出红包房间
+     */
+    public static String URL_API_REDPACKET_HOUSEOUT= Common_HostPath.HTTP_HOST_PROJECT+"api/redpacket/houseout";
+    /**
+     *按房间编号和时间组合去取红包
+     */
+    public static String URL_API_REDPACKET_PACKETINFONEW= Common_HostPath.HTTP_HOST_PROJECT+"api/redpacket/packetinfonew";
+    /**
+     *红包是否可以抢
+     */
+    public static String URL_API_REDPACKET_ISSHOWHB= Common_HostPath.HTTP_HOST_PROJECT+"api/redpacket/isShowhb";
+    /**
+     *抢红包
+     */
+    public static String URL_API_REDPACKET_PACKETINFODETAIA= Common_HostPath.HTTP_HOST_PROJECT+"api/redpacket/packetinfodetail";
+    /**
+     *分享
+     */
+    public static String URL_API_USERSHARE= Common_HostPath.HTTP_HOST_PROJECT+"api/users/usershare";
+    /**
+     *公告列表
+     */
+    public static String URL_API_USERNOTIFICATION = Common_HostPath.HTTP_HOST_PROJECT+"api/users/usernotification";
+    /**
+     *红包详情列表
+     */
+    public static String URL_API_REDPACKET_INFOLIST = Common_HostPath.HTTP_HOST_PROJECT+"api/redpacket/hbgetdetail";
+    /**
+     *公告列表
+     */
+    public static String URL_INVEST_LIST = Common_HostPath.HTTP_HOST_PROJECT+"users/usernotification";
     //================================用户相关=================================================
     /**
-     * 个人中心主页 账户信息查询
+     * 刷新用户信息
      */
-    public static String URL_API_ACCOUNT_INDEX = "member/borrowAccountIndex.html";
+    public static final String URL_API_TREFRESH_USER_INFO = Common_HostPath.HTTP_HOST_PROJECT+"api/users/getuserinfo";
     /**
-     * 用户是否绑定第三方账户
+     * 查询三方某个平台的绑定状态
      */
-    public static String URL_API_CAN_LOGIN = "user/login/cooperation.html";
+    public static final String URL_API_TREFRESH_OTHER_LOGING_INFO = Common_HostPath.HTTP_HOST_PROJECT+"api/main/otherLogin.do";
     /**
-     * 基本校验-是否开通第三方账户与交易密码
+     * 设置个人用户信息
      */
-    public static String URL_API_THIRD_PART_PWD_INFO = "/member/user/thirdPartPwdInfo.html";
+    public static String URL_API_SETPROFILE = Common_HostPath.HTTP_HOST_PROJECT+"api/users/setprofile";
     /**
-     * 三方登录登录接口
+     * 充值记录
      */
-    public static String URL_DO_LOGIN_THIRYPARTY = "member/borrowAccountIndex.html";
+    public static String URL_API_RECHARGEMONEY = Common_HostPath.HTTP_HOST_PROJECT+"api/redpacket/rechargemoney";
+    /**
+     * 提现记录
+     */
+    public static String URL_API_BRINGUPMONEY = Common_HostPath.HTTP_HOST_PROJECT+"api/redpacket/bringupmoney";
+    /**
+     * 领取红包记录
+     */
+    public static String URL_API_REDPACKET_GETMONEY = Common_HostPath.HTTP_HOST_PROJECT+"api/redpacket/getmoney";
+    /**
+     * 消费记录
+     */
+    public static String URL_API_REDPACKET_CONSUMEMONEY = Common_HostPath.HTTP_HOST_PROJECT+"api/redpacket/consumemoney";
+    /**
+     * 意见反馈
+     */
+    public static String URL_API_USERS_USERIDEAS = Common_HostPath.HTTP_HOST_PROJECT+"api/users/userideas";
+    /**
+     * 用户搜索
+     */
+    public static String URL_API_SEARCHUSER = Common_HostPath.HTTP_HOST_PROJECT+"api/users/searchuser";
+    /**
+     * 用户列表
+     */
+    public static String URL_API_USERLIST = Common_HostPath.HTTP_HOST_PROJECT+"api/users/userlist";
+    /**
+     * 账户锁定
+     */
+    public static String URL_API_LOCKUSER = Common_HostPath.HTTP_HOST_PROJECT+"api/users/lockuser";
+    /**
+     * 用户解锁
+     */
+    public static String URL_API_UNLOCKUSER = Common_HostPath.HTTP_HOST_PROJECT+"api/users/unlockuser";
+    /**
+     * 提现
+     */
+    public static String URL_API_WITHDRAW = Common_HostPath.HTTP_HOST_PROJECT+"api/users/unlockuser";
+    /**
+     * 充值
+     */
+    public static String URL_API_RECHARGE = Common_HostPath.HTTP_HOST_PROJECT+"api/users/unlockuser";
+    /**
+     * 修改密码
+     */
+    public static String URL_API_CHANGE_PASSWORD = Common_HostPath.HTTP_HOST_PROJECT+"api/users/dealpasswordmodify";
+    /**
+     * 登陆
+     */
+    public static String URL_API_LOGING = Common_HostPath.HTTP_HOST_PROJECT+"api/users/wechatThird";
 }

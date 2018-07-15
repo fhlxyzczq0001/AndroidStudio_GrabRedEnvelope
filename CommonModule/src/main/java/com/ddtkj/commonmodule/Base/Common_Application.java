@@ -2,6 +2,7 @@ package com.ddtkj.commonmodule.Base;
 
 import android.app.Application;
 import android.content.Context;
+import android.media.MediaPlayer;
 import android.os.Handler;
 import android.support.v7.app.AppCompatDelegate;
 
@@ -70,6 +71,9 @@ public class Common_Application {
     public static Map<String, HashMap<String,Long>> httpDnsTimeMap;//String：域名 HashMap String：Dns解析IP Long：时间戳
 
     private boolean mainAppIsStart = false;//主App是否启动
+
+    private MediaPlayer mediaPlayer;
+    String mediaPlayerUrl="http://cuiniu.ycnxsm.com/caihong.mp3";
 
     public static Common_Application initCommonApplication(Application application) {
         mApplication = application;

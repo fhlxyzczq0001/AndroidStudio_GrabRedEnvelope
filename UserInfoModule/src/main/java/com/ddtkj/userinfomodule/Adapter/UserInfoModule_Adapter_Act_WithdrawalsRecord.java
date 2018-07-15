@@ -47,10 +47,9 @@ public class UserInfoModule_Adapter_Act_WithdrawalsRecord extends SuperAdapter<U
     public void onBind(final SuperViewHolder holder, int viewType, int layoutPosition, final UserInfoModule_Bean_WithdrawalsRecord bean) {
         if (holder instanceof ViewHolder) {
             final ViewHolder holder1 = (ViewHolder) holder;
-
-            holder1.tvName.setText(Textutils.checkText(bean.getTypeName()));
-            holder1.tvTime.setText(Textutils.checkText(bean.getTime()));
-            holder1.tvPrice.setText("+"+Textutils.checkText(bean.getMoney()));
+            holder1.tvName.setText(Textutils.checkText(bean.getTitle()));
+            holder1.tvTime.setText(Textutils.checkText(bean.getBringuptime()));
+            holder1.tvPrice.setText("+"+Textutils.checkText(bean.getBringupamount()));
 
             if(layoutPosition<getData().size()-1){
                 holder1.viewLine.setVisibility(View.VISIBLE);

@@ -3,7 +3,6 @@ package com.ddtkj.grabRedEnvelopeModule.MVP.Contract.Activity;
 
 import com.ddtkj.commonmodule.Base.Common_BasePresenter;
 import com.ddtkj.commonmodule.Base.Common_BaseView;
-import com.ddtkj.commonmodule.MVP.Model.Bean.ResponseBean.Common_UserInfoBean;
 
 
 /**
@@ -13,10 +12,6 @@ import com.ddtkj.commonmodule.MVP.Model.Bean.ResponseBean.Common_UserInfoBean;
 
 public interface GrabRedEnvelopeModule_Act_MainActivity_Contract {
     interface View extends Common_BaseView {
-        /**
-         * 刷新用户信息成功
-         */
-        public void refreshUserInfoSuccess(Common_UserInfoBean userInfoBean);
     }
 
     abstract class Presenter extends Common_BasePresenter<View> {
@@ -24,12 +19,6 @@ public interface GrabRedEnvelopeModule_Act_MainActivity_Contract {
          * 初始化P层
          */
         public abstract void initP();
-        /**
-         * 用户信息接口是否请求成功
-         * @return
-         */
-        public abstract boolean isRequestUserState();
-
         /**
          * 退出操作
          */

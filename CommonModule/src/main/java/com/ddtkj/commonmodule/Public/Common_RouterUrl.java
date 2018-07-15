@@ -42,7 +42,14 @@ public class Common_RouterUrl {
     public final static String USERINFO_ConsumptionRecordRouterUrl =USERINFO_APPHOST+"ConsumptionRecordActivity";
     //解封账号记录界面
     public final static String USERINFO_UnblockRecordRouterUrl =USERINFO_APPHOST+"UnblockRecordActivity";
-
+    //用户信息界面
+    public final static String USERINFO_UserInfoRouterUrl =USERINFO_APPHOST+"UserInfo";
+    //提现界面
+    public final static String USERINFO_WithdrawRouterUrl =USERINFO_APPHOST+"Withdraw";
+    //充值界面
+    public final static String USERINFO_RechargeRouterUrl =USERINFO_APPHOST+"Recharge";
+    //修改密码界面
+    public final static String USERINFO_ChangePasswordRouterUrl =USERINFO_APPHOST+"ChangePassword";
     //==========================================业务相关============================================================
     //业务包名
     final static String GRAB_RED_ENVELOPE_APPHOST=ROUTER_HTTP+"GrabRedEnvelopeModule/";

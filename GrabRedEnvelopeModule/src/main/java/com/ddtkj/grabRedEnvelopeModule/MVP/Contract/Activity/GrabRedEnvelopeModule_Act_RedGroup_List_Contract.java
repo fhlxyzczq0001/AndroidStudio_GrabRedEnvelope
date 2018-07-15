@@ -2,6 +2,7 @@ package com.ddtkj.grabRedEnvelopeModule.MVP.Contract.Activity;
 
 import com.ddtkj.commonmodule.Base.Common_BasePresenter;
 import com.ddtkj.commonmodule.Base.Common_BaseView;
+import com.ddtkj.commonmodule.HttpRequest.ResultListener.Common_ResultDataListener;
 import com.ddtkj.grabRedEnvelopeModule.MVP.Model.Bean.ResponseBean.GrabRedEnvelopeModule_Bean_RedGroupListInfo;
 
 import java.util.List;
@@ -26,6 +27,20 @@ public interface GrabRedEnvelopeModule_Act_RedGroup_List_Contract {
          */
         void closeRefresh();
 
+        /**
+         * 退出房间
+         */
+        void outHomeSuccess();
+        /**
+         * .红包是否可以抢
+         * @param hb_id
+         */
+        public  void requestRedpacketIsShowhb(String hb_id, Common_ResultDataListener commonResultDataListener);
+        /**
+         * .抢红包
+         * @param hb_id
+         */
+        public  void requestRedpacketPacketinfodetail(String hb_id, Common_ResultDataListener commonResultDataListener);
     }
 
     abstract class Presenter extends Common_BasePresenter<View> {
@@ -47,6 +62,20 @@ public interface GrabRedEnvelopeModule_Act_RedGroup_List_Contract {
          * @return
          */
         public abstract int getPageNum();
+        /**
+         * 退出红包房间
+         */
+        public abstract void requestRedpacketHouseOut(String house_id);
 
+        /**
+         * .红包是否可以抢
+         * @param hb_id
+         */
+        public abstract void requestRedpacketIsShowhb(String hb_id, Common_ResultDataListener commonResultDataListener);
+        /**
+         * .抢红包
+         * @param hb_id
+         */
+        public abstract void requestRedpacketPacketinfodetail(String hb_id, Common_ResultDataListener commonResultDataListener);
     }
 }

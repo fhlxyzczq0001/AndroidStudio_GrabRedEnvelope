@@ -43,8 +43,8 @@ public class GrabRedEnvelopeModule_Act_AnnouncementInfo_View extends UserInfo_Ba
     @Override
     protected void init() {
         tvTitle.setText(mGrabRedEnvelopeModuleBeanAnnouncement.getTitle());
-        tvTime.setText("发布时间："+mGrabRedEnvelopeModuleBeanAnnouncement.getTime());
-        tvInfo.setText("\t\t"+mGrabRedEnvelopeModuleBeanAnnouncement.getInfo());
+        tvTime.setText("发布时间："+mGrabRedEnvelopeModuleBeanAnnouncement.getCreatedate());
+        tvInfo.setText("\t\t"+mGrabRedEnvelopeModuleBeanAnnouncement.getNotification());
     }
 
     @Override

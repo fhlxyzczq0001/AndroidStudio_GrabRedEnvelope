@@ -3,6 +3,7 @@ package com.ddtkj.userinfomodule.MVP.View.Implement.Activity;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
@@ -13,6 +14,7 @@ import com.chenenyu.router.annotation.Route;
 import com.customview.lib.ClearEditText;
 import com.customview.lib.Common_WrapContentLinearLayoutManager;
 import com.customview.lib.EmptyRecyclerView;
+import com.ddtkj.commonmodule.HttpRequest.ResultListener.Common_ResultDataListener;
 import com.ddtkj.commonmodule.Public.Common_PublicMsg;
 import com.ddtkj.commonmodule.Public.Common_RouterUrl;
 import com.ddtkj.userinfomodule.Adapter.UserInfoModule_Adapter_Act_UnblockRecord;
@@ -26,6 +28,7 @@ import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.utlis.lib.L;
+import com.utlis.lib.Textutils;
 
 import java.util.List;
 
@@ -58,9 +61,14 @@ public class UserInfoModule_Act_UnblockRecord_List_View extends UserInfo_BaseAct
     public void onClick(View v) {
         super.onClick(v);
         if(v.getId()==R.id.imgBtnSearch){
-            mPresenter.setPageNum(1);//恢复默认请求页数是第一页
-            //请求服务器数据的方法
-            requestHttpMethod();
+            if(TextUtils.isEmpty(Textutils.getEditText(cetSearch))){
+                mPresenter.setPageNum(1);//恢复默认请求页数是第一页
+                //请求服务器数据的方法
+                requestHttpMethod();
+            }else {
+                mPresenter.setPageNum(1);//恢复默认请求页数是第一页
+                mPresenter.requestSearchuser(Textutils.getEditText(cetSearch));
+            }
         }
     }
 
@@ -151,7 +159,7 @@ public class UserInfoModule_Act_UnblockRecord_List_View extends UserInfo_BaseAct
     public void setInvestmentProductData(List<UserInfoModule_Bean_UnblockRecord> investmentProductData){
         //设置Adapter
         if (mVentureCapital2AdapterFraInvestmentList == null) {
-            mVentureCapital2AdapterFraInvestmentList = new UserInfoModule_Adapter_Act_UnblockRecord(context,investmentProductData);
+            mVentureCapital2AdapterFraInvestmentList = new UserInfoModule_Adapter_Act_UnblockRecord(context,investmentProductData,this);
             mEmptyRecyclerView.setAdapter(mVentureCapital2AdapterFraInvestmentList);
         } else {
             if(mPresenter.getPageNum()==1){
@@ -195,5 +203,15 @@ public class UserInfoModule_Act_UnblockRecord_List_View extends UserInfo_BaseAct
         mPresenter.setPageNum(1);//恢复默认请求页数是第一页
         //请求服务器数据的方法
         requestHttpMethod();
+    }
+
+    @Override
+    public void requestLockuser(String user_id, Common_ResultDataListener commonResultDataListener) {
+        mPresenter.requestLockuser(user_id,commonResultDataListener);
+    }
+
+    @Override
+    public void requestUnLockuser(String user_id, Common_ResultDataListener commonResultDataListener) {
+        mPresenter.requestUnLockuser(user_id,commonResultDataListener);
     }
 }

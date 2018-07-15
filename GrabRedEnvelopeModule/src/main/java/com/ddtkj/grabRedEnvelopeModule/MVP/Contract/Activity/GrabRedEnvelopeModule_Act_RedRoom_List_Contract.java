@@ -3,6 +3,7 @@ package com.ddtkj.grabRedEnvelopeModule.MVP.Contract.Activity;
 import com.ddtkj.commonmodule.Base.Common_BasePresenter;
 import com.ddtkj.commonmodule.Base.Common_BaseView;
 import com.ddtkj.grabRedEnvelopeModule.MVP.Model.Bean.ResponseBean.GrabRedEnvelopeModule_Bean_RedRoomListInfo;
+import com.ddtkj.grabRedEnvelopeModule.MVP.Model.Bean.ResponseBean.GrabRedEnvelopeModule_Bean_Share;
 
 import java.util.List;
 
@@ -26,6 +27,11 @@ public interface GrabRedEnvelopeModule_Act_RedRoom_List_Contract {
          */
         void closeRefresh();
 
+        void redpacketHouseinSuccess(String house_id);
+        /**
+         * 请求分享数据
+         */
+        public  void setShareData(GrabRedEnvelopeModule_Bean_Share shareData);
     }
 
     abstract class Presenter extends Common_BasePresenter<View> {
@@ -47,6 +53,14 @@ public interface GrabRedEnvelopeModule_Act_RedRoom_List_Contract {
          * @return
          */
         public abstract int getPageNum();
-
+        /**
+         * 进入红包房间
+         * @param house_id
+         */
+        public abstract void requestRedpacketHousein(String house_id);
+        /**
+         * 请求分享数据
+         */
+        public abstract void requestShareData();
     }
 }

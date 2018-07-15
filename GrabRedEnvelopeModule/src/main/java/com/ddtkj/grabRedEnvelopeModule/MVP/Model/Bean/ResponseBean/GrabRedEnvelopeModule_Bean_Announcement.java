@@ -12,9 +12,10 @@ import android.os.Parcelable;
 
 public class GrabRedEnvelopeModule_Bean_Announcement implements Parcelable {
     private String id;
+    private String user_id;
+    private String notification;
+    private String createdate;
     private String title;
-    private String time;
-    private String info;
 
     public String getId() {
         return id;
@@ -22,6 +23,30 @@ public class GrabRedEnvelopeModule_Bean_Announcement implements Parcelable {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(String user_id) {
+        this.user_id = user_id;
+    }
+
+    public String getNotification() {
+        return notification;
+    }
+
+    public void setNotification(String notification) {
+        this.notification = notification;
+    }
+
+    public String getCreatedate() {
+        return createdate;
+    }
+
+    public void setCreatedate(String createdate) {
+        this.createdate = createdate;
     }
 
     public String getTitle() {
@@ -32,22 +57,6 @@ public class GrabRedEnvelopeModule_Bean_Announcement implements Parcelable {
         this.title = title;
     }
 
-    public String getTime() {
-        return time;
-    }
-
-    public void setTime(String time) {
-        this.time = time;
-    }
-
-    public String getInfo() {
-        return info;
-    }
-
-    public void setInfo(String info) {
-        this.info = info;
-    }
-
     @Override
     public int describeContents() {
         return 0;
@@ -56,9 +65,10 @@ public class GrabRedEnvelopeModule_Bean_Announcement implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(this.id);
+        dest.writeString(this.user_id);
+        dest.writeString(this.notification);
+        dest.writeString(this.createdate);
         dest.writeString(this.title);
-        dest.writeString(this.time);
-        dest.writeString(this.info);
     }
 
     public GrabRedEnvelopeModule_Bean_Announcement() {
@@ -66,9 +76,10 @@ public class GrabRedEnvelopeModule_Bean_Announcement implements Parcelable {
 
     protected GrabRedEnvelopeModule_Bean_Announcement(Parcel in) {
         this.id = in.readString();
+        this.user_id = in.readString();
+        this.notification = in.readString();
+        this.createdate = in.readString();
         this.title = in.readString();
-        this.time = in.readString();
-        this.info = in.readString();
     }
 
     public static final Parcelable.Creator<GrabRedEnvelopeModule_Bean_Announcement> CREATOR = new Parcelable.Creator<GrabRedEnvelopeModule_Bean_Announcement>() {

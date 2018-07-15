@@ -19,10 +19,10 @@ import com.ddt.redEnvelope.Base.Main_BaseActivity;
 import com.ddt.redEnvelope.MVP.Contract.Activity.Main_Act_WelcomePage_Contract;
 import com.ddt.redEnvelope.MVP.Model.Bean.RequestBean.Main_WelcomePageBean;
 import com.ddt.redEnvelope.MVP.Presenter.Implement.Activity.Main_Act_WelcomePage_Presenter;
+import com.ddt.redEnvelope.MVP.Presenter.Implement.Project.Main_ProjectUtil_Implement;
 import com.ddt.redEnvelope.MVP.Presenter.Interface.Project.Main_ProjectUtil_Interface;
 import com.ddt.redEnvelope.R;
 import com.ddt.redEnvelope.Service.Main_WelcomePageService;
-import com.ddt.redEnvelope.Util.Main_SharePer_GlobalInfo;
 import com.ddt.redEnvelope.Util.Main_SharePer_SdCard_Info;
 import com.ddtkj.commonmodule.Public.Common_PublicMsg;
 import com.ddtkj.commonmodule.Public.Common_RouterUrl;
@@ -93,9 +93,7 @@ public class Main_Act_WelcomePage extends Main_BaseActivity<Main_Act_WelcomePage
 
     @Override
     protected void init() { // 进入首页
-        getIntentTool().intent_no_animation_RouterTo(context, Common_PublicMsg.ROUTER_MAINACTIVITY);
-        finish();
-       /* if((getIntent().getFlags() & Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT) != 0){
+        if((getIntent().getFlags() & Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT) != 0){
             finish();
             return;
         }
@@ -104,7 +102,7 @@ public class Main_Act_WelcomePage extends Main_BaseActivity<Main_Act_WelcomePage
         //设置启动页
         setWelcomePageData();
         //请求是否下载启动页
-        mPresenter.requestStartPageUpdate();*/
+        mPresenter.requestStartPageUpdate();
         //5秒后跳转
 //        startCountDownTimer();
     }
@@ -184,7 +182,7 @@ public class Main_Act_WelcomePage extends Main_BaseActivity<Main_Act_WelcomePage
      */
     public void toNextActivity(){
         cusCircleTextProgressbar.stop();//停止倒计时
-        if (Main_SharePer_GlobalInfo.sharePre_GetFirstInstall()) {
+       /* if (Main_SharePer_GlobalInfo.sharePre_GetFirstInstall()) {
             Main_SharePer_GlobalInfo.sharePre_PutFirstInstall(false);//设置不是第一次进入
             // 进入引导页
             getIntentTool().intent_RouterTo(context, Common_RouterUrl.MAIN_GuideRouterUrl);
@@ -193,7 +191,10 @@ public class Main_Act_WelcomePage extends Main_BaseActivity<Main_Act_WelcomePage
             // 进入首页
             getIntentTool().intent_RouterTo(context, Common_PublicMsg.ROUTER_MAINACTIVITY);
             finish();
-        }
+        }*/
+        // 进入首页
+        getIntentTool().intent_RouterTo(context, Common_PublicMsg.ROUTER_MAINACTIVITY);
+        finish();
     }
     /**
      * 启动倒计时

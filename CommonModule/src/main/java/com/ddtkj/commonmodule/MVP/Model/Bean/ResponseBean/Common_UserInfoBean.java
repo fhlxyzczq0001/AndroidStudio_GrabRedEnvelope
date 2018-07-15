@@ -9,50 +9,16 @@ import com.alibaba.fastjson.annotation.JSONField;
  */
 
 public class Common_UserInfoBean {
-    private String access_token;
-    private long access_token_expire_timestamp = -1;
-    private long access_token_generate_timestamp = -1;
-    private String refresh_token;
-    @JSONField(name = "uid")
-    private String userId;
-    private String mobile = "";
-    private int thirdPartyIsOpen = -1;//实名认证状态 0未认证  1已认证
-    private int payPwd = -1;
-    private String realName;
-    private String thirdPartyToOpen;
-    private String idCard;
-
-    public String getAccess_token() {
-        return access_token;
-    }
-
-    public void setAccess_token(String access_token) {
-        this.access_token = access_token;
-    }
-
-    public long getAccess_token_expire_timestamp() {
-        return access_token_expire_timestamp;
-    }
-
-    public void setAccess_token_expire_timestamp(long access_token_expire_timestamp) {
-        this.access_token_expire_timestamp = access_token_expire_timestamp;
-    }
-
-    public long getAccess_token_generate_timestamp() {
-        return access_token_generate_timestamp;
-    }
-
-    public void setAccess_token_generate_timestamp(long access_token_generate_timestamp) {
-        this.access_token_generate_timestamp = access_token_generate_timestamp;
-    }
-
-    public String getRefresh_token() {
-        return refresh_token;
-    }
-
-    public void setRefresh_token(String refresh_token) {
-        this.refresh_token = refresh_token;
-    }
+    @JSONField(name = "id")
+    private String userId= "";
+    private String username= "";
+    @JSONField(name = "nickname")
+    private String nikeName = "";
+    private String avatar = "";
+    private String isFull;//信息是否完整 1完整 0 不完整
+    private String group_id ;//1管理员  0非管理员;
+    private String weixinName= "";
+    private String accountbalance= "";
 
     public String getUserId() {
         return userId;
@@ -62,51 +28,59 @@ public class Common_UserInfoBean {
         this.userId = userId;
     }
 
-    public String getMobile() {
-        return mobile;
+    public String getUsername() {
+        return username;
     }
 
-    public void setMobile(String mobile) {
-        this.mobile = mobile;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public int getThirdPartyIsOpen() {
-        return thirdPartyIsOpen;
+    public String getNikeName() {
+        return nikeName;
     }
 
-    public void setThirdPartyIsOpen(int thirdPartyIsOpen) {
-        this.thirdPartyIsOpen = thirdPartyIsOpen;
+    public void setNikeName(String nikeName) {
+        this.nikeName = nikeName;
     }
 
-    public int getPayPwd() {
-        return payPwd;
+    public String getAvatar() {
+        return avatar;
     }
 
-    public void setPayPwd(int payPwd) {
-        this.payPwd = payPwd;
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 
-    public String getRealName() {
-        return realName;
+    public String getIsFull() {
+        return isFull;
     }
 
-    public void setRealName(String realName) {
-        this.realName = realName;
+    public void setIsFull(String isFull) {
+        this.isFull = isFull;
     }
 
-    public String getThirdPartyToOpen() {
-        return thirdPartyToOpen;
+    public String getGroup_id() {
+        return group_id;
     }
 
-    public void setThirdPartyToOpen(String thirdPartyToOpen) {
-        this.thirdPartyToOpen = thirdPartyToOpen;
+    public void setGroup_id(String group_id) {
+        this.group_id = group_id;
     }
 
-    public String getIdCard() {
-        return idCard;
+    public String getWeixinName() {
+        return weixinName;
     }
 
-    public void setIdCard(String idCard) {
-        this.idCard = idCard;
+    public void setWeixinName(String weixinName) {
+        this.weixinName = weixinName;
+    }
+
+    public String getAccountbalance() {
+        return accountbalance;
+    }
+
+    public void setAccountbalance(String accountbalance) {
+        this.accountbalance = accountbalance;
     }
 }

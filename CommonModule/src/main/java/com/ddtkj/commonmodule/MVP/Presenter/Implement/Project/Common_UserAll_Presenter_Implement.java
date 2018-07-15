@@ -70,14 +70,14 @@ public class Common_UserAll_Presenter_Implement implements Common_UserAll_Presen
      * @param params
      */
     public void refreshUserInfo(Context context,Map<String, Object> params,final RefreshUserInfoListener refreshUserInfoListener, boolean isLoadingDialog) {
-        mCommonBaseHttpRequestInterface.requestData(context, Common_HttpPath.URL_API_ACCOUNT_INDEX, new HashMap<String, Object>(), new Common_ResultDataListener() {
+        mCommonBaseHttpRequestInterface.requestData(context, Common_HttpPath.URL_API_TREFRESH_USER_INFO, new HashMap<String, Object>(), new Common_ResultDataListener() {
             @Override
             public void onResult(boolean isSucc, String msg, Common_RequestBean request_bean) {
                 Common_UserInfoBean infoBean=null;
                 if (isSucc) {
                     if(request_bean.getData()!=null){
-                        infoBean = JSONObject.parseObject(request_bean.getData().toString(),
-                                Common_UserInfoBean.class);
+                        JSONObject jsonObject = JSONObject.parseObject(request_bean.getData().toString());
+                        infoBean=JSONObject.parseObject(jsonObject.getString("userinfo"),Common_UserInfoBean.class);
                     }
                     //更新用户信息
                     mCommonApplication.setUserInfoBean(infoBean);
@@ -112,7 +112,7 @@ public class Common_UserAll_Presenter_Implement implements Common_UserAll_Presen
      * @param params
      */
     public void refreshOtherLogin(final Context context, Map<String, Object> params, final String loginType, final String openId, final RefreshUserInfoListener refreshUserInfoListener, boolean isLoadingDialog) {
-        mCommonBaseHttpRequestInterface.requestData(context, Common_HttpPath.URL_API_CAN_LOGIN, params, new Common_ResultDataListener() {
+        mCommonBaseHttpRequestInterface.requestData(context, Common_HttpPath.URL_API_TREFRESH_OTHER_LOGING_INFO, params, new Common_ResultDataListener() {
             @Override
             public void onResult(boolean isSucc, String msg, Common_RequestBean request_bean) {
                 try{
@@ -163,14 +163,5 @@ public class Common_UserAll_Presenter_Implement implements Common_UserAll_Presen
                 }
             }
         },isLoadingDialog,Common_HttpRequestMethod.POST);
-    }
-
-    /**
-     * 基本校验-是否开通第三方账户与交易密码
-     * @param mResultListener
-     */
-    @Override
-    public void requestThirdAndTrade(Context context,Common_ResultDataListener mResultListener) {
-        mCommonBaseHttpRequestInterface.requestData(context,  Common_HttpPath.URL_API_THIRD_PART_PWD_INFO, new HashMap<String, Object>(), mResultListener,true, Common_HttpRequestMethod.POST);
     }
 }

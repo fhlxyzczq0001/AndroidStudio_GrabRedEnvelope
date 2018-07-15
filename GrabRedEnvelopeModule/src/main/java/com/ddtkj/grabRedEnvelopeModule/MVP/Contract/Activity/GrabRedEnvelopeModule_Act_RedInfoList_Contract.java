@@ -25,7 +25,6 @@ public interface GrabRedEnvelopeModule_Act_RedInfoList_Contract {
          * 关闭刷新
          */
         void closeRefresh();
-
     }
 
     abstract class Presenter extends Common_BasePresenter<View> {
@@ -47,6 +46,5 @@ public interface GrabRedEnvelopeModule_Act_RedInfoList_Contract {
          * @return
          */
         public abstract int getPageNum();
-
     }
 }

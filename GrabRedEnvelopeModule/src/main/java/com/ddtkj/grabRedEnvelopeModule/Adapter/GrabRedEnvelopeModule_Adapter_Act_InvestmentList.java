@@ -48,7 +48,7 @@ public class GrabRedEnvelopeModule_Adapter_Act_InvestmentList extends SuperAdapt
         if (holder instanceof ViewHolder) {
             final ViewHolder holder1 = (ViewHolder) holder;
             holder1.tvName.setText(Textutils.checkText(bean.getHousename()));
-            holder1.tvNum.setText("还差"+Textutils.checkText(bean.getHousenum())+"位");
+            holder1.tvNum.setText("还差"+Textutils.checkText(bean.getHousestatus())+"位");
 
             if(layoutPosition<getData().size()-1){
                 holder1.viewLine.setVisibility(View.VISIBLE);

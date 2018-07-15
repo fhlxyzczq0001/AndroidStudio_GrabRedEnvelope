@@ -4,14 +4,19 @@ import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.ddtkj.commonmodule.Base.Common_Application;
+import com.ddtkj.commonmodule.MVP.Model.Bean.ResponseBean.Common_UserInfoBean;
 import com.ddtkj.commonmodule.Public.Common_Main_PublicCode;
 import com.ddtkj.commonmodule.Public.Common_RouterUrl;
 import com.ddtkj.commonmodule.Util.Common_CustomDialogBuilder;
+import com.ddtkj.commonmodule.Util.ImageLoaderUtils;
 import com.ddtkj.grabRedEnvelopeModule.Base.GrabRedEnvelopeModule_BaseFragment;
 import com.ddtkj.grabRedEnvelopeModule.MVP.Contract.Fragment.GrabRedEnvelopeModule_Fra_User_Contract;
 import com.ddtkj.grabRedEnvelopeModule.MVP.Presenter.Implement.Fragment.GrabRedEnvelopeModule_Fra_User_Presenter;
@@ -20,6 +25,8 @@ import com.gitonway.lee.niftymodaldialogeffects.lib.NiftyDialogBuilder;
 import com.pop.spinner.PopCommon;
 import com.pop.spinner.PopModel;
 import com.utlis.lib.L;
+import com.utlis.lib.Textutils;
+import com.utlis.lib.ToastUtils;
 import com.utlis.lib.ViewUtils;
 import com.utlis.lib.WindowUtils;
 
@@ -37,6 +44,11 @@ public class GrabRedEnvelopeModule_Fra_User_View extends GrabRedEnvelopeModule_B
     //领取红包
     TextView tvBtnRedPackage;
     TextView tvBtnJieFeng;
+    TextView tvBtnTiXian;
+    TextView tvBtnChongZhi;
+    ImageView imgUserIcon;
+    TextView tvUserName;
+    TextView tvZuanShiNum;
     List<PopModel> mPopModels=new ArrayList<>();
     Integer []icons={R.drawable.icon_tixian,R.drawable.icon_chongzhi,R.drawable.icon_hongbao,R.drawable.icon_xiaofei,R.drawable.icon_yijian};
     String [] iconTitles={"提现记录","充值记录","领取红包记录","消费记录","意见反馈"};
@@ -82,14 +94,20 @@ public class GrabRedEnvelopeModule_Fra_User_View extends GrabRedEnvelopeModule_B
                             dialogBuilder.getParentPanel().setBackgroundDrawable(ViewUtils.getGradientDrawable(context.getResources().getDimension(R.dimen.x20),1,
                                     Color.parseColor("#D2D2D2"),Color.parseColor("#D2D2D2")));
 
-                            EditText editText=dialogBuilder.findViewById(R.id.edit);
+                            final EditText editText=dialogBuilder.findViewById(R.id.edit);
                             TextView tvBtnConfirm=dialogBuilder.findViewById(R.id.tvBtnConfirm);
                             TextView tvBtnCancel=dialogBuilder.findViewById(R.id.tvBtnCancel);
                             //确定
                             tvBtnConfirm.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
-
+                                    String ideas= Textutils.getEditText(editText);
+                                    if(TextUtils.isEmpty(ideas)){
+                                        ToastUtils.WarnImageToast(context,"请输入反馈意见！");
+                                        return;
+                                    }
+                                    mPresenter.requestUserideas(ideas);
+                                    dialogBuilder.dismiss();
                                 }
                             });
                             //取消
@@ -112,6 +130,14 @@ public class GrabRedEnvelopeModule_Fra_User_View extends GrabRedEnvelopeModule_B
             mPopCommon.showPop(tvRightTitleRight, x, y);
         }else if(v.getId()==R.id.tvBtnJieFeng){
             getIntentTool().intent_RouterTo(context,Common_RouterUrl.USERINFO_UnblockRecordRouterUrl);
+        }else if(v.getId()==R.id.tvBtnTiXian){
+            if(Common_Application.getInstance().getUseInfoVo().getIsFull().equals("0")){
+                getIntentTool().intent_RouterTo(context,Common_RouterUrl.USERINFO_UserInfoRouterUrl);
+            }else {
+                getIntentTool().intent_RouterTo(context,Common_RouterUrl.USERINFO_WithdrawRouterUrl);
+            }
+        }else if(v.getId()==R.id.tvBtnChongZhi){
+            getIntentTool().intent_RouterTo(context,Common_RouterUrl.USERINFO_RechargeRouterUrl);
         }
     }
     public static Fragment newInstance(Bundle bundle) {
@@ -123,6 +149,11 @@ public class GrabRedEnvelopeModule_Fra_User_View extends GrabRedEnvelopeModule_B
     protected void initMyView() {
         tvBtnRedPackage=public_view.findViewById(R.id.tvBtnRedPackage);
         tvBtnJieFeng=public_view.findViewById(R.id.tvBtnJieFeng);
+        tvBtnTiXian=public_view.findViewById(R.id.tvBtnTiXian);
+        tvBtnChongZhi=public_view.findViewById(R.id.tvBtnChongZhi);
+         imgUserIcon=public_view.findViewById(R.id.imgUserIcon);
+         tvUserName=public_view.findViewById(R.id.tvUserName);
+         tvZuanShiNum=public_view.findViewById(R.id.tvZuanShiNum);
     }
 
     @Override
@@ -138,6 +169,7 @@ public class GrabRedEnvelopeModule_Fra_User_View extends GrabRedEnvelopeModule_B
     @Override
     public void onResume() {
         super.onResume();
+        mPresenter.refreshUserInfo();
     }
     @Override
     protected void init() {
@@ -155,6 +187,8 @@ public class GrabRedEnvelopeModule_Fra_User_View extends GrabRedEnvelopeModule_B
         tvBtnRedPackage.setOnClickListener(this);
         tvRightTitleRight.setOnClickListener(this);
         tvBtnJieFeng.setOnClickListener(this);
+        tvBtnTiXian.setOnClickListener(this);
+        tvBtnChongZhi.setOnClickListener(this);
     }
 
     @Override
@@ -169,5 +203,17 @@ public class GrabRedEnvelopeModule_Fra_User_View extends GrabRedEnvelopeModule_B
     @Override
     public void onDestroy() {
         super.onDestroy();
+    }
+
+    @Override
+    public void setUserInfoData(Common_UserInfoBean userInfoData) {
+        ImageLoaderUtils.getInstance(context).displayImage(userInfoData.getAvatar(),imgUserIcon);
+        tvUserName.setText(userInfoData.getNikeName());
+        tvZuanShiNum.setText(userInfoData.getAccountbalance());
+        if(userInfoData.getGroup_id().equals("1")){
+            tvBtnJieFeng.setVisibility(View.VISIBLE);
+        }else {
+            tvBtnJieFeng.setVisibility(View.GONE);
+        }
     }
 }

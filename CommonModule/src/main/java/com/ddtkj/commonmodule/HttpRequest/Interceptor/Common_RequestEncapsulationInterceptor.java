@@ -153,7 +153,7 @@ public class Common_RequestEncapsulationInterceptor implements Interceptor{
                     setCookieSub=head.value(i).substring(0,head.value(i).indexOf("="));
                 }
                 //如果包含这些去循环缓存的set_cookie
-                if(head.value(i).contains("sid=")||head.value(i).contains("JSESSIONID=")||head.value(i).contains("CASTGC=")){
+                if(head.value(i).contains("user-name=")||head.value(i).contains("JSESSIONID=")||head.value(i).contains("CASTGC=")){
                     for(String cookie:set_cookie){
                         //如果cookie包含setCookieSub,移除缓存对象
                         if(cookie.contains(setCookieSub)){

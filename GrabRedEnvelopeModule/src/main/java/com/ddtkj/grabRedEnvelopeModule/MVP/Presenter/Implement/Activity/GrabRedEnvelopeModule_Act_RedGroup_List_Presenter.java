@@ -3,6 +3,7 @@ package com.ddtkj.grabRedEnvelopeModule.MVP.Presenter.Implement.Activity;
 import android.os.Handler;
 
 import com.alibaba.fastjson.JSONObject;
+import com.ddtkj.commonmodule.Base.Common_Application;
 import com.ddtkj.commonmodule.HttpRequest.Common_HttpPath;
 import com.ddtkj.commonmodule.HttpRequest.Common_HttpRequestMethod;
 import com.ddtkj.commonmodule.HttpRequest.ResultListener.Common_ResultDataListener;
@@ -11,6 +12,7 @@ import com.ddtkj.commonmodule.MVP.Model.Implement.Common_Base_HttpRequest_Implem
 import com.ddtkj.commonmodule.MVP.Model.Interface.Common_Base_HttpRequest_Interface;
 import com.ddtkj.grabRedEnvelopeModule.MVP.Contract.Activity.GrabRedEnvelopeModule_Act_RedGroup_List_Contract;
 import com.ddtkj.grabRedEnvelopeModule.MVP.Model.Bean.ResponseBean.GrabRedEnvelopeModule_Bean_RedGroupListInfo;
+import com.utlis.lib.ToastUtils;
 
 import java.util.HashMap;
 import java.util.List;
@@ -62,84 +64,22 @@ public class GrabRedEnvelopeModule_Act_RedGroup_List_Presenter extends GrabRedEn
     }
     /**
      * 获取投资列表数据
-     * @param type 类型
+     * @param house_id 类型
      */
     @Override
-    public void requestInvestmentProductData(String type) {
+    public void requestInvestmentProductData(String house_id) {
         Map<String,Object> params = new HashMap<String, Object>();
         params.put("page",page);//当前页
         params.put("size",pageSize);//每页显示条数
-        params.put("category",type);//空间类型，1. 酒店 2、公寓 3.民宿，4.更多
-        mCommonBaseHttpRequestInterface.requestData(context, Common_HttpPath.URL_INVEST_LIST, params, new Common_ResultDataListener() {
+        params.put("house_id",house_id);
+        mCommonBaseHttpRequestInterface.requestData(context, Common_HttpPath.URL_API_REDPACKET_PACKETINFONEW, params, new Common_ResultDataListener() {
             @Override
             public void onResult(boolean isSucc, String msg, Common_RequestBean request_bean) {
                 if(isSucc){
                     if(request_bean.getData()==null){
                         return;
                     }
-                    JSONObject jsonObject = JSONObject.parseObject("{\n" +
-                            "\t\"hb\": [{\n" +
-                            "\t\t\"id\": 27,\n" +
-                            "\t\t\"house_id\": 1,\n" +
-                            "\t\t\"hbcount\": 10,\n" +
-                            "\t\t\"endtime\": \"2018-07-01 16:51:30\",\n" +
-                            "\t\t\"hbstatus\": \"18070116462\"\n" +
-                            "\t}, {\n" +
-                            "\t\t\"id\": 29,\n" +
-                            "\t\t\"house_id\": 1,\n" +
-                            "\t\t\"hbcount\": 10,\n" +
-                            "\t\t\"endtime\": \"2018-07-01 16:52:00\",\n" +
-                            "\t\t\"hbstatus\": \"18070116471\"\n" +
-                            "\t}, {\n" +
-                            "\t\t\"id\": 31,\n" +
-                            "\t\t\"house_id\": 1,\n" +
-                            "\t\t\"hbcount\": 10,\n" +
-                            "\t\t\"endtime\": \"2018-07-01 16:52:30\",\n" +
-                            "\t\t\"hbstatus\": \"18070116472\"\n" +
-                            "\t}, {\n" +
-                            "\t\t\"id\": 33,\n" +
-                            "\t\t\"house_id\": 1,\n" +
-                            "\t\t\"hbcount\": 10,\n" +
-                            "\t\t\"endtime\": \"2018-07-01 16:53:00\",\n" +
-                            "\t\t\"hbstatus\": \"18070116481\"\n" +
-                            "\t}, {\n" +
-                            "\t\t\"id\": 35,\n" +
-                            "\t\t\"house_id\": 1,\n" +
-                            "\t\t\"hbcount\": 10,\n" +
-                            "\t\t\"endtime\": \"2018-07-01 16:53:30\",\n" +
-                            "\t\t\"hbstatus\": \"18070116482\"\n" +
-                            "\t}, {\n" +
-                            "\t\t\"id\": 37,\n" +
-                            "\t\t\"house_id\": 1,\n" +
-                            "\t\t\"hbcount\": 10,\n" +
-                            "\t\t\"endtime\": \"2018-07-01 16:54:00\",\n" +
-                            "\t\t\"hbstatus\": \"18070116491\"\n" +
-                            "\t}, {\n" +
-                            "\t\t\"id\": 39,\n" +
-                            "\t\t\"house_id\": 1,\n" +
-                            "\t\t\"hbcount\": 10,\n" +
-                            "\t\t\"endtime\": \"2018-07-01 16:54:30\",\n" +
-                            "\t\t\"hbstatus\": \"18070116492\"\n" +
-                            "\t}, {\n" +
-                            "\t\t\"id\": 41,\n" +
-                            "\t\t\"house_id\": 1,\n" +
-                            "\t\t\"hbcount\": 10,\n" +
-                            "\t\t\"endtime\": \"2018-07-01 16:55:00\",\n" +
-                            "\t\t\"hbstatus\": \"18070116501\"\n" +
-                            "\t}, {\n" +
-                            "\t\t\"id\": 43,\n" +
-                            "\t\t\"house_id\": 1,\n" +
-                            "\t\t\"hbcount\": 10,\n" +
-                            "\t\t\"endtime\": \"2018-07-01 16:55:30\",\n" +
-                            "\t\t\"hbstatus\": \"18070116502\"\n" +
-                            "\t}, {\n" +
-                            "\t\t\"id\": 45,\n" +
-                            "\t\t\"house_id\": 1,\n" +
-                            "\t\t\"hbcount\": 10,\n" +
-                            "\t\t\"endtime\": \"2018-07-01 16:56:00\",\n" +
-                            "\t\t\"hbstatus\": \"18070116511\"\n" +
-                            "\t}]\n" +
-                            "}");
+                    JSONObject jsonObject = JSONObject.parseObject(request_bean.getData().toString());
                     List<GrabRedEnvelopeModule_Bean_RedGroupListInfo> invoiceBeanList = JSONObject.parseArray(jsonObject.getString("hb"),GrabRedEnvelopeModule_Bean_RedGroupListInfo.class);
                     setInvestmentProductListData(invoiceBeanList);
                 }
@@ -170,5 +110,85 @@ public class GrabRedEnvelopeModule_Act_RedGroup_List_Presenter extends GrabRedEn
         return page;
     }
 
+    /**
+     * 退出红包房间
+     */
+    @Override
+    public void requestRedpacketHouseOut(String house_id) {
+        Map<String,Object> params = new HashMap<String, Object>();
+        params.put("house_id",house_id);
+        params.put("user_id", Common_Application.getInstance().getUseInfoVo().getUserId());
+        mCommonBaseHttpRequestInterface.requestData(context, Common_HttpPath.URL_API_REDPACKET_HOUSEOUT, params, new Common_ResultDataListener() {
+            @Override
+            public void onResult(boolean isSucc, String msg, Common_RequestBean request_bean) {
+                if(isSucc){
+                    if(request_bean.getData()==null){
+                        return;
+                    }
+                    mView.outHomeSuccess();
+                }
+            }
+        },true, Common_HttpRequestMethod.GET);
+    }
 
+    /**
+     * 是否可以抢红包
+     * @param hb_id
+     * @param commonResultDataListener
+     */
+    @Override
+    public void requestRedpacketIsShowhb(String hb_id, final Common_ResultDataListener commonResultDataListener) {
+        Map<String,Object> params = new HashMap<String, Object>();
+        params.put("hb_id",hb_id);
+        params.put("user_id", Common_Application.getInstance().getUseInfoVo().getUserId());
+        mCommonBaseHttpRequestInterface.requestData(context, Common_HttpPath.URL_API_REDPACKET_ISSHOWHB, params, new Common_ResultDataListener() {
+            @Override
+            public void onResult(boolean isSucc, String msg, Common_RequestBean request_bean) {
+                if(isSucc){
+                    if(request_bean.getData()==null){
+                        return;
+                    }
+                    String businessCode="";
+                    String businessMsg="";
+                    JSONObject jsonObject = JSONObject.parseObject(request_bean.getData().toString());
+                    if(jsonObject.containsKey("businessCode"))
+                        businessCode=jsonObject.getString("businessCode");
+                    if(jsonObject.containsKey("businessMsg"))
+                        businessMsg=jsonObject.getString("businessMsg");
+                    switch (businessCode){
+                        case "1":
+                            commonResultDataListener.onResult(true,businessMsg,null);
+                            break;
+                            default:
+                                ToastUtils.WarnImageToast(context,businessMsg);
+
+                                break;
+                    }
+                }
+            }
+        },true, Common_HttpRequestMethod.GET);
+    }
+
+    /**
+     * 抢红包
+     * @param hb_id
+     * @param commonResultDataListener
+     */
+    @Override
+    public void requestRedpacketPacketinfodetail(String hb_id, final Common_ResultDataListener commonResultDataListener) {
+        Map<String,Object> params = new HashMap<String, Object>();
+        params.put("hb_id",hb_id);
+        params.put("user_id", Common_Application.getInstance().getUseInfoVo().getUserId());
+        mCommonBaseHttpRequestInterface.requestData(context, Common_HttpPath.URL_API_REDPACKET_PACKETINFODETAIA, params, new Common_ResultDataListener() {
+            @Override
+            public void onResult(boolean isSucc, String msg, Common_RequestBean request_bean) {
+                if(isSucc){
+                    if(request_bean.getData()==null){
+                        return;
+                    }
+                    commonResultDataListener.onResult(true,msg,null);
+                }
+            }
+        },true, Common_HttpRequestMethod.GET);
+    }
 }

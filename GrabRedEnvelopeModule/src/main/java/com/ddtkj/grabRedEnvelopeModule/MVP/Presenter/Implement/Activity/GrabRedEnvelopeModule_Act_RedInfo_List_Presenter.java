@@ -62,65 +62,23 @@ public class GrabRedEnvelopeModule_Act_RedInfo_List_Presenter extends GrabRedEnv
     }
     /**
      * 获取投资列表数据
-     * @param type 类型
+     * @param hb_id 类型
      */
     @Override
-    public void requestInvestmentProductData(String type) {
+    public void requestInvestmentProductData(String hb_id) {
         Map<String,Object> params = new HashMap<String, Object>();
         params.put("page",page);//当前页
         params.put("size",pageSize);//每页显示条数
-        params.put("category",type);//空间类型，1. 酒店 2、公寓 3.民宿，4.更多
-        mCommonBaseHttpRequestInterface.requestData(context, Common_HttpPath.URL_INVEST_LIST, params, new Common_ResultDataListener() {
+        params.put("hb_id",hb_id);
+        mCommonBaseHttpRequestInterface.requestData(context, Common_HttpPath.URL_API_REDPACKET_INFOLIST, params, new Common_ResultDataListener() {
             @Override
             public void onResult(boolean isSucc, String msg, Common_RequestBean request_bean) {
                 if(isSucc){
                     if(request_bean.getData()==null){
                         return;
                     }
-                    JSONObject jsonObject = JSONObject.parseObject("{\n" +
-                            "\t\"hb\": [{\n" +
-                            "\t\t\"nikeName\": \"影子\",\n" +
-                            "\t\t\"time\": \"07-02  22:07\",\n" +
-                            "\t\t\"redPrice\": \"0.29元\"\n" +
-                            "\t}, {\n" +
-                            "\t\t\"nikeName\": \"影子\",\n" +
-                            "\t\t\"time\": \"07-02  22:07\",\n" +
-                            "\t\t\"redPrice\": \"0.29元\"\n" +
-                            "\t}, {\n" +
-                            "\t\t\"nikeName\": \"影子\",\n" +
-                            "\t\t\"time\": \"07-02  22:07\",\n" +
-                            "\t\t\"redPrice\": \"0.29元\"\n" +
-                            "\t}, {\n" +
-                            "\t\t\"nikeName\": \"影子\",\n" +
-                            "\t\t\"time\": \"07-02  22:07\",\n" +
-                            "\t\t\"redPrice\": \"0.29元\"\n" +
-                            "\t}, {\n" +
-                            "\t\t\"nikeName\": \"影子\",\n" +
-                            "\t\t\"time\": \"07-02  22:07\",\n" +
-                            "\t\t\"redPrice\": \"0.29元\"\n" +
-                            "\t}, {\n" +
-                            "\t\t\"nikeName\": \"影子\",\n" +
-                            "\t\t\"time\": \"07-02  22:07\",\n" +
-                            "\t\t\"redPrice\": \"0.29元\"\n" +
-                            "\t}, {\n" +
-                            "\t\t\"nikeName\": \"影子\",\n" +
-                            "\t\t\"time\": \"07-02  22:07\",\n" +
-                            "\t\t\"redPrice\": \"0.29元\"\n" +
-                            "\t}, {\n" +
-                            "\t\t\"nikeName\": \"影子\",\n" +
-                            "\t\t\"time\": \"07-02  22:07\",\n" +
-                            "\t\t\"redPrice\": \"0.29元\"\n" +
-                            "\t}, {\n" +
-                            "\t\t\"nikeName\": \"影子\",\n" +
-                            "\t\t\"time\": \"07-02  22:07\",\n" +
-                            "\t\t\"redPrice\": \"0.29元\"\n" +
-                            "\t}, {\n" +
-                            "\t\t\"nikeName\": \"影子\",\n" +
-                            "\t\t\"time\": \"07-02  22:07\",\n" +
-                            "\t\t\"redPrice\": \"0.29元\"\n" +
-                            "\t}]\n" +
-                            "}");
-                    List<GrabRedEnvelopeModule_Bean_RedInfoListInfo> invoiceBeanList = JSONObject.parseArray(jsonObject.getString("hb"),GrabRedEnvelopeModule_Bean_RedInfoListInfo.class);
+                    JSONObject jsonObject = JSONObject.parseObject(request_bean.getData().toString());
+                    List<GrabRedEnvelopeModule_Bean_RedInfoListInfo> invoiceBeanList = JSONObject.parseArray(jsonObject.getString("hbgetdetail"),GrabRedEnvelopeModule_Bean_RedInfoListInfo.class);
                     setInvestmentProductListData(invoiceBeanList);
                 }
                 closeRefresh();
@@ -149,6 +107,5 @@ public class GrabRedEnvelopeModule_Act_RedInfo_List_Presenter extends GrabRedEnv
     public int getPageNum() {
         return page;
     }
-
 
 }

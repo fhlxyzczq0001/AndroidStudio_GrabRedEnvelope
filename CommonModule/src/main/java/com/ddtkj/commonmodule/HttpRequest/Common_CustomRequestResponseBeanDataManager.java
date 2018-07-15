@@ -13,7 +13,9 @@ import com.ddtkj.commonmodule.MVP.Model.Bean.ResponseBean.Common_RequestBean;
 import com.ddtkj.commonmodule.MVP.Presenter.Implement.Project.Common_ProjectUtil_Implement;
 import com.ddtkj.commonmodule.MVP.Presenter.Interface.Project.Common_ProjectUtil_Interface;
 import com.ddtkj.commonmodule.Public.Common_PublicMsg;
+import com.ddtkj.commonmodule.Public.Common_RouterUrl;
 import com.ddtkj.commonmodule.R;
+import com.ddtkj.commonmodule.Util.IntentUtil;
 import com.ddtkj.commonmodule.Util.LoadingDialog;
 import com.ddtkj.commonmodule.Util.MD5;
 import com.utlis.lib.AppUtils;
@@ -98,6 +100,8 @@ public class Common_CustomRequestResponseBeanDataManager {
                         //登录超时,需要重新登陆
                         //清理当前存放的用户信息
                         mCommon_projectUtil_interface.logOut();
+                        ToastUtils.WarnImageToast(context,res_Msg);
+                        new IntentUtil().intent_RouterTo(context, Common_RouterUrl.USERINFO_LogingRouterUrl);
                         break;
                     case 10013:
                         if (!"WelcomePage_View_Implement".equals(context.getClass().getSimpleName())) {
@@ -138,17 +142,14 @@ public class Common_CustomRequestResponseBeanDataManager {
                         //清理当前存放的用户信息
                         mCommon_projectUtil_interface.logOut();
                         break;
-                    case 10012://未登录
-                        //清理当前存放的用户信息
-                        mCommon_projectUtil_interface.logOut();
-//                        new IntentUtil().intent_RouterTo(context, Common_RouterUrl.USERINFO_LogingRouterUrl);
-                        break;
                     default:
                         // 操作失败 或 错误码未知
                         ToastUtils.WarnImageToast(context, res_Msg);
                         break;
                 }
                 Common_RequestBean request_Bean = JSONObject.parseObject(resulte, Common_RequestBean.class);
+                if(request_Bean.getData()==null)
+                    request_Bean.setData("");
                 resultListener.onResult(isSucc, request_Bean.getMsg(), request_Bean);
                 dialogDismiss(dialog);
             }

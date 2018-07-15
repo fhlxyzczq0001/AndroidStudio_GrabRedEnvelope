@@ -8,31 +8,31 @@ package com.ddtkj.userinfomodule.MVP.Model.Bean.ResponseBean;
  */
 
 public class UserInfoModule_Bean_WithdrawalsRecord {
-    private String typeName;
-    private String time;
-    private String money;
+    private String title;
+    private String bringuptime;
+    private String bringupamount;
 
-    public String getTypeName() {
-        return typeName;
+    public String getTitle() {
+        return title;
     }
 
-    public void setTypeName(String typeName) {
-        this.typeName = typeName;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public String getTime() {
-        return time;
+    public String getBringuptime() {
+        return bringuptime;
     }
 
-    public void setTime(String time) {
-        this.time = time;
+    public void setBringuptime(String bringuptime) {
+        this.bringuptime = bringuptime;
     }
 
-    public String getMoney() {
-        return money;
+    public String getBringupamount() {
+        return bringupamount;
     }
 
-    public void setMoney(String money) {
-        this.money = money;
+    public void setBringupamount(String bringupamount) {
+        this.bringupamount = bringupamount;
     }
 }

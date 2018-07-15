@@ -2,6 +2,7 @@
 <!--通用dialog弹窗样式-->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:id="@+id/custom_dialog_layout"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:background="@drawable/drawable_shape_white_bg_radius5"
@@ -50,7 +51,7 @@
         android:padding="10dip"
         android:text="您还没有填写发票信息"
         android:textColor="#919191"
-        android:textSize="@dimen/x24"
+        android:textSize="@dimen/x28"
     />
 
     <View
@@ -83,6 +84,6 @@
             android:padding="@dimen/x25"
             android:text="确定"
             android:textColor="@color/app_color"
-            android:textSize="@dimen/x24"/>
+            android:textSize="@dimen/x28"/>
     </LinearLayout>
 </LinearLayout>

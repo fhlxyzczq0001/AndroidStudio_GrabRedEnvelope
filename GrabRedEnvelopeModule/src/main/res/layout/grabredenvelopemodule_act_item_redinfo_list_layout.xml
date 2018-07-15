@@ -15,9 +15,10 @@
                   android:paddingTop="@dimen/x20">
 
         <ImageView
+            android:id="@+id/imgIcon"
             android:layout_width="@dimen/x90"
             android:layout_height="@dimen/x90"
-            android:background="#EBE49C"/>
+            />
 
         <LinearLayout android:layout_width="wrap_content"
                       android:layout_height="wrap_content"

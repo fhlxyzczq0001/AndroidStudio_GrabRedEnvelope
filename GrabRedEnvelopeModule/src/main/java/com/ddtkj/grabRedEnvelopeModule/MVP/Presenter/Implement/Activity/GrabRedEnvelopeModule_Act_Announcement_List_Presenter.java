@@ -20,7 +20,7 @@ import java.util.Map;
  *  公告列表
  *
  *  @Author: 杨重诚
- *  @CreatTime: 2018/2/13  14:13  
+ *  @Creatcreatedate: 2018/2/13  14:13  
  */
 public class GrabRedEnvelopeModule_Act_Announcement_List_Presenter extends GrabRedEnvelopeModule_Act_Announcement_List_Contract.Presenter{
     Common_Base_HttpRequest_Interface mCommonBaseHttpRequestInterface;
@@ -69,58 +69,15 @@ public class GrabRedEnvelopeModule_Act_Announcement_List_Presenter extends GrabR
         Map<String,Object> params = new HashMap<String, Object>();
         params.put("page",page);//当前页
         params.put("size",pageSize);//每页显示条数
-        params.put("category",type);//空间类型，1. 酒店 2、公寓 3.民宿，4.更多
-        mCommonBaseHttpRequestInterface.requestData(context, Common_HttpPath.URL_INVEST_LIST, params, new Common_ResultDataListener() {
+        mCommonBaseHttpRequestInterface.requestData(context, Common_HttpPath.URL_API_USERNOTIFICATION, params, new Common_ResultDataListener() {
             @Override
             public void onResult(boolean isSucc, String msg, Common_RequestBean request_bean) {
                 if(isSucc){
                     if(request_bean.getData()==null){
                         return;
                     }
-                    JSONObject jsonObject = JSONObject.parseObject("{\n" +
-                            "\t\"announcement\": [{\n" +
-                            "\t\t\"title\": \"关于抢红包规则的公告\",\n" +
-                            "\t\t\"time\": \"2018-07-05\",\n" +
-                            "\t\t\"info\": \"关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告\"\n" +
-                            "\t},{\n" +
-                            "\t\t\"title\": \"关于抢红包规则的公告\",\n" +
-                            "\t\t\"time\": \"2018-07-05\",\n" +
-                            "\t\t\"info\": \"关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告\"\n" +
-                            "\t},{\n" +
-                            "\t\t\"title\": \"关于抢红包规则的公告\",\n" +
-                            "\t\t\"time\": \"2018-07-05\",\n" +
-                            "\t\t\"info\": \"关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告\"\n" +
-                            "\t},{\n" +
-                            "\t\t\"title\": \"关于抢红包规则的公告\",\n" +
-                            "\t\t\"time\": \"2018-07-05\",\n" +
-                            "\t\t\"info\": \"关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告\"\n" +
-                            "\t},{\n" +
-                            "\t\t\"title\": \"关于抢红包规则的公告\",\n" +
-                            "\t\t\"time\": \"2018-07-05\",\n" +
-                            "\t\t\"info\": \"关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告\"\n" +
-                            "\t},{\n" +
-                            "\t\t\"title\": \"关于抢红包规则的公告\",\n" +
-                            "\t\t\"time\": \"2018-07-05\",\n" +
-                            "\t\t\"info\": \"关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告\"\n" +
-                            "\t},{\n" +
-                            "\t\t\"title\": \"关于抢红包规则的公告\",\n" +
-                            "\t\t\"time\": \"2018-07-05\",\n" +
-                            "\t\t\"info\": \"关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告\"\n" +
-                            "\t},{\n" +
-                            "\t\t\"title\": \"关于抢红包规则的公告\",\n" +
-                            "\t\t\"time\": \"2018-07-05\",\n" +
-                            "\t\t\"info\": \"关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告\"\n" +
-                            "\t},{\n" +
-                            "\t\t\"title\": \"关于抢红包规则的公告\",\n" +
-                            "\t\t\"time\": \"2018-07-05\",\n" +
-                            "\t\t\"info\": \"关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告\"\n" +
-                            "\t},{\n" +
-                            "\t\t\"title\": \"关于抢红包规则的公告\",\n" +
-                            "\t\t\"time\": \"2018-07-05\",\n" +
-                            "\t\t\"info\": \"关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告关于抢红包规则的公告\"\n" +
-                            "\t}]\n" +
-                            "}");
-                    List<GrabRedEnvelopeModule_Bean_Announcement> invoiceBeanList = JSONObject.parseArray(jsonObject.getString("announcement"),GrabRedEnvelopeModule_Bean_Announcement.class);
+                    JSONObject jsonObject = JSONObject.parseObject(request_bean.getData().toString());
+                    List<GrabRedEnvelopeModule_Bean_Announcement> invoiceBeanList = JSONObject.parseArray(jsonObject.getString("notification"),GrabRedEnvelopeModule_Bean_Announcement.class);
                     setInvestmentProductListData(invoiceBeanList);
                 }
                 closeRefresh();

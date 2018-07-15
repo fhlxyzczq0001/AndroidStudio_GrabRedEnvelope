@@ -49,7 +49,7 @@ public class GrabRedEnvelopeModule_Adapter_Act_Announcement extends SuperAdapter
             final ViewHolder holder1 = (ViewHolder) holder;
 
             holder1.tvName.setText(Textutils.checkText(bean.getTitle()));
-            holder1.tvTime.setText(Textutils.checkText(bean.getTime()));
+            holder1.tvTime.setText(Textutils.checkText(bean.getCreatedate()));
 
             if(layoutPosition<getData().size()-1){
                 holder1.viewLine.setVisibility(View.VISIBLE);

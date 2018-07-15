@@ -153,9 +153,11 @@ public class UserInfo_Act_LoginActivty_View extends UserInfo_BaseActivity<UserIn
                     case WEIXIN:
                         //微信渠道
                         String wxOpenId = eventBus.getData().get("openid");
-                        mPresenter.canLogin("wx", wxOpenId);
+                        String screen_name = eventBus.getData().get("screen_name");
+                        String iconurl = eventBus.getData().get("iconurl");
+                        mPresenter.canLogin(wxOpenId,screen_name,iconurl);
                         break;
-                    case QQ:
+                  /*  case QQ:
                         //QQ渠道
                         String qqOpenId = eventBus.getData().get("openid");
                         mPresenter.canLogin("qq", qqOpenId);
@@ -164,7 +166,7 @@ public class UserInfo_Act_LoginActivty_View extends UserInfo_BaseActivity<UserIn
                         //微博渠道
                         String uid = eventBus.getData().get("uid");
                         mPresenter.canLogin("wb", uid);
-                        break;
+                        break;*/
                 }
                 break;
             case SHARE_FAIL:

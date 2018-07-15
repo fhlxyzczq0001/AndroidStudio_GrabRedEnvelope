@@ -69,58 +69,15 @@ public class UserInfoModule_Act_ConsumptionRecord_List_Presenter extends UserInf
         Map<String,Object> params = new HashMap<String, Object>();
         params.put("page",page);//当前页
         params.put("size",pageSize);//每页显示条数
-        params.put("category",type);//空间类型，1. 酒店 2、公寓 3.民宿，4.更多
-        mCommonBaseHttpRequestInterface.requestData(context, Common_HttpPath.URL_INVEST_LIST, params, new Common_ResultDataListener() {
+        mCommonBaseHttpRequestInterface.requestData(context, Common_HttpPath.URL_API_REDPACKET_CONSUMEMONEY, params, new Common_ResultDataListener() {
             @Override
             public void onResult(boolean isSucc, String msg, Common_RequestBean request_bean) {
                 if(isSucc){
                     if(request_bean.getData()==null){
                         return;
                     }
-                    JSONObject jsonObject = JSONObject.parseObject("{\n" +
-                            "\t\"hb\": [{\n" +
-                            "\t\t\"typeName\": \"发出红包\",\n" +
-                            "\t\t\"time\": \"2018-07-05  22：00：45\",\n" +
-                            "\t\t\"money\": \"0.29\"\n" +
-                            "\t}, {\n" +
-                            "\t\t\"typeName\": \"发出红包\",\n" +
-                            "\t\t\"time\": \"2018-07-05  22：00：45\",\n" +
-                            "\t\t\"money\": \"0.29\"\n" +
-                            "\t}, {\n" +
-                            "\t\t\"typeName\": \"发出红包\",\n" +
-                            "\t\t\"time\": \"2018-07-05  22：00：45\",\n" +
-                            "\t\t\"money\": \"0.29\"\n" +
-                            "\t}, {\n" +
-                            "\t\t\"typeName\": \"发出红包\",\n" +
-                            "\t\t\"time\": \"2018-07-05  22：00：45\",\n" +
-                            "\t\t\"money\": \"0.29\"\n" +
-                            "\t}, {\n" +
-                            "\t\t\"typeName\": \"发出红包\",\n" +
-                            "\t\t\"time\": \"2018-07-05  22：00：45\",\n" +
-                            "\t\t\"money\": \"0.29\"\n" +
-                            "\t}, {\n" +
-                            "\t\t\"typeName\": \"发出红包\",\n" +
-                            "\t\t\"time\": \"2018-07-05  22：00：45\",\n" +
-                            "\t\t\"money\": \"0.29\"\n" +
-                            "\t}, {\n" +
-                            "\t\t\"typeName\": \"发出红包\",\n" +
-                            "\t\t\"time\": \"2018-07-05  22：00：45\",\n" +
-                            "\t\t\"money\": \"0.29\"\n" +
-                            "\t}, {\n" +
-                            "\t\t\"typeName\": \"发出红包\",\n" +
-                            "\t\t\"time\": \"2018-07-05  22：00：45\",\n" +
-                            "\t\t\"money\": \"0.29\"\n" +
-                            "\t}, {\n" +
-                            "\t\t\"typeName\": \"发出红包\",\n" +
-                            "\t\t\"time\": \"2018-07-05  22：00：45\",\n" +
-                            "\t\t\"money\": \"0.29\"\n" +
-                            "\t}, {\n" +
-                            "\t\t\"typeName\": \"发出红包\",\n" +
-                            "\t\t\"time\": \"2018-07-05  22：00：45\",\n" +
-                            "\t\t\"money\": \"0.29\"\n" +
-                            "\t}]\n" +
-                            "}");
-                    List<UserInfoModule_Bean_ConsumptionRecord> invoiceBeanList = JSONObject.parseArray(jsonObject.getString("hb"),UserInfoModule_Bean_ConsumptionRecord.class);
+                    JSONObject jsonObject = JSONObject.parseObject(request_bean.getData().toString());
+                    List<UserInfoModule_Bean_ConsumptionRecord> invoiceBeanList = JSONObject.parseArray(jsonObject.getString("consumemoneydetail"),UserInfoModule_Bean_ConsumptionRecord.class);
                     setInvestmentProductListData(invoiceBeanList);
                 }
                 closeRefresh();

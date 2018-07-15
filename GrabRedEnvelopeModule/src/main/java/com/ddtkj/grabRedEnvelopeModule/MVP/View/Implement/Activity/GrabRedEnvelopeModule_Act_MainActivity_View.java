@@ -19,7 +19,6 @@ import com.chenenyu.router.annotation.Route;
 import com.ddtkj.commonmodule.Base.Common_Application;
 import com.ddtkj.commonmodule.CustomView.Common_BottomNavigationViewEx;
 import com.ddtkj.commonmodule.MVP.Model.Bean.EventBusBean.Common_LoginSuccess_EventBus;
-import com.ddtkj.commonmodule.MVP.Model.Bean.ResponseBean.Common_UserInfoBean;
 import com.ddtkj.commonmodule.MVP.Presenter.Implement.Project.Common_ProjectUtil_Implement;
 import com.ddtkj.commonmodule.MVP.Presenter.Interface.Project.Common_ProjectUtil_Interface;
 import com.ddtkj.commonmodule.Public.Common_Main_PublicCode;
@@ -93,6 +92,7 @@ public class GrabRedEnvelopeModule_Act_MainActivity_View extends GrabRedEnvelope
         //初始化底部导航
         initNavigation();
         mCommonProjectUtilInterface = new Common_ProjectUtil_Implement();
+        mPresenter.initP();
         //检测更新
         //mCommonProjectUtilInterface.checkAppVersion(context, "main", null);
     }
@@ -209,17 +209,7 @@ public class GrabRedEnvelopeModule_Act_MainActivity_View extends GrabRedEnvelope
                 return true;
             } else if (item.getItemId() == tabIds[1]) {
                 menuIndex = 1;
-                setNavigationItemClick(menuIndex);
-                return true;
-            } else if (item.getItemId() == tabIds[3]) {
-                menuIndex = 3;
-                setNavigationItemClick(menuIndex);
-                return true;
-            } else if (item.getItemId() == tabIds[4]) {
-                menuIndex = 4;
-                if(!mPresenter.isRequestUserState()){//用户信息接口是否请求成功
-                    mPresenter.initP();
-                }else if(mCommonProjectUtilInterface.logingStatus()){//用户是否已登录
+                if(mCommonProjectUtilInterface.logingStatus()){//用户是否已登录
                     setNavigationItemClick(menuIndex);
                     return true;
                 }else{
@@ -237,14 +227,6 @@ public class GrabRedEnvelopeModule_Act_MainActivity_View extends GrabRedEnvelope
      */
     public void setNavigationItemClick(int menuIndex) {
         loadFragmentIndex(menuIndex);
-    }
-
-    /**
-     * 获取当前选中的底部item的索引
-     * @return
-     */
-    public int getNavigationItemIndex(){
-        return menuIndex;
     }
 
     @Override
@@ -301,21 +283,6 @@ public class GrabRedEnvelopeModule_Act_MainActivity_View extends GrabRedEnvelope
         }
     }
 
-    /**
-     * 刷新用户信息成功
-     */
-    @Override
-    public void refreshUserInfoSuccess(Common_UserInfoBean userInfoBean) {
-        if(userInfoBean==null){
-            return;
-        }else if(menuIndex==4&&mCommonProjectUtilInterface.logingStatus()){
-            //如果上次点击是用户tab，且处于登录状态
-            navigation.setCurrentItem(menuIndex);
-        }else if(menuIndex==4&&!mCommonProjectUtilInterface.logingStatus()){
-            //去登录界面
-            getIntentTool().intent_RouterTo(context, Common_RouterUrl.USERINFO_LogingRouterUrl);
-        }
-    }
     @Override
     public void onResume() {
         super.onResume();
@@ -323,24 +290,12 @@ public class GrabRedEnvelopeModule_Act_MainActivity_View extends GrabRedEnvelope
         if (!EventBus.getDefault().isRegistered(this)) {
             EventBus.getDefault().register(this);
         }
-        if (isShowSystemBarTintManager) {
-            if(menuIndex == 4){
-                systemBarTintManagerColor = R.color.app_color;
-            }else{
-                systemBarTintManagerColor = R.color.act_systemBarColor_whiteToolBar;
-            }
-            WindowUtils.setSystemBarTintManager(context, getResources().getColor(systemBarTintManagerColor));
-        }
         //判断用户状态和切换tab界面
-        if(!mPresenter.isRequestUserState()){
-            mPresenter.initP();
-        }else if(menuIndex==4&&mCommonProjectUtilInterface.logingStatus()){
-            //如果上次点击是用户tab，且处于登录状态
-            navigation.setCurrentItem(menuIndex);
-        }else if(menuIndex==4&&!mCommonProjectUtilInterface.logingStatus()){
-            //去登录界面
-            getIntentTool().intent_RouterTo(context, Common_RouterUrl.USERINFO_LogingRouterUrl);
-        }
+         if(menuIndex==1&&!mCommonProjectUtilInterface.logingStatus()){
+             navigation.setSelectedItemId(R.id.jsdloanmodule_2_TitleHome);
+        }else if(menuIndex==1&&mCommonProjectUtilInterface.logingStatus()){
+             navigation.setSelectedItemId(R.id.jsdloanmodule_2_TitleUser);
+         }
     }
 
     @Override

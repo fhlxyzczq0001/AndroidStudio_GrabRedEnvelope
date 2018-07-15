@@ -26,7 +26,6 @@ import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.utlis.lib.L;
-import com.utlis.lib.ViewUtils;
 
 import java.util.List;
 
@@ -49,8 +48,7 @@ public class GrabRedEnvelopeModule_Act_RedInfo_List_View extends GrabRedEnvelope
     private int countHttpMethod = 1;
     //列表适配器
     private GrabRedEnvelopeModule_Adapter_Act_RedInfoList mVentureCapital2AdapterFraInvestmentList;
-    //项目类型
-    String type;
+    String hb_id;
     private Common_ProjectUtil_Interface mCommonProjectUtilInterface;
 
     @Override
@@ -94,16 +92,14 @@ public class GrabRedEnvelopeModule_Act_RedInfo_List_View extends GrabRedEnvelope
     public void getBundleValues(Bundle mBundle) {
         super.getBundleValues(mBundle);
         if (mBundle != null) {
-            type = mBundle.getString("type","");
+            hb_id = mBundle.getString("hb_id","");
         }
     }
 
     @Override
     protected void setTitleBar() {
         //设置Actionbar
-        setActionbarBar("10元房间", R.color.app_gray, R.color.white, true,false);
-        tvRightTitleRight.setVisibility(View.VISIBLE);
-        tvRightTitleRight.setCompoundDrawables(ViewUtils.getDrawableSvg(context,R.drawable.drawable_svg_icon_share), null, null, null);
+        setActionbarBar("领取详情", R.color.app_gray, R.color.white, true,false);
     }
 
     @Override
@@ -133,6 +129,7 @@ public class GrabRedEnvelopeModule_Act_RedInfo_List_View extends GrabRedEnvelope
                 requestHttpMethod();
             }
         });
+
     }
 
 
@@ -180,7 +177,7 @@ public class GrabRedEnvelopeModule_Act_RedInfo_List_View extends GrabRedEnvelope
     private void requestHttpMethod() {
         //请求理财列表数据
         mPresenter.initData(countHttpMethod);
-        mPresenter.requestInvestmentProductData(type);
+        mPresenter.requestInvestmentProductData(hb_id);
     }
 
     @Override

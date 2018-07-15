@@ -2,7 +2,6 @@ package com.ddtkj.commonmodule.MVP.Presenter.Interface.Project;
 
 import android.content.Context;
 
-import com.ddtkj.commonmodule.HttpRequest.ResultListener.Common_ResultDataListener;
 import com.ddtkj.commonmodule.MVP.Presenter.Implement.Project.Common_UserAll_Presenter_Implement;
 
 
@@ -20,8 +19,4 @@ public interface Common_UserAll_Presenter_Interface {
      * 获取第三方登录用户信息
      */
     public void refreshOtherLogin(Context context, String content, String loginType, String openId, Common_UserAll_Presenter_Implement.RefreshUserInfoListener refreshUserInfoListener, boolean isLoadingDialog);
-    /**
-     *  基本校验-是否开通第三方账户与交易密码
-     */
-    public void requestThirdAndTrade(Context context,Common_ResultDataListener mResultListener);
 }

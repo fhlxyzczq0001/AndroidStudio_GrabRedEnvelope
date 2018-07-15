@@ -27,11 +27,13 @@ public interface UserInfo_Act_LoginActivity_Contract {
          * @param platform  授权渠道
          */
         public abstract void bindUmengAuth(SHARE_MEDIA platform);
+
         /**
-         * 三方授权后判断是已绑定过手机号
-         * @param openId
-         * @param openType
+         * 微信登陆
+         * @param openid
+         * @param screen_name
+         * @param iconurl
          */
-        public abstract void canLogin(String openId, String openType);
+        public abstract void canLogin(String openid, String screen_name,String iconurl);
     }
 }

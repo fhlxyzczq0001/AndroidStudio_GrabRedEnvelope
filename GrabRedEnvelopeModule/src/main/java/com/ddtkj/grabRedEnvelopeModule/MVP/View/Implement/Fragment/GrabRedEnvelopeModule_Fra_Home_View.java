@@ -37,8 +37,7 @@ public class GrabRedEnvelopeModule_Fra_Home_View extends GrabRedEnvelopeModule_B
         }else if(v.getId()==R.id.imgBtnRedPrice7){
             redImageOnclick("7");
         }else if(v.getId()==R.id.imgBtnRedPrice10){
-            //redImageOnclick("10");
-            getIntentTool().intent_RouterTo(context,Common_RouterUrl.GRAB_RED_ENVELOPE_RedRoomListRouterUrl);
+            redImageOnclick("10");
         }else if(v.getId()==R.id.imgBtnRedPrice20){
             redImageOnclick("20");
         }else if(v.getId()==R.id.tvRightTitleRight){
@@ -106,16 +105,9 @@ public class GrabRedEnvelopeModule_Fra_Home_View extends GrabRedEnvelopeModule_B
             getIntentTool().intent_RouterTo(context, Common_RouterUrl.USERINFO_LogingRouterUrl);
             return;
         }
-        switch (redPrice){
-            case "3":
-                break;
-            case "7":
-                break;
-            case "10":
-                break;
-            case "20":
-                break;
-        }
+        Bundle bundle=new Bundle();
+        bundle.putString("category",redPrice);
+        getIntentTool().intent_RouterTo(context,Common_RouterUrl.GRAB_RED_ENVELOPE_RedRoomListRouterUrl,bundle);
     }
     @Override
     public void onDestroy() {

@@ -24,7 +24,6 @@ public class GrabRedEnvelopeModule_Act_MainActivity_Presenter extends GrabRedEnv
     Common_UserAll_Presenter_Interface mCommonUserAllPresenterInterface;
     GrabRedEnvelopeModule_Application_Interface mJsdLoanModule2ApplicationInterface;
 
-    private boolean isRequestUserState = false;//用户信息是否请求成功
     boolean isExit;//返回按钮退出的监听标识
     public GrabRedEnvelopeModule_Act_MainActivity_Presenter(){
         common_base_httpRequest_interface=new Common_Base_HttpRequest_Implement();
@@ -41,10 +40,8 @@ public class GrabRedEnvelopeModule_Act_MainActivity_Presenter extends GrabRedEnv
         mCommonUserAllPresenterInterface.refreshUserInfo(context, new Common_UserAll_Presenter_Implement.RefreshUserInfoListener() {
             @Override
             public void requestListener(boolean isSucc, Common_UserInfoBean userInfoBean) {
-                isRequestUserState = true;
                 if(isSucc){
                     mJsdLoanModule2ApplicationInterface.setUseInfoVo(userInfoBean);
-                    mView.refreshUserInfoSuccess(userInfoBean);
                 }
             }
         }, true);
@@ -58,10 +55,6 @@ public class GrabRedEnvelopeModule_Act_MainActivity_Presenter extends GrabRedEnv
         }
     };
 
-    @Override
-    public boolean isRequestUserState() {
-        return isRequestUserState;
-    }
     @Override
     public void exit() {
         if (!isExit) {

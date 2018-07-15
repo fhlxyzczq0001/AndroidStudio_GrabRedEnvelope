@@ -49,6 +49,30 @@
             android:theme="@style/AppDefaultStyle"
             android:launchMode="singleTask"
         />
+        <!--用户信息的Activity-->
+        <activity
+            android:name=".MVP.View.Implement.Activity.UserInfoModule_Act_UserInfo_View"
+            android:theme="@style/AppDefaultStyle"
+            android:launchMode="singleTask"
+        />
+        <!--提现的Activity-->
+        <activity
+            android:name=".MVP.View.Implement.Activity.UserInfoModule_Act_Withdraw_View"
+            android:theme="@style/AppDefaultStyle"
+            android:launchMode="singleTask"
+        />
+        <!--充值Activity-->
+        <activity
+            android:name=".MVP.View.Implement.Activity.UserInfoModule_Act_Recharge_View"
+            android:theme="@style/AppDefaultStyle"
+            android:launchMode="singleTask"
+        />
+        <!--修改密码Activity-->
+        <activity
+            android:name=".MVP.View.Implement.Activity.UserInfoModule_Act_ChangePassword_View"
+            android:theme="@style/AppDefaultStyle"
+            android:launchMode="singleTask"
+        />
     </application>
 
 </manifest>

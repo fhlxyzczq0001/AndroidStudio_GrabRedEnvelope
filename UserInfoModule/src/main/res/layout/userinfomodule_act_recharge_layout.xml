@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--充值布局-->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <include layout="@layout/common_customview_toolbar_layout"/>
+
+    <ScrollView android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/bg_redroom"
+                android:scrollbars="none">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/x220"
+            android:layout_marginLeft="@dimen/x80"
+            android:layout_marginRight="@dimen/x80"
+            android:layout_marginTop="@dimen/x80"
+            android:orientation="vertical"
+        >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/drawable_shape_white_bg_radius5"
+                android:orientation="vertical"
+            >
+                <LinearLayout android:layout_width="match_parent"
+                              android:layout_height="wrap_content"
+                              android:background="@color/app_line_gray"
+                              android:orientation="horizontal"
+                              android:padding="10dp">
+                    <TextView android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:text="微信充值"
+                              android:textColor="#333333"
+                              android:textSize="@dimen/x30"/>
+
+                    <LinearLayout android:layout_width="0dp"
+                                  android:layout_height="wrap_content"
+                                  android:layout_marginLeft="60dp"
+                                  android:layout_weight="1"
+                                  android:orientation="vertical">
+
+                        <TextView android:layout_width="wrap_content"
+                                  android:layout_height="wrap_content"
+                                  android:text="零钱"
+                                  android:textColor="#333333"
+                                  android:textSize="@dimen/x30"/>
+                        <TextView android:layout_width="wrap_content"
+                                  android:layout_height="wrap_content"
+                                  android:layout_marginTop="5dp"
+                                  android:text="2小时内到账"
+                                  android:textColor="@color/app_text_gray2"
+                                  android:textSize="@dimen/x25"/>
+                    </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="@dimen/x25"
+                        android:layout_height="@dimen/x25"
+                        android:layout_gravity="center"
+                        app:srcCompat="@drawable/drawable_svg_icon_right_jiantou_gray"/>
+                </LinearLayout>
+                <TextView android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:layout_marginLeft="10dp"
+                          android:layout_marginTop="20dp"
+                          android:text="充值金额"
+                          android:textColor="#333333"
+                          android:textSize="@dimen/x30"/>
+                <LinearLayout android:layout_width="match_parent"
+                              android:layout_height="wrap_content"
+                              android:layout_marginLeft="10dp"
+                              android:layout_marginTop="20dp"
+                              android:orientation="horizontal">
+
+                    <TextView android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:text="¥"
+                              android:textColor="@color/black"
+                              android:textSize="@dimen/x40"
+                              android:textStyle="bold"/>
+                    <com.customview.lib.ClearEditText
+                        android:id="@+id/cetMoney"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:background="@color/white"
+                        android:padding="10dp"
+                        android:textColor="@color/app_text_gray2"
+                        android:textColorHint="@color/app_text_gray2"
+                        android:textSize="@dimen/x28">
+                    </com.customview.lib.ClearEditText>
+                </LinearLayout>
+
+                <View android:layout_width="match_parent"
+                      android:layout_height="0.5dp"
+                      android:layout_marginBottom="20dp"
+                      android:layout_marginLeft="10dp"
+                      android:layout_marginRight="10dp"
+                      android:layout_marginTop="10dp"
+                      android:background="@color/app_text_gray2"/>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvBtnOk"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/drawable_shape_appcolor_bg_radius5"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="确定"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/x30"/>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
+

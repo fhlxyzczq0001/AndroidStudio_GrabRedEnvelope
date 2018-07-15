@@ -1,5 +1,7 @@
 package com.ddtkj.userinfomodule.MVP.Model.Bean.ResponseBean;
 
+import com.alibaba.fastjson.annotation.JSONField;
+
 /**
  *  红包记录
  *
@@ -8,8 +10,11 @@ package com.ddtkj.userinfomodule.MVP.Model.Bean.ResponseBean;
  */
 
 public class UserInfoModule_Bean_RedEnvelopeRecord {
+    @JSONField(name = "title")
     private String typeName;
+    @JSONField(name = "getdate")
     private String time;
+    @JSONField(name = "moneyaccount")
     private String money;
 
     public String getTypeName() {

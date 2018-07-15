@@ -5,6 +5,7 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -13,6 +14,7 @@ import android.widget.RelativeLayout;
 import com.chenenyu.router.annotation.Route;
 import com.customview.lib.Common_WrapContentLinearLayoutManager;
 import com.customview.lib.EmptyRecyclerView;
+import com.ddtkj.commonmodule.HttpRequest.ResultListener.Common_ResultDataListener;
 import com.ddtkj.commonmodule.MVP.Presenter.Implement.Project.Common_ProjectUtil_Implement;
 import com.ddtkj.commonmodule.MVP.Presenter.Interface.Project.Common_ProjectUtil_Interface;
 import com.ddtkj.commonmodule.Public.Common_PublicMsg;
@@ -28,7 +30,6 @@ import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.utlis.lib.L;
-import com.utlis.lib.ViewUtils;
 
 import java.util.List;
 
@@ -51,11 +52,10 @@ public class GrabRedEnvelopeModule_Act_RedGroup_List_View extends GrabRedEnvelop
     private int countHttpMethod = 1;
     //列表适配器
     private GrabRedEnvelopeModule_Adapter_Act_RedGroupList mVentureCapital2AdapterFraInvestmentList;
-    //项目类型
-    String type;
+    String house_id;
     private Common_ProjectUtil_Interface mCommonProjectUtilInterface;
     private MediaPlayer mediaPlayer;
-    String mediaPlayerUrl="http://sc1.111ttt.cn:8282/2018/1/03m/13/396131229550.m4a?tflag=1519095601&pin=6cd414115fdb9a950d827487b16b5f97#.mp3";
+    String mediaPlayerUrl="http://cuiniu.ycnxsm.com/caihong.mp3";
     @Override
     public void onClick(View v) {
         super.onClick(v);
@@ -98,16 +98,14 @@ public class GrabRedEnvelopeModule_Act_RedGroup_List_View extends GrabRedEnvelop
     public void getBundleValues(Bundle mBundle) {
         super.getBundleValues(mBundle);
         if (mBundle != null) {
-            type = mBundle.getString("type","");
+            house_id = mBundle.getString("house_id","");
         }
     }
 
     @Override
     protected void setTitleBar() {
         //设置Actionbar
-        setActionbarBar("10元房间", R.color.app_gray, R.color.white, true,false);
-        tvRightTitleRight.setVisibility(View.VISIBLE);
-        tvRightTitleRight.setCompoundDrawables(ViewUtils.getDrawableSvg(context,R.drawable.drawable_svg_icon_share), null, null, null);
+        setActionbarBar("红包群", R.color.app_gray, R.color.white, true,false);
     }
 
     @Override
@@ -115,6 +113,7 @@ public class GrabRedEnvelopeModule_Act_RedGroup_List_View extends GrabRedEnvelop
 
     }
 
+    long oldRefreshTime;
     @Override
     protected void setListeners() {
         //==================刷新列表监听===============================
@@ -137,6 +136,12 @@ public class GrabRedEnvelopeModule_Act_RedGroup_List_View extends GrabRedEnvelop
                 requestHttpMethod();
             }
         });
+        tvLeftTitle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mPresenter.requestRedpacketHouseOut(house_id);
+            }
+        });
     }
 
 
@@ -149,7 +154,7 @@ public class GrabRedEnvelopeModule_Act_RedGroup_List_View extends GrabRedEnvelop
     public void setInvestmentProductData(List<GrabRedEnvelopeModule_Bean_RedGroupListInfo> investmentProductData){
         //设置Adapter
         if (mVentureCapital2AdapterFraInvestmentList == null) {
-            mVentureCapital2AdapterFraInvestmentList = new GrabRedEnvelopeModule_Adapter_Act_RedGroupList(context,investmentProductData,null);
+            mVentureCapital2AdapterFraInvestmentList = new GrabRedEnvelopeModule_Adapter_Act_RedGroupList(context,investmentProductData,null,this);
             mEmptyRecyclerView.setAdapter(mVentureCapital2AdapterFraInvestmentList);
         } else {
             if(mPresenter.getPageNum()==1){
@@ -182,9 +187,15 @@ public class GrabRedEnvelopeModule_Act_RedGroup_List_View extends GrabRedEnvelop
      * 请求服务器方法
      */
     private void requestHttpMethod() {
-        //请求理财列表数据
-        mPresenter.initData(countHttpMethod);
-        mPresenter.requestInvestmentProductData(type);
+        if((System.currentTimeMillis()-oldRefreshTime)>30*1000){
+            oldRefreshTime=System.currentTimeMillis();
+            //请求理财列表数据
+            mPresenter.initData(countHttpMethod);
+            mPresenter.requestInvestmentProductData(house_id);
+        }else {
+            //ToastUtils.WarnImageToast(context,"您刷新太频繁，请稍后再刷新！");
+            closeRefresh();
+        }
     }
 
     @Override
@@ -193,6 +204,7 @@ public class GrabRedEnvelopeModule_Act_RedGroup_List_View extends GrabRedEnvelop
         mPresenter.setPageNum(1);//恢复默认请求页数是第一页
         //请求服务器数据的方法
         requestHttpMethod();
+        replay();
     }
 
     /**
@@ -270,15 +282,53 @@ public class GrabRedEnvelopeModule_Act_RedGroup_List_View extends GrabRedEnvelop
 
     }
 
-
     @Override
-    protected void onDestroy() {
+    protected void onPause() {
+        super.onPause();
         // 在activity结束的时候回收资源
         if (mediaPlayer != null && mediaPlayer.isPlaying()) {
             mediaPlayer.stop();
             mediaPlayer.release();
             mediaPlayer = null;
         }
+    }
+
+    @Override
+    protected void onDestroy() {
         super.onDestroy();
+        // 在activity结束的时候回收资源
+        if (mediaPlayer != null && mediaPlayer.isPlaying()) {
+            mediaPlayer.stop();
+            mediaPlayer.release();
+            mediaPlayer = null;
+        }
+    }
+
+    /**
+     * 返回键的监听
+     */
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK
+                && event.getAction() == KeyEvent.ACTION_DOWN) {
+            mPresenter.requestRedpacketHouseOut(house_id);
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
+    @Override
+    public void outHomeSuccess() {
+        FinishA();
+    }
+
+    @Override
+    public void requestRedpacketIsShowhb(String hb_id, Common_ResultDataListener commonResultDataListener) {
+        mPresenter.requestRedpacketIsShowhb(hb_id,commonResultDataListener);
+    }
+
+    @Override
+    public void requestRedpacketPacketinfodetail(String hb_id, Common_ResultDataListener commonResultDataListener) {
+        mPresenter.requestRedpacketPacketinfodetail(hb_id,commonResultDataListener);
     }
 }

@@ -60,7 +60,7 @@ public class Common_LoggerInterceptor implements Interceptor
             L.e(tag, "url : " + clone.request().url());
             L.e(tag, "code : " + clone.code());
             L.e(tag, "protocol : " + clone.protocol());
-            L.e(tag, "headers : " + clone.headers().toString());
+            L.e(tag, "Responseheaders : " + clone.headers().toString());
             if (!TextUtils.isEmpty(clone.message()))
                 L.e(tag, "message : " + clone.message());
 
@@ -123,7 +123,7 @@ public class Common_LoggerInterceptor implements Interceptor
 
             if (headers != null && headers.size() > 0)
             {
-                L.e(tag, "headers : " + headers.toString());
+                L.e(tag, "Requestheaders : " + headers.toString());
             }
             RequestBody requestBody = request.body();
             if (requestBody != null)

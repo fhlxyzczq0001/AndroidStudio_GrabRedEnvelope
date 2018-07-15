@@ -3,6 +3,7 @@ package com.ddtkj.userinfomodule.MVP.Presenter.Implement.Activity;
 import android.os.Handler;
 
 import com.alibaba.fastjson.JSONObject;
+import com.ddtkj.commonmodule.Base.Common_Application;
 import com.ddtkj.commonmodule.HttpRequest.Common_HttpPath;
 import com.ddtkj.commonmodule.HttpRequest.Common_HttpRequestMethod;
 import com.ddtkj.commonmodule.HttpRequest.ResultListener.Common_ResultDataListener;
@@ -20,7 +21,7 @@ import java.util.Map;
  *  提现记录列表
  *
  *  @Author: 杨重诚
- *  @CreatTime: 2018/2/13  14:13  
+ *  @Creatbringuptime: 2018/2/13  14:13  
  */
 public class UserInfoModule_Act_WithdrawalsRecord_List_Presenter extends UserInfoModule_Act_WithdrawalsRecord_List_Contract.Presenter{
     Common_Base_HttpRequest_Interface mCommonBaseHttpRequestInterface;
@@ -69,58 +70,16 @@ public class UserInfoModule_Act_WithdrawalsRecord_List_Presenter extends UserInf
         Map<String,Object> params = new HashMap<String, Object>();
         params.put("page",page);//当前页
         params.put("size",pageSize);//每页显示条数
-        params.put("category",type);//空间类型，1. 酒店 2、公寓 3.民宿，4.更多
-        mCommonBaseHttpRequestInterface.requestData(context, Common_HttpPath.URL_INVEST_LIST, params, new Common_ResultDataListener() {
+        params.put("user_id", Common_Application.getInstance().getUseInfoVo().getUserId());
+        mCommonBaseHttpRequestInterface.requestData(context, Common_HttpPath.URL_API_BRINGUPMONEY, params, new Common_ResultDataListener() {
             @Override
             public void onResult(boolean isSucc, String msg, Common_RequestBean request_bean) {
                 if(isSucc){
                     if(request_bean.getData()==null){
                         return;
                     }
-                    JSONObject jsonObject = JSONObject.parseObject("{\n" +
-                            "\t\"hb\": [{\n" +
-                            "\t\t\"typeName\": \"微信充值\",\n" +
-                            "\t\t\"time\": \"2018-07-05  22：00：45\",\n" +
-                            "\t\t\"money\": \"0.29\"\n" +
-                            "\t}, {\n" +
-                            "\t\t\"typeName\": \"微信充值\",\n" +
-                            "\t\t\"time\": \"2018-07-05  22：00：45\",\n" +
-                            "\t\t\"money\": \"0.29\"\n" +
-                            "\t}, {\n" +
-                            "\t\t\"typeName\": \"微信充值\",\n" +
-                            "\t\t\"time\": \"2018-07-05  22：00：45\",\n" +
-                            "\t\t\"money\": \"0.29\"\n" +
-                            "\t}, {\n" +
-                            "\t\t\"typeName\": \"微信充值\",\n" +
-                            "\t\t\"time\": \"2018-07-05  22：00：45\",\n" +
-                            "\t\t\"money\": \"0.29\"\n" +
-                            "\t}, {\n" +
-                            "\t\t\"typeName\": \"微信充值\",\n" +
-                            "\t\t\"time\": \"2018-07-05  22：00：45\",\n" +
-                            "\t\t\"money\": \"0.29\"\n" +
-                            "\t}, {\n" +
-                            "\t\t\"typeName\": \"微信充值\",\n" +
-                            "\t\t\"time\": \"2018-07-05  22：00：45\",\n" +
-                            "\t\t\"money\": \"0.29\"\n" +
-                            "\t}, {\n" +
-                            "\t\t\"typeName\": \"微信充值\",\n" +
-                            "\t\t\"time\": \"2018-07-05  22：00：45\",\n" +
-                            "\t\t\"money\": \"0.29\"\n" +
-                            "\t}, {\n" +
-                            "\t\t\"typeName\": \"微信充值\",\n" +
-                            "\t\t\"time\": \"2018-07-05  22：00：45\",\n" +
-                            "\t\t\"money\": \"0.29\"\n" +
-                            "\t}, {\n" +
-                            "\t\t\"typeName\": \"微信充值\",\n" +
-                            "\t\t\"time\": \"2018-07-05  22：00：45\",\n" +
-                            "\t\t\"money\": \"0.29\"\n" +
-                            "\t}, {\n" +
-                            "\t\t\"typeName\": \"微信充值\",\n" +
-                            "\t\t\"time\": \"2018-07-05  22：00：45\",\n" +
-                            "\t\t\"money\": \"0.29\"\n" +
-                            "\t}]\n" +
-                            "}");
-                    List<UserInfoModule_Bean_WithdrawalsRecord> invoiceBeanList = JSONObject.parseArray(jsonObject.getString("hb"),UserInfoModule_Bean_WithdrawalsRecord.class);
+                    JSONObject jsonObject = JSONObject.parseObject(request_bean.getData().toString());
+                    List<UserInfoModule_Bean_WithdrawalsRecord> invoiceBeanList = JSONObject.parseArray(jsonObject.getString("bringupmoneydetail"),UserInfoModule_Bean_WithdrawalsRecord.class);
                     setInvestmentProductListData(invoiceBeanList);
                 }
                 closeRefresh();

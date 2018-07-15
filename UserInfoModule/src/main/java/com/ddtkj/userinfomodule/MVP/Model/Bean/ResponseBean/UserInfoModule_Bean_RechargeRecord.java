@@ -1,5 +1,7 @@
 package com.ddtkj.userinfomodule.MVP.Model.Bean.ResponseBean;
 
+import com.alibaba.fastjson.annotation.JSONField;
+
 /**
  *  充值记录
  *
@@ -8,8 +10,11 @@ package com.ddtkj.userinfomodule.MVP.Model.Bean.ResponseBean;
  */
 
 public class UserInfoModule_Bean_RechargeRecord {
+    @JSONField(name = "title")
     private String typeName;
+    @JSONField(name = "rechargetime")
     private String time;
+    @JSONField(name = "rechargeamount")
     private String money;
 
     public String getTypeName() {
