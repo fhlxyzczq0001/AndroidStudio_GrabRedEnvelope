@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.net.Uri;
 import android.support.annotation.Nullable;
 import android.view.View;
@@ -94,6 +95,12 @@ public class GrabRedEnvelopeModule_Adapter_Act_RedGroupList extends SuperAdapter
                     showRedPacketDialog(entity,bean);*/
                 }
             });
+            holder1.tvDetails.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    new IntentUtil().intent_RouterTo(mContext, Common_RouterUrl.GRAB_RED_ENVELOPE_RedInfoListRouterUrl+"?hb_id="+bean.getId());
+                }
+            });
         }
     }
     private View mRedPacketDialogView;
@@ -106,7 +113,8 @@ public class GrabRedEnvelopeModule_Adapter_Act_RedGroupList extends SuperAdapter
             mRedPacketDialog = new Common_CustomDialogBuilder(mContext);
         }
         final NiftyDialogBuilder dialogBuilder =  mRedPacketDialog.showDialog(mRedPacketDialogView);
-
+        //设置弹窗圆角背景
+        dialogBuilder.getParentPanel().setBackgroundColor(Color.parseColor("#00000000"));
         mRedPacketViewHolder.setData(entity);
         mRedPacketViewHolder.setOnRedPacketDialogClickListener(new OnRedPacketDialogClickListener() {
             @Override
@@ -141,10 +149,12 @@ public class GrabRedEnvelopeModule_Adapter_Act_RedGroupList extends SuperAdapter
     }
     public class ViewHolder extends SuperViewHolder {
         private TextView tvTime;
+        private TextView tvDetails;
         private ImageView imgBtnRedEnvelope;
         public ViewHolder(View itemView) {
             super(itemView);
             tvTime=itemView.findViewById(R.id.tvTime);
+            tvDetails=itemView.findViewById(R.id.tvDetails);
             imgBtnRedEnvelope=itemView.findViewById(R.id.imgBtnRedEnvelope);
         }
     }

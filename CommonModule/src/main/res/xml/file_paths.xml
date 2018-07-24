@@ -2,7 +2,7 @@
 <paths xmlns:android="http://schemas.android.com/apk/res/android">
     <external-path
         name="files_root"
-        path="Android/data/com.ddt.jsd_borrow/"
+        path="Android/data/com.ddt.redEnvelope/"
        />
     <external-path
         name="external_storage_root"

@@ -79,7 +79,7 @@ public class Common_CustomRequestResponseBeanDataManager {
         subscription=null;
         mParams.put("ts", String.valueOf(System.currentTimeMillis()));
         mParams.put("appkey", Common_PublicMsg.Post_APPKEY_ANDROID);
-        mParams.put("appversion", AppUtils.getAppVersionName(context));
+        mParams.put("appversion", AppUtils.getAppVersionCode(context));
         mParams.put("client", "5");//android：5，ios：4
         mParams.put("appType", "2");//理财：1，借款：2
         mParams.put("sign", paramsSort(mParams));

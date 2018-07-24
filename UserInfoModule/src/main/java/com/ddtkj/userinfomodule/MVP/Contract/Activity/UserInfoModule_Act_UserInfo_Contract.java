@@ -25,9 +25,8 @@ public interface UserInfoModule_Act_UserInfo_Contract {
          * @param userName
          * @param userNum
          * @param password
-         * @param mailbox
          */
-        public abstract void submit(String userName, String userNum,String password,String mailbox);
+        public abstract void submit(String userName, String userNum,String bankcode,String bankName,String password,String upcode);
 
     }
 }

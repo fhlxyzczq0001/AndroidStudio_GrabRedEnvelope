@@ -81,14 +81,14 @@ public class Main_Act_WelcomePage extends Main_BaseActivity<Main_Act_WelcomePage
     protected void setContentView() {
         setContentView(R.layout.main_act_welcome_page_layout);
     }
-   /* @Override
+    @Override
     public void onResume() {
         systemBarTintManagerColor=R.color.transparent;
         super.onResume();
         if(isOnStop){
             toNextActivity();
         }
-    }*/
+    }
 
 
     @Override
@@ -102,9 +102,9 @@ public class Main_Act_WelcomePage extends Main_BaseActivity<Main_Act_WelcomePage
         //设置启动页
         setWelcomePageData();
         //请求是否下载启动页
-        mPresenter.requestStartPageUpdate();
+        //mPresenter.requestStartPageUpdate();
         //5秒后跳转
-//        startCountDownTimer();
+        startCountDownTimer();
     }
 
     @Override

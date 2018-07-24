@@ -65,7 +65,7 @@ public class UserInfoModule_Act_Withdraw_View extends UserInfo_BaseActivity<User
             getIntentTool().intent_RouterTo(context,Common_RouterUrl.USERINFO_ChangePasswordRouterUrl);
         }else if (v.getId()==R.id.tvForgetPassword){
             //忘记密码
-            showDialog("13333333333","抢红包");
+            showDialog("18534539748","18534539748");
         }else if (v.getId()==R.id.tvBtnAllBalance){
             //全部提现
             if(!TextUtils.isEmpty(Textutils.getEditText(tvBalance)))

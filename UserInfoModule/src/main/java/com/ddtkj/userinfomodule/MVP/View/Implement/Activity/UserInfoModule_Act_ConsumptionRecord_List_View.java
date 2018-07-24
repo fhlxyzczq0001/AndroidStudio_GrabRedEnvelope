@@ -100,7 +100,7 @@ public class UserInfoModule_Act_ConsumptionRecord_List_View extends UserInfo_Bas
     @Override
     protected void setTitleBar() {
         //设置Actionbar
-        setActionbarBar("提现记录", R.color.app_gray, R.color.white, true,false);
+        setActionbarBar("消费记录", R.color.app_gray, R.color.white, true,false);
     }
 
     @Override

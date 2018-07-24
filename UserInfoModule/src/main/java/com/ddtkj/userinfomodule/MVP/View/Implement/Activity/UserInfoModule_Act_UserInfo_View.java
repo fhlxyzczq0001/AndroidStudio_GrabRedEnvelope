@@ -30,7 +30,9 @@ public class UserInfoModule_Act_UserInfo_View extends UserInfo_BaseActivity<User
     ClearEditText cetName;
     ClearEditText cetNum;
     ClearEditText cetPassword;
-    ClearEditText cetMailbox;
+    ClearEditText cetCard;
+    ClearEditText cetBankname;
+    ClearEditText cetUpcode;
     ImageView activityLogin_imgPasswordIsShowBtn;//是否显示密码
     TextView tvBtnOk;
     //是否显示密码的标识
@@ -41,7 +43,8 @@ public class UserInfoModule_Act_UserInfo_View extends UserInfo_BaseActivity<User
         super.onClick(v);
         if(v.getId()==R.id.tvBtnOk){
             mPresenter.submit(Textutils.getEditText(cetName),Textutils.getEditText(cetNum),
-                    Textutils.getEditText(cetPassword),Textutils.getEditText(cetMailbox));
+                    Textutils.getEditText(cetCard),Textutils.getEditText(cetBankname),
+                    Textutils.getEditText(cetPassword),Textutils.getEditText(cetUpcode));
         }else if (v.getId()==R.id.activityLogin_imgPasswordIsShowBtn){
             //是否显示密码
             isShowPassword = mCommonProjectUtilInterface.isShowPassword(isShowPassword,cetPassword,activityLogin_imgPasswordIsShowBtn);
@@ -58,7 +61,9 @@ public class UserInfoModule_Act_UserInfo_View extends UserInfo_BaseActivity<User
          cetName=findViewById(R.id.cetName);
          cetNum=findViewById(R.id.cetNum);
          cetPassword=findViewById(R.id.cetPassword);
-         cetMailbox=findViewById(R.id.cetMailbox);
+        cetCard=findViewById(R.id.cetCard);
+        cetBankname=findViewById(R.id.cetBankname);
+        cetUpcode=findViewById(R.id.cetUpcode);
          tvBtnOk=findViewById(R.id.tvBtnOk);
         activityLogin_imgPasswordIsShowBtn=findViewById(R.id.activityLogin_imgPasswordIsShowBtn);
     }

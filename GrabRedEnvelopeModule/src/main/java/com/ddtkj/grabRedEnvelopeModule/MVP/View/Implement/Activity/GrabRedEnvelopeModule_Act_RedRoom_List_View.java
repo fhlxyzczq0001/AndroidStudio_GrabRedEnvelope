@@ -111,7 +111,7 @@ public class GrabRedEnvelopeModule_Act_RedRoom_List_View extends GrabRedEnvelope
     @Override
     protected void setTitleBar() {
         //设置Actionbar
-        setActionbarBar(category+"元房间", R.color.app_gray, R.color.white, true,false);
+        setActionbarBar(category+"钻房间", R.color.app_gray, R.color.white, true,false);
         tvRightTitleRight.setVisibility(View.VISIBLE);
         tvRightTitleRight.setCompoundDrawables(ViewUtils.getDrawableSvg(context,R.drawable.drawable_svg_icon_share), null, null, null);
     }

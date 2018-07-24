@@ -77,6 +77,15 @@
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+        <!-- 微信支付回调界面 -->
+        <activity
+            android:name=".wxapi.WXPayEntryActivity"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" >
+        </activity>
+
         <!--qq精简版-->
         <activity
             android:name="com.umeng.qq.tencent.AuthActivity"
@@ -111,12 +120,6 @@
         <service android:name="com.ddt.redEnvelope.Service.Main_WelcomePageService" >
             <intent-filter>
                 <action android:name="${applicationId}.Service.WelcomePageService" />
-            </intent-filter>
-        </service>
-        <!-- 后台更新下载 -->
-        <service android:name="com.ddtkj.jsd_borrow.com.ddt.jsd_borrow.Service.Main_UploadService" >
-            <intent-filter>
-                <action android:name="${applicationId}.Service.UploadService" />
             </intent-filter>
         </service>
 

@@ -14,9 +14,9 @@ public interface UserInfoModule_Act_Recharge_Contract {
     interface View extends Common_BaseView {
         /**
          * 充值成功
-         * @param msg
+         * @param json
          */
-        void rechargeSuccess(String msg);
+        void rechargeSuccess(String json);
 
     }
 

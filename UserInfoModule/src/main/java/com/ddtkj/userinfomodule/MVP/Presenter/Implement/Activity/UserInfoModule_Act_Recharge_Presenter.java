@@ -41,7 +41,7 @@ public class UserInfoModule_Act_Recharge_Presenter extends UserInfoModule_Act_Re
                     if(request_bean.getData()==null){
                         return;
                     }
-                    mView.rechargeSuccess(msg);
+                    mView.rechargeSuccess(request_bean.getData().toString());
                 }
             }
         },true, Common_HttpRequestMethod.GET);

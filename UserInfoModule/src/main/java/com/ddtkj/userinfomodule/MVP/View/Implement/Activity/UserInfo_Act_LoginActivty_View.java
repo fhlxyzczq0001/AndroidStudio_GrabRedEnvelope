@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.chenenyu.router.annotation.Route;
+import com.ddtkj.commonmodule.Base.Common_Application;
 import com.ddtkj.commonmodule.MVP.Model.Bean.EventBusBean.Common_LoginSuccess_EventBus;
 import com.ddtkj.commonmodule.MVP.Model.Bean.EventBusBean.Common_UmengAuth_EventBus;
 import com.ddtkj.commonmodule.Public.Common_RouterUrl;
@@ -102,6 +103,9 @@ public class UserInfo_Act_LoginActivty_View extends UserInfo_BaseActivity<UserIn
                     EventBus.getDefault().postSticky(new Common_LoginSuccess_EventBus(true));
                 }
             }, 300);
+            if(Common_Application.getInstance().getUseInfoVo().getIsFull().equals("0")){
+                getIntentTool().intent_RouterTo(context,Common_RouterUrl.USERINFO_UserInfoRouterUrl);
+            }
             finish();
         }
     }

@@ -55,7 +55,7 @@
             android:layout_marginTop="@dimen/x20"
             app:srlEnableAutoLoadMore="true"
             app:srlEnableFooterFollowWhenLoadFinished="true"
-            app:srlEnableLoadMore="true"
+            app:srlEnableLoadMore="false"
             app:srlEnableLoadMoreWhenContentNotFull="true"
             app:srlEnableScrollContentWhenLoaded="true"
         >

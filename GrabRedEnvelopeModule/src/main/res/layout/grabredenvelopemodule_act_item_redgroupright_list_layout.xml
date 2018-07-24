@@ -18,8 +18,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="65dp"
             android:layout_gravity="center"
+            android:layout_marginRight="65dp"
             android:background="@drawable/drawable_shape_white_bg_radius5"
             android:paddingBottom="@dimen/x5"
             android:paddingLeft="@dimen/x15"
@@ -34,10 +34,10 @@
             android:id="@+id/flIcon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/tvTime"
-            android:layout_marginTop="@dimen/x10"
             android:layout_alignParentRight="true"
+            android:layout_below="@id/tvTime"
             android:layout_marginRight="@dimen/x10"
+            android:layout_marginTop="@dimen/x10"
         >
             <com.customview.lib.CircleImageView
                 android:layout_width="55dp"
@@ -58,15 +58,38 @@
                 app:border_width="2dip"/>
         </FrameLayout>
 
-        <ImageView
-            android:id="@+id/imgBtnRedEnvelope"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tvTime"
-            android:layout_marginRight="@dimen/x10"
-            android:layout_marginTop="@dimen/x40"
-            android:layout_toLeftOf="@+id/flIcon"
-            android:src="@drawable/icon_redenvelope"/>
+        <RelativeLayout android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tvTime"
+                        android:layout_marginRight="@dimen/x10"
+                        android:layout_marginTop="@dimen/x40"
+                        android:layout_toLeftOf="@+id/flIcon">
+            <ImageView
+                android:id="@+id/imgBtnRedEnvelope"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/icon_redenvelope_2"/>
+
+            <TextView
+                android:id="@+id/tvDetails"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/imgBtnRedEnvelope"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:layout_marginLeft="30dp"
+                android:text="查看领取详情"
+                android:textColor="@color/white"
+                android:textSize="@dimen/x15"/>
+
+            <ImageView
+                android:layout_width="@dimen/x15"
+                android:layout_height="@dimen/x15"
+                android:layout_alignBottom="@id/tvDetails"
+                android:layout_alignTop="@id/tvDetails"
+                android:layout_toRightOf="@id/tvDetails"
+                app:srcCompat="@drawable/drawable_svg_icon_right_jiantou_white"/>
+        </RelativeLayout>
     </RelativeLayout>
 </LinearLayout>
 

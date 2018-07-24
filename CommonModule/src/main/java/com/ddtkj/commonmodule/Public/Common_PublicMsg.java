@@ -52,4 +52,6 @@ public class Common_PublicMsg {
 	public static String  ROUTER_MAINACTIVITY = Common_RouterUrl.GRAB_RED_ENVELOPE_MainActivityRouterUrl;//主activity路由地址
 	/*分页每页显示数*/
 	public static final int PAGING_SIZE = 10;
+
+	public static boolean  INGROUPSTATUS ;
 }

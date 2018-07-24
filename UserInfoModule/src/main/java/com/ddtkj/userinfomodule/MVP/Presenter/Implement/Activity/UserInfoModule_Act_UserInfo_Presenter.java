@@ -37,21 +37,23 @@ public class UserInfoModule_Act_UserInfo_Presenter extends UserInfoModule_Act_Us
      * @param userName
      * @param userNum
      * @param password
-     * @param mailbox
      */
     @Override
-    public  void submit(String userName, String userNum,String password,String mailbox) {
+    public  void submit(String userName, String userNum,String bankcode,String bankName,String password,String upcode) {
         if(TextUtils.isEmpty(userName)){
             ToastUtils.WarnImageToast(context,"姓名不可为空");
             return;
         }else if(TextUtils.isEmpty(userNum)){
             ToastUtils.WarnImageToast(context,"身份证号不可为空");
             return;
+        }else if(TextUtils.isEmpty(bankcode)){
+            ToastUtils.WarnImageToast(context,"银行卡号不可为空");
+            return;
+        }else if(TextUtils.isEmpty(bankName)){
+            ToastUtils.WarnImageToast(context,"开户行不可为空");
+            return;
         }else if(TextUtils.isEmpty(password)){
             ToastUtils.WarnImageToast(context,"密码不可为空");
-            return;
-        }else if(TextUtils.isEmpty(mailbox)){
-            ToastUtils.WarnImageToast(context,"邮箱不可为空");
             return;
         }
 
@@ -60,7 +62,12 @@ public class UserInfoModule_Act_UserInfo_Presenter extends UserInfoModule_Act_Us
         params.put("name",userName);
         params.put("admin_id",userNum);
         params.put("dealpassword",password);
-        params.put("email",mailbox);
+        params.put("bankcode",bankcode);
+        params.put("bankname",bankName);
+        if(!TextUtils.isEmpty(upcode)){
+            upcode="";
+        }
+        params.put("upcode",upcode);
         mCommonBaseHttpRequestInterface.requestData(context, Common_HttpPath.URL_API_SETPROFILE, params, new Common_ResultDataListener() {
             @Override
             public void onResult(boolean isSucc, String msg, Common_RequestBean request_bean) {

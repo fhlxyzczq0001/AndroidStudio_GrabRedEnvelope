@@ -1,5 +1,7 @@
 package com.ddtkj.commonmodule.MVP.Model.Bean.ResponseBean;
 
+import com.alibaba.fastjson.annotation.JSONField;
+
 /**
  * Created by Administrator on 2016/11/8.
  */
@@ -15,6 +17,7 @@ public class Common_VersionBean {
     //@JSONField(name = "code")
     private String refreshCode;
     private String versionsForce;
+    @JSONField(name = "appversion")
     private String versionsNow;//最新版本
     public String getRefreshContent() {
         return refreshContent;

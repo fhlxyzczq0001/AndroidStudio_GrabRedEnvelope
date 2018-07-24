@@ -19,7 +19,7 @@
         <ImageView
             android:layout_width="@dimen/x60"
             android:layout_height="@dimen/x60"
-            app:srcCompat="@drawable/drawable_svg_icon_tab"/>
+            android:src="@drawable/icon_red_home"/>
 
         <TextView
             android:id="@+id/tvName"
@@ -29,7 +29,7 @@
             android:text="你是谁的群"
             android:textColor="#333333"
             android:textSize="@dimen/x30"/>
-        <TextView
+       <!-- <TextView
             android:id="@+id/tvNum"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -37,7 +37,7 @@
             android:gravity="right"
             android:text="还差5位"
             android:textColor="@color/app_text_gray2"
-            android:textSize="@dimen/x23"/>
+            android:textSize="@dimen/x23"/>-->
     </LinearLayout>
 
     <View

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
 
+import com.ddtkj.commonmodule.Base.Common_Application;
 import com.ddtkj.commonmodule.MVP.Model.Bean.ResponseBean.Common_UserInfoBean;
 import com.ddtkj.commonmodule.MVP.Model.Implement.Common_Base_HttpRequest_Implement;
 import com.ddtkj.commonmodule.MVP.Model.Interface.Common_Base_HttpRequest_Interface;
@@ -41,7 +42,7 @@ public class GrabRedEnvelopeModule_Act_MainActivity_Presenter extends GrabRedEnv
             @Override
             public void requestListener(boolean isSucc, Common_UserInfoBean userInfoBean) {
                 if(isSucc){
-                    mJsdLoanModule2ApplicationInterface.setUseInfoVo(userInfoBean);
+                    Common_Application.getInstance().setUserInfoBean(userInfoBean);
                 }
             }
         }, true);

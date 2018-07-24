@@ -261,7 +261,8 @@ public class Common_ProjectUtil_Implement implements Common_ProjectUtil_Interfac
                 Common_VersionBean versionBean = null;
                 if (isSucc) {
                     if (request_bean.getData() != null) {
-                        versionBean = JSONObject.parseObject(request_bean.getData().toString(),
+                        JSONObject jsonObject = JSONObject.parseObject(request_bean.getData().toString());
+                        versionBean = JSONObject.parseObject(jsonObject.getString("appupdate"),
                                 Common_VersionBean.class);
                     }
                     if (versionBean != null) {

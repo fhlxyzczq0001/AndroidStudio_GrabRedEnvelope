@@ -94,7 +94,7 @@ public class GrabRedEnvelopeModule_Act_MainActivity_View extends GrabRedEnvelope
         mCommonProjectUtilInterface = new Common_ProjectUtil_Implement();
         mPresenter.initP();
         //检测更新
-        //mCommonProjectUtilInterface.checkAppVersion(context, "main", null);
+        mCommonProjectUtilInterface.checkAppVersion(context, "main", null);
     }
 
     /**

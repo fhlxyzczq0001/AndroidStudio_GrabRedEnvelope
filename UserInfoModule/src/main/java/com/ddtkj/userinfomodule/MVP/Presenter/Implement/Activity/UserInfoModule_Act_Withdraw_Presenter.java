@@ -1,5 +1,8 @@
 package com.ddtkj.userinfomodule.MVP.Presenter.Implement.Activity;
 
+import android.text.TextUtils;
+
+import com.alibaba.fastjson.JSONObject;
 import com.ddtkj.commonmodule.HttpRequest.Common_HttpPath;
 import com.ddtkj.commonmodule.HttpRequest.Common_HttpRequestMethod;
 import com.ddtkj.commonmodule.HttpRequest.ResultListener.Common_ResultDataListener;
@@ -59,6 +62,15 @@ public class UserInfoModule_Act_Withdraw_Presenter extends UserInfoModule_Act_Wi
                     if(request_bean.getData()==null){
                         return;
                     }
+                    String businessCode="";
+                    String businessMsg="";
+                    JSONObject jsonObject = JSONObject.parseObject(request_bean.getData().toString());
+                    if(jsonObject.containsKey("businessCode"))
+                        businessCode=jsonObject.getString("businessCode");
+                    if(jsonObject.containsKey("businessMsg"))
+                        businessMsg=jsonObject.getString("businessMsg");
+                    if(businessCode.equals("1")&& !TextUtils.isEmpty(businessMsg))
+                        msg=businessMsg;
                     mView.withdrawSuccess(msg);
                 }
             }

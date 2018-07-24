@@ -1,5 +1,6 @@
 package com.ddtkj.grabRedEnvelopeModule.MVP.View.Implement.Activity;
 
+import android.graphics.Color;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.chenenyu.router.annotation.Route;
+import com.customview.lib.CircleTextProgressbar;
 import com.customview.lib.Common_WrapContentLinearLayoutManager;
 import com.customview.lib.EmptyRecyclerView;
 import com.ddtkj.commonmodule.HttpRequest.ResultListener.Common_ResultDataListener;
@@ -55,6 +57,9 @@ public class GrabRedEnvelopeModule_Act_RedGroup_List_View extends GrabRedEnvelop
     String house_id;
     private Common_ProjectUtil_Interface mCommonProjectUtilInterface;
     private MediaPlayer mediaPlayer;
+    //跳过进度条
+    CircleTextProgressbar cusCircleTextProgressbar;
+    private int allTime=20*1000;//总时间
     String mediaPlayerUrl="http://cuiniu.ycnxsm.com/caihong.mp3";
     @Override
     public void onClick(View v) {
@@ -71,6 +76,7 @@ public class GrabRedEnvelopeModule_Act_RedGroup_List_View extends GrabRedEnvelop
         mSmartRefreshLayout = findViewById(R.id.refreshLayout);
         lyPullRecy =  findViewById(R.id.lyPullRecy);
         mEmptyRecyclerView =  findViewById(R.id.emptyRecycle);
+        cusCircleTextProgressbar=findViewById(R.id.cusCircleTextProgressbar);
     }
 
     @Override
@@ -187,11 +193,12 @@ public class GrabRedEnvelopeModule_Act_RedGroup_List_View extends GrabRedEnvelop
      * 请求服务器方法
      */
     private void requestHttpMethod() {
-        if((System.currentTimeMillis()-oldRefreshTime)>30*1000){
+        if((System.currentTimeMillis()-oldRefreshTime)>20*1000){
             oldRefreshTime=System.currentTimeMillis();
             //请求理财列表数据
             mPresenter.initData(countHttpMethod);
             mPresenter.requestInvestmentProductData(house_id);
+            startCountDownTimer();
         }else {
             //ToastUtils.WarnImageToast(context,"您刷新太频繁，请稍后再刷新！");
             closeRefresh();
@@ -201,6 +208,7 @@ public class GrabRedEnvelopeModule_Act_RedGroup_List_View extends GrabRedEnvelop
     @Override
     public void onResume() {
         super.onResume();
+        Common_PublicMsg.INGROUPSTATUS=true;
         mPresenter.setPageNum(1);//恢复默认请求页数是第一页
         //请求服务器数据的方法
         requestHttpMethod();
@@ -223,7 +231,17 @@ public class GrabRedEnvelopeModule_Act_RedGroup_List_View extends GrabRedEnvelop
                     @Override
                     public void onPrepared(MediaPlayer mp) {
                         // 装载完毕 开始播放流媒体
-                        mediaPlayer.start();
+                        L.e("=====onPrepared=====","=====onPrepared=====");
+                        if( Common_PublicMsg.INGROUPSTATUS){
+                            L.e("=====播放=====","=====播放=====");
+                            mediaPlayer.start();
+                        }else {
+                            if (mediaPlayer != null && mediaPlayer.isPlaying()) {
+                                mediaPlayer.stop();
+                                mediaPlayer.release();
+                                mediaPlayer = null;
+                            }
+                        }
                     }
                 });
                 // 设置循环播放
@@ -285,6 +303,7 @@ public class GrabRedEnvelopeModule_Act_RedGroup_List_View extends GrabRedEnvelop
     @Override
     protected void onPause() {
         super.onPause();
+        Common_PublicMsg.INGROUPSTATUS=false;
         // 在activity结束的时候回收资源
         if (mediaPlayer != null && mediaPlayer.isPlaying()) {
             mediaPlayer.stop();
@@ -296,12 +315,14 @@ public class GrabRedEnvelopeModule_Act_RedGroup_List_View extends GrabRedEnvelop
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        Common_PublicMsg.INGROUPSTATUS=false;
         // 在activity结束的时候回收资源
         if (mediaPlayer != null && mediaPlayer.isPlaying()) {
             mediaPlayer.stop();
             mediaPlayer.release();
             mediaPlayer = null;
         }
+        cusCircleTextProgressbar.stop();//停止倒计时
     }
 
     /**
@@ -330,5 +351,38 @@ public class GrabRedEnvelopeModule_Act_RedGroup_List_View extends GrabRedEnvelop
     @Override
     public void requestRedpacketPacketinfodetail(String hb_id, Common_ResultDataListener commonResultDataListener) {
         mPresenter.requestRedpacketPacketinfodetail(hb_id,commonResultDataListener);
+    }
+
+    /**
+     * 启动倒计时
+     */
+    private void startCountDownTimer() {
+        // 和系统普通进度条一样，0-100。
+        cusCircleTextProgressbar.setProgressType(CircleTextProgressbar.ProgressType.COUNT);
+        // 改变外部边框颜色。
+        cusCircleTextProgressbar.setOutLineColor(Color.parseColor("#20dbdbdb"));
+        // 设置倒计时时间毫秒
+        cusCircleTextProgressbar.setTimeMillis(allTime);
+        // 改变圆心颜色。
+        cusCircleTextProgressbar.setInCircleColor(Color.parseColor("#20000000"));
+        //设置进度条颜色
+        cusCircleTextProgressbar.setProgressColor(context.getResources().getColor(R.color.app_color));
+        //设置进度条边宽
+        cusCircleTextProgressbar.setProgressLineWidth(1);
+        //设进度监听
+        cusCircleTextProgressbar.setCountdownProgressListener(1, new CircleTextProgressbar.OnCountdownProgressListener() {
+            @Override
+            public void onProgress(int what, int progress) {
+                if(progress==100){
+                    //倒计时结束
+                    cusCircleTextProgressbar.stop();//停止倒计时
+                    requestHttpMethod();
+                }else {
+                    cusCircleTextProgressbar.setText(20-progress/5+"s");
+                }
+            }
+        });
+        //启动倒计时
+        cusCircleTextProgressbar.reStart();
     }
 }

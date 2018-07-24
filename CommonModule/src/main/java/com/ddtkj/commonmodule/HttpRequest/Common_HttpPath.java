@@ -17,11 +17,11 @@ public class Common_HttpPath {
     /**
      * 检测更新
      */
-    public static final String URL_API_CHECK_UPDATE = Common_HostPath.HTTP_HOST_PROJECT+"index/conVersion.html";
+    public static final String URL_API_CHECK_UPDATE = Common_HostPath.HTTP_HOST_PROJECT+"api/users/appupdate";
     /**
      * 请求启动页更新
      */
-    public static final String URL_API_STARTPAGEUPDATE =Common_HostPath.HTTP_HOST_PROJECT+ "jsdmobile/dynamicAllocation/borrowHomeJson.html";
+    public static final String URL_API_STARTPAGEUPDATE =Common_HostPath.HTTP_HOST_PROJECT+ "api/users/appupdate";
     /**
      * 请求获取地区(省市区)
      */
@@ -123,11 +123,11 @@ public class Common_HttpPath {
     /**
      * 提现
      */
-    public static String URL_API_WITHDRAW = Common_HostPath.HTTP_HOST_PROJECT+"api/users/unlockuser";
+    public static String URL_API_WITHDRAW = Common_HostPath.HTTP_HOST_PROJECT+"api/redpacket/bringmoney";
     /**
      * 充值
      */
-    public static String URL_API_RECHARGE = Common_HostPath.HTTP_HOST_PROJECT+"api/users/unlockuser";
+    public static String URL_API_RECHARGE = Common_HostPath.HTTP_HOST_PROJECT+"api/hbappwxpay/paymentAction";
     /**
      * 修改密码
      */
