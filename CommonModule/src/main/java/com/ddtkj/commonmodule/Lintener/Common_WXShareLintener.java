@@ -37,14 +37,12 @@ public class Common_WXShareLintener implements ShareLintener {
                 ToastUtils.WarnImageToast(Common_Application.getApplication().getApplicationContext(),"分享取消了");
                 break;
         }
-        if(platform==SHARE_MEDIA.WEIXIN_CIRCLE||platform==SHARE_MEDIA.WEIXIN){
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    //这里发送粘性事件
-                    EventBus.getDefault().post(new Common_Share_EventBus(shareCode));
-                }
-            }, 300);
-        }
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                //这里发送粘性事件
+                EventBus.getDefault().post(new Common_Share_EventBus(shareCode));
+            }
+        }, 300);
     }
 }

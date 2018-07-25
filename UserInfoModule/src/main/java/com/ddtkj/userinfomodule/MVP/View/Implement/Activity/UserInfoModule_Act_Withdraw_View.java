@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.chenenyu.router.annotation.Route;
 import com.customview.lib.ClearEditText;
+import com.ddtkj.commonmodule.Base.Common_Application;
 import com.ddtkj.commonmodule.MVP.Model.Bean.ResponseBean.Common_UserInfoBean;
 import com.ddtkj.commonmodule.Public.Common_RouterUrl;
 import com.ddtkj.commonmodule.Util.Common_CustomDialogBuilder;
@@ -40,7 +41,8 @@ public class UserInfoModule_Act_Withdraw_View extends UserInfo_BaseActivity<User
     TextView tvBtnWithdraw;//提现按钮
     TextView tvModifyPassword;//修改密码
     TextView tvForgetPassword;//忘记密码
-
+    ClearEditText cetPassword;//提现密码
+    TextView tvBankInfo;//银行卡信息
     //弹窗对象
     Common_CustomDialogBuilder common_customDialogBuilder;
     @Override
@@ -49,6 +51,7 @@ public class UserInfoModule_Act_Withdraw_View extends UserInfo_BaseActivity<User
         if(v.getId()==R.id.tvBtnWithdraw){
             //提现按钮
             String money=Textutils.getEditText(cetMoney);
+            String password=Textutils.getEditText(cetPassword);
             if(TextUtils.isEmpty(money)){
                 ToastUtils.WarnImageToast(context,"请输入提现金额！");
                 return;
@@ -58,8 +61,11 @@ public class UserInfoModule_Act_Withdraw_View extends UserInfo_BaseActivity<User
             }else if(Double.parseDouble(money)>Double.parseDouble(Textutils.getEditText(tvBalance))){
                 ToastUtils.WarnImageToast(context,"提现金额不能大于余额！");
                 return;
+            }else if(TextUtils.isEmpty(password)){
+                ToastUtils.WarnImageToast(context,"请输入提现密码！");
+                return;
             }
-            mPresenter.submit(money);
+            mPresenter.submit(money,password);
         }else if (v.getId()==R.id.tvModifyPassword){
             //修改密码
             getIntentTool().intent_RouterTo(context,Common_RouterUrl.USERINFO_ChangePasswordRouterUrl);
@@ -88,11 +94,15 @@ public class UserInfoModule_Act_Withdraw_View extends UserInfo_BaseActivity<User
          tvBtnWithdraw=findViewById(R.id.tvBtnWithdraw);//提现按钮
          tvModifyPassword=findViewById(R.id.tvModifyPassword);//修改密码
          tvForgetPassword=findViewById(R.id.tvForgetPassword);//忘记密码
+         cetPassword=findViewById(R.id.cetPassword);//提现密码
+         tvBankInfo=findViewById(R.id.tvBankInfo);//银行卡信息
     }
 
     @Override
     protected void init() {
-
+        String bankName= Common_Application.getInstance().getUseInfoVo().getBankname();
+        String bankCode= Common_Application.getInstance().getUseInfoVo().getBankcode();
+        tvBankInfo.setText(Textutils.checkText(bankName)+"\n"+"("+Textutils.checkText(bankCode)+")");
     }
 
     @Override

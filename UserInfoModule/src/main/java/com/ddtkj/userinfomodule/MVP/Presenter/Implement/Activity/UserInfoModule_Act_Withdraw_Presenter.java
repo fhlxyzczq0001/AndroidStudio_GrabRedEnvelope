@@ -52,9 +52,10 @@ public class UserInfoModule_Act_Withdraw_Presenter extends UserInfoModule_Act_Wi
      * 提交
      */
     @Override
-    public  void submit(String money) {
+    public  void submit(String money,String password) {
         Map<String,Object> params = new HashMap<String, Object>();
         params.put("money", money);
+        params.put("dealpassword", password);
         mCommonBaseHttpRequestInterface.requestData(context, Common_HttpPath.URL_API_WITHDRAW, params, new Common_ResultDataListener() {
             @Override
             public void onResult(boolean isSucc, String msg, Common_RequestBean request_bean) {

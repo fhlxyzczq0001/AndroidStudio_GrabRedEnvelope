@@ -5,11 +5,9 @@ import android.content.Context;
 import android.support.annotation.Nullable;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.ddtkj.commonmodule.Util.ImageLoaderUtils;
-import com.ddtkj.grabRedEnvelopeModule.MVP.Model.Bean.ResponseBean.GrabRedEnvelopeModule_Bean_RedInfoListInfo;
+import com.ddtkj.grabRedEnvelopeModule.MVP.Model.Bean.ResponseBean.GrabRedEnvelopeModule_Bean_Rule;
 import com.ddtkj.grabRedEnvelopeModule.R;
 import com.utlis.lib.Textutils;
 
@@ -19,15 +17,15 @@ import org.byteam.superadapter.SuperViewHolder;
 import java.util.List;
 
 /**
- * 红包详情配器
+ *  规则适配器
  *
  *  @Author: 杨重诚
  *  @CreatTime: 2018/3/27  17:46
  */
 
-public class GrabRedEnvelopeModule_Adapter_Act_RedInfoList extends SuperAdapter<GrabRedEnvelopeModule_Bean_RedInfoListInfo> {
-    public GrabRedEnvelopeModule_Adapter_Act_RedInfoList(Context context, List<GrabRedEnvelopeModule_Bean_RedInfoListInfo> datas) {
-        super(context, datas, R.layout.grabredenvelopemodule_act_item_redinfo_list_layout);
+public class GrabRedEnvelopeModule_Adapter_Act_Rule extends SuperAdapter<GrabRedEnvelopeModule_Bean_Rule> {
+    public GrabRedEnvelopeModule_Adapter_Act_Rule(Context context, List<GrabRedEnvelopeModule_Bean_Rule> datas) {
+        super(context, datas, R.layout.grabredenvelopemodule_act_item_rule_list_layout);
     }
 
     @SuppressLint("MissingSuperCall")
@@ -46,19 +44,12 @@ public class GrabRedEnvelopeModule_Adapter_Act_RedInfoList extends SuperAdapter<
     }
 
     @Override
-    public void onBind(final SuperViewHolder holder, int viewType, int layoutPosition, final GrabRedEnvelopeModule_Bean_RedInfoListInfo bean) {
+    public void onBind(final SuperViewHolder holder, int viewType, int layoutPosition, final GrabRedEnvelopeModule_Bean_Rule bean) {
         if (holder instanceof ViewHolder) {
             final ViewHolder holder1 = (ViewHolder) holder;
-            ImageLoaderUtils.getInstance(mContext).displayImage(bean.getAvatar(),holder1.imgIcon);
-            holder1.tvName.setText(Textutils.checkText(bean.getNikeName()));
-            holder1.tvTime.setText(Textutils.checkText(bean.getTime()));
-            holder1.tvPrice.setText(Textutils.checkText(bean.getRedPrice()));
 
-            if(layoutPosition%3==0){
-                holder1.imgMediumPackage.setVisibility(View.GONE);
-            }else {
-                holder1.imgMediumPackage.setVisibility(View.VISIBLE);
-            }
+            holder1.tvName.setText(Textutils.checkText(bean.getTitle()));
+            holder1.tvTime.setText(Textutils.checkText(bean.getCreatedate()));
 
             if(layoutPosition<getData().size()-1){
                 holder1.viewLine.setVisibility(View.VISIBLE);
@@ -68,20 +59,14 @@ public class GrabRedEnvelopeModule_Adapter_Act_RedInfoList extends SuperAdapter<
         }
     }
     public class ViewHolder extends SuperViewHolder {
-        private ImageView imgIcon;
         private TextView tvName;
         private TextView tvTime;
-        private TextView tvPrice;
         private View viewLine;
-        private ImageView imgMediumPackage;
         public ViewHolder(View itemView) {
             super(itemView);
-            imgIcon=itemView.findViewById(R.id.imgIcon);
             tvName=itemView.findViewById(R.id.tvName);
             tvTime=itemView.findViewById(R.id.tvTime);
-            tvPrice=itemView.findViewById(R.id.tvPrice);
             viewLine=itemView.findViewById(R.id.viewLine);
-            imgMediumPackage=itemView.findViewById(R.id.imgMediumPackage);
         }
     }
 }

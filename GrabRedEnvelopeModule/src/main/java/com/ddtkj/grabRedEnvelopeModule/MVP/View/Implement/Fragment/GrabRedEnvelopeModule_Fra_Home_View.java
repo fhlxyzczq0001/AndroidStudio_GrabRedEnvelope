@@ -94,6 +94,15 @@ public class GrabRedEnvelopeModule_Fra_Home_View extends GrabRedEnvelopeModule_B
         setActionbarBar("红包", R.color.app_gray, R.color.white, false,false);
         settvTitleStr(tvRightTitleRight,"公告",R.color.white);
         tvRightTitleRight.setCompoundDrawables(null, null, ViewUtils.getDrawableSvg(context, R.drawable.drawable_svg_icon_right_jiantou_white,(int)context.getResources().getDimension(R.dimen.x15),(int)context.getResources().getDimension(R.dimen.x15)), null);
+        settvTitleStr(tvLeftTitle,"规则",R.color.white);
+        tvLeftTitle.setCompoundDrawables(null, null, null,null);
+        tvLeftTitle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //规则
+                getIntentTool().intent_RouterTo(context,Common_RouterUrl.GRAB_RED_ENVELOPE_RuleListRouterUrl);
+            }
+        });
     }
 
     /**

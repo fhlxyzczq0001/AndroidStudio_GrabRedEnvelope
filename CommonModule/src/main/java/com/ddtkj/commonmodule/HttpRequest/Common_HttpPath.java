@@ -136,4 +136,12 @@ public class Common_HttpPath {
      * 登陆
      */
     public static String URL_API_LOGING = Common_HostPath.HTTP_HOST_PROJECT+"api/users/wechatThird";
+    /**
+     * 分享成功回调
+     */
+    public static String URL_API_USER_SHARE_RESULT = Common_HostPath.HTTP_HOST_PROJECT+"api/users/usershareresult";
+    /**
+     * 规则
+     */
+    public static String URL_API_USER_RULES = Common_HostPath.HTTP_HOST_PROJECT+"api/users/userrules";
 }

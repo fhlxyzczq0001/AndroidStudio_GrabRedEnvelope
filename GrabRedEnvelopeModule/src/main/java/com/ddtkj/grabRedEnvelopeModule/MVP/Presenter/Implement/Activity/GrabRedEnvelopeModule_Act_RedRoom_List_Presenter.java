@@ -158,4 +158,18 @@ public class GrabRedEnvelopeModule_Act_RedRoom_List_Presenter extends GrabRedEnv
             }
         }, true, Common_HttpRequestMethod.GET);
     }
+
+    /**
+     * 请求分享成功回调
+     */
+    @Override
+    public void requestShareResult() {
+        mCommonBaseHttpRequestInterface.requestData(context, Common_HttpPath.URL_API_USER_SHARE_RESULT,  new HashMap<String, Object>(), new Common_ResultDataListener() {
+            @Override
+            public void onResult(boolean isSucc, String msg, Common_RequestBean request_bean) {
+                if (isSucc) {
+                }
+            }
+        }, true, Common_HttpRequestMethod.GET);
+    }
 }

@@ -43,6 +43,18 @@
             android:theme="@style/AppDefaultStyle"
             android:launchMode="singleTask"
         />
+        <!--规则列表Activity-->
+        <activity
+            android:name="com.ddtkj.grabRedEnvelopeModule.MVP.View.Implement.Activity.GrabRedEnvelopeModule_Act_Rule_List_View"
+            android:theme="@style/AppDefaultStyle"
+            android:launchMode="singleTask"
+        />
+        <!--规则详情Activity-->
+        <activity
+            android:name="com.ddtkj.grabRedEnvelopeModule.MVP.View.Implement.Activity.GrabRedEnvelopeModule_Act_Rule_View"
+            android:theme="@style/AppDefaultStyle"
+            android:launchMode="singleTask"
+        />
     </application>
 
 </manifest>

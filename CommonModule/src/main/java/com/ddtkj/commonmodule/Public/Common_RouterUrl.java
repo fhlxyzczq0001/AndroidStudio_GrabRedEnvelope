@@ -65,6 +65,10 @@ public class Common_RouterUrl {
     public final static String GRAB_RED_ENVELOPE_AnnouncementListRouterUrl =GRAB_RED_ENVELOPE_APPHOST+"AnnouncementList";
     //公告详情界面
     public final static String GRAB_RED_ENVELOPE_AnnouncementInfoRouterUrl =GRAB_RED_ENVELOPE_APPHOST+"AnnouncementInfo";
+    //规则列表界面
+    public final static String GRAB_RED_ENVELOPE_RuleListRouterUrl =GRAB_RED_ENVELOPE_APPHOST+"RuleList";
+    //规则详情界面
+    public final static String GRAB_RED_ENVELOPE_RuleInfoRouterUrl =GRAB_RED_ENVELOPE_APPHOST+"RuleInfo";
     //==============================拦截器====================================
     //用户信息界面拦截器
     public final static String INTERCEPTION_UserInfoRouterUrl =ROUTER_HTTP+"userInfo";

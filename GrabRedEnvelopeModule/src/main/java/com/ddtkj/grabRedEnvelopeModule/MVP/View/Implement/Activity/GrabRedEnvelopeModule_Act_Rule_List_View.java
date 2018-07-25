@@ -11,43 +11,36 @@ import android.widget.RelativeLayout;
 import com.chenenyu.router.annotation.Route;
 import com.customview.lib.Common_WrapContentLinearLayoutManager;
 import com.customview.lib.EmptyRecyclerView;
-import com.ddtkj.commonmodule.Lintener.Common_WXShareLintener;
-import com.ddtkj.commonmodule.MVP.Model.Bean.EventBusBean.Common_Share_EventBus;
+import com.ddtkj.commonmodule.MVP.Presenter.Implement.Project.Common_ProjectUtil_Implement;
+import com.ddtkj.commonmodule.MVP.Presenter.Interface.Project.Common_ProjectUtil_Interface;
 import com.ddtkj.commonmodule.Public.Common_PublicMsg;
 import com.ddtkj.commonmodule.Public.Common_RouterUrl;
-import com.ddtkj.grabRedEnvelopeModule.Adapter.GrabRedEnvelopeModule_Adapter_Act_InvestmentList;
-import com.ddtkj.grabRedEnvelopeModule.Base.GrabRedEnvelopeModule_BaseActivity;
-import com.ddtkj.grabRedEnvelopeModule.MVP.Contract.Activity.GrabRedEnvelopeModule_Act_RedRoom_List_Contract;
-import com.ddtkj.grabRedEnvelopeModule.MVP.Model.Bean.ResponseBean.GrabRedEnvelopeModule_Bean_RedRoomListInfo;
-import com.ddtkj.grabRedEnvelopeModule.MVP.Model.Bean.ResponseBean.GrabRedEnvelopeModule_Bean_Share;
-import com.ddtkj.grabRedEnvelopeModule.MVP.Presenter.Implement.Activity.GrabRedEnvelopeModule_Act_RedRoom_List_Presenter;
+import com.ddtkj.grabRedEnvelopeModule.Adapter.GrabRedEnvelopeModule_Adapter_Act_Rule;
+import com.ddtkj.grabRedEnvelopeModule.MVP.Contract.Activity.GrabRedEnvelopeModule_Act_Rule_List_Contract;
+import com.ddtkj.grabRedEnvelopeModule.MVP.Model.Bean.ResponseBean.GrabRedEnvelopeModule_Bean_Announcement;
+import com.ddtkj.grabRedEnvelopeModule.MVP.Model.Bean.ResponseBean.GrabRedEnvelopeModule_Bean_Rule;
+import com.ddtkj.grabRedEnvelopeModule.MVP.Presenter.Implement.Activity.GrabRedEnvelopeModule_Act_Rule_List_Presenter;
 import com.ddtkj.grabRedEnvelopeModule.R;
+import com.ddtkj.userinfomodule.Base.UserInfo_BaseActivity;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
-import com.umeng.socialize.media.UMImage;
 import com.utlis.lib.L;
-import com.utlis.lib.ViewUtils;
 
 import org.byteam.superadapter.OnItemClickListener;
-import org.greenrobot.eventbus.EventBus;
-import org.greenrobot.eventbus.Subscribe;
-import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.List;
 
-import mvpdemo.com.unmeng_share_librarys.UmengShare;
-
 /**
- *  投资列表
+ *  规则列表
  *
  *  @Author: 杨重诚
  *  @CreatTime: 2018/2/13  17:41  
  */
-@Route(Common_RouterUrl.GRAB_RED_ENVELOPE_RedRoomListRouterUrl)
-public class GrabRedEnvelopeModule_Act_RedRoom_List_View extends GrabRedEnvelopeModule_BaseActivity<GrabRedEnvelopeModule_Act_RedRoom_List_Contract.Presenter,
-        GrabRedEnvelopeModule_Act_RedRoom_List_Presenter> implements GrabRedEnvelopeModule_Act_RedRoom_List_Contract.View  {
+@Route(Common_RouterUrl.GRAB_RED_ENVELOPE_RuleListRouterUrl)
+public class GrabRedEnvelopeModule_Act_Rule_List_View extends UserInfo_BaseActivity<GrabRedEnvelopeModule_Act_Rule_List_Contract.Presenter,
+        GrabRedEnvelopeModule_Act_Rule_List_Presenter> implements GrabRedEnvelopeModule_Act_Rule_List_Contract.View  {
     //刷新布局
     private SmartRefreshLayout mSmartRefreshLayout;
     //父控件
@@ -57,23 +50,19 @@ public class GrabRedEnvelopeModule_Act_RedRoom_List_View extends GrabRedEnvelope
     //总共有多少个请求网络数据的方法
     private int countHttpMethod = 1;
     //列表适配器
-    private GrabRedEnvelopeModule_Adapter_Act_InvestmentList mVentureCapital2AdapterFraInvestmentList;
-    String category;
+    private GrabRedEnvelopeModule_Adapter_Act_Rule mVentureCapital2AdapterFraInvestmentList;
+    //项目类型
+    String type;
+    private Common_ProjectUtil_Interface mCommonProjectUtilInterface;
 
-    GrabRedEnvelopeModule_Bean_Share shareData=new GrabRedEnvelopeModule_Bean_Share();
     @Override
     public void onClick(View v) {
         super.onClick(v);
-        if(v.getId()==R.id.tvRightTitleRight){
-            //调起分享页面
-            UMImage image = new UMImage(context, com.ddtkj.commonmodule.R.mipmap.icon_launcher);
-            new UmengShare().openShareWeiXin(context, shareData.getTitile(), shareData.getComment(), shareData.getLinkurl(), image, new Common_WXShareLintener());
-        }
     }
 
     @Override
     protected void setContentView() {
-        setContentView(R.layout.grabredenvelopemodule_act_redroom_list_layout);
+        setContentView(R.layout.grabredenvelopemodule_act_rule_list_layout);
     }
 
     @Override
@@ -85,10 +74,9 @@ public class GrabRedEnvelopeModule_Act_RedRoom_List_View extends GrabRedEnvelope
 
     @Override
     protected void init() {
+        mCommonProjectUtilInterface = new Common_ProjectUtil_Implement();
         //初始化RecyclerView
         initRecyclerView();
-        //请求分享
-        mPresenter.requestShareData();
     }
 
     /**
@@ -108,16 +96,14 @@ public class GrabRedEnvelopeModule_Act_RedRoom_List_View extends GrabRedEnvelope
     public void getBundleValues(Bundle mBundle) {
         super.getBundleValues(mBundle);
         if (mBundle != null) {
-            category = mBundle.getString("category","");
+            type = mBundle.getString("type","");
         }
     }
 
     @Override
     protected void setTitleBar() {
         //设置Actionbar
-        setActionbarBar(category+"钻房间", R.color.app_gray, R.color.white, true,false);
-        tvRightTitleRight.setVisibility(View.VISIBLE);
-        tvRightTitleRight.setCompoundDrawables(ViewUtils.getDrawableSvg(context,R.drawable.drawable_svg_icon_share), null, null, null);
+        setActionbarBar("规则列表", R.color.app_gray, R.color.white, true,false);
     }
 
     @Override
@@ -147,7 +133,6 @@ public class GrabRedEnvelopeModule_Act_RedRoom_List_View extends GrabRedEnvelope
                 requestHttpMethod();
             }
         });
-        tvRightTitleRight.setOnClickListener(this);
     }
 
 
@@ -157,11 +142,19 @@ public class GrabRedEnvelopeModule_Act_RedRoom_List_View extends GrabRedEnvelope
      * @param investmentProductData
      */
     @Override
-    public void setInvestmentProductData(List<GrabRedEnvelopeModule_Bean_RedRoomListInfo> investmentProductData){
+    public void setInvestmentProductData(List<GrabRedEnvelopeModule_Bean_Rule> investmentProductData){
         //设置Adapter
         if (mVentureCapital2AdapterFraInvestmentList == null) {
-            mVentureCapital2AdapterFraInvestmentList = new GrabRedEnvelopeModule_Adapter_Act_InvestmentList(context,investmentProductData);
+            mVentureCapital2AdapterFraInvestmentList = new GrabRedEnvelopeModule_Adapter_Act_Rule(context,investmentProductData);
             mEmptyRecyclerView.setAdapter(mVentureCapital2AdapterFraInvestmentList);
+            mVentureCapital2AdapterFraInvestmentList.setOnItemClickListener(new OnItemClickListener<GrabRedEnvelopeModule_Bean_Announcement>() {
+                @Override
+                public void onItemClick(View itemView, int viewType, int position, List <GrabRedEnvelopeModule_Bean_Announcement>mData) {
+                    Bundle bundle=new Bundle();
+                    bundle.putParcelable("announcementBean",mData.get(position));
+                    getIntentTool().intent_RouterTo(context,Common_RouterUrl.GRAB_RED_ENVELOPE_RuleInfoRouterUrl,bundle);
+                }
+            });
         } else {
             if(mPresenter.getPageNum()==1){
                 mVentureCapital2AdapterFraInvestmentList.setData(investmentProductData);
@@ -170,12 +163,6 @@ public class GrabRedEnvelopeModule_Act_RedRoom_List_View extends GrabRedEnvelope
             }
             mVentureCapital2AdapterFraInvestmentList.notifyDataSetChanged();
         }
-        mVentureCapital2AdapterFraInvestmentList.setOnItemClickListener(new OnItemClickListener<GrabRedEnvelopeModule_Bean_RedRoomListInfo>() {
-            @Override
-            public void onItemClick(View itemView, int viewType, int position, List <GrabRedEnvelopeModule_Bean_RedRoomListInfo> mData) {
-                mPresenter.requestRedpacketHousein(mData.get(position).getId());
-            }
-        });
     }
     /**
      * 关闭刷新控件
@@ -201,52 +188,14 @@ public class GrabRedEnvelopeModule_Act_RedRoom_List_View extends GrabRedEnvelope
     private void requestHttpMethod() {
         //请求理财列表数据
         mPresenter.initData(countHttpMethod);
-        mPresenter.requestInvestmentProductData(category);
+        mPresenter.requestInvestmentProductData(type);
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        // 注册EventBus
-        if (!EventBus.getDefault().isRegistered(this)) {
-            EventBus.getDefault().register(this);
-        }
         mPresenter.setPageNum(1);//恢复默认请求页数是第一页
         //请求服务器数据的方法
         requestHttpMethod();
-    }
-
-    @Override
-    public void redpacketHouseinSuccess(String house_id) {
-        getIntentTool().intent_RouterTo(context,Common_RouterUrl.GRAB_RED_ENVELOPE_RedGroupListRouterUrl+"?house_id="+house_id);
-    }
-
-    @Override
-    public void setShareData(GrabRedEnvelopeModule_Bean_Share shareData) {
-        if(shareData!=null)
-            this.shareData=shareData;
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        // 注销EventBus
-        if (EventBus.getDefault().isRegistered(this)) {
-            EventBus.getDefault().unregister(this);
-        }
-    }
-    //-----------------------------------Eventbus------------------------------------------
-    /**
-     * 友盟第三方分享成功
-     * @param eventBus
-     */
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    public void umengAuthSuccess(Common_Share_EventBus eventBus) {
-        if (!eventBus.isReceive()) {
-            eventBus.setReceive(true);
-        } else {
-            return;
-        }
-        mPresenter.requestShareResult();
     }
 }

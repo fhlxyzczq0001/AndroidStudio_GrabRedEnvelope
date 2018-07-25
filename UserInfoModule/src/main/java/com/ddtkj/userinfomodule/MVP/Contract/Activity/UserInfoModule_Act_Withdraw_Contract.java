@@ -26,7 +26,7 @@ public interface UserInfoModule_Act_Withdraw_Contract {
         /**
          * 提现
          */
-        public abstract void submit(String money);
+        public abstract void submit(String money,String password);
         public abstract void refreshUserInfo();
     }
 }

@@ -19,6 +19,8 @@ public class Common_UserInfoBean {
     private String group_id ;//1管理员  0非管理员;
     private String weixinName= "";
     private String accountbalance= "";
+    private String bankname= "";
+    private String bankcode= "";
 
     public String getUserId() {
         return userId;
@@ -82,5 +84,21 @@ public class Common_UserInfoBean {
 
     public void setAccountbalance(String accountbalance) {
         this.accountbalance = accountbalance;
+    }
+
+    public String getBankname() {
+        return bankname;
+    }
+
+    public void setBankname(String bankname) {
+        this.bankname = bankname;
+    }
+
+    public String getBankcode() {
+        return bankcode;
+    }
+
+    public void setBankcode(String bankcode) {
+        this.bankcode = bankcode;
     }
 }
