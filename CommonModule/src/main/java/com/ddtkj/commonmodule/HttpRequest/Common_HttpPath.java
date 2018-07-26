@@ -21,7 +21,7 @@ public class Common_HttpPath {
     /**
      * 请求启动页更新
      */
-    public static final String URL_API_STARTPAGEUPDATE =Common_HostPath.HTTP_HOST_PROJECT+ "api/users/appupdate";
+    public static final String URL_API_STARTPAGEUPDATE =Common_HostPath.HTTP_HOST_PROJECT+ "api/users/startupdate";
     /**
      * 请求获取地区(省市区)
      */

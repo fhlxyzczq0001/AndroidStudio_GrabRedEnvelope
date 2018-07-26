@@ -54,10 +54,10 @@ public class GrabRedEnvelopeModule_Adapter_Act_RedInfoList extends SuperAdapter<
             holder1.tvTime.setText(Textutils.checkText(bean.getTime()));
             holder1.tvPrice.setText(Textutils.checkText(bean.getRedPrice()));
 
-            if(layoutPosition%3==0){
-                holder1.imgMediumPackage.setVisibility(View.GONE);
-            }else {
+            if(bean.getStatus().equals("1")){
                 holder1.imgMediumPackage.setVisibility(View.VISIBLE);
+            }else {
+                holder1.imgMediumPackage.setVisibility(View.GONE);
             }
 
             if(layoutPosition<getData().size()-1){

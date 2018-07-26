@@ -17,6 +17,7 @@ public class GrabRedEnvelopeModule_Bean_RedInfoListInfo {
     @JSONField(name = "money")
     private String redPrice;
     private String avatar;
+    private String status;
     public String getNikeName() {
         return nikeName;
     }
@@ -47,5 +48,13 @@ public class GrabRedEnvelopeModule_Bean_RedInfoListInfo {
 
     public void setAvatar(String avatar) {
         this.avatar = avatar;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

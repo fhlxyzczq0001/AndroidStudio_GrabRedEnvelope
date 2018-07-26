@@ -87,7 +87,7 @@ public class Main_Act_WelcomePage_Presenter extends Main_Act_WelcomePage_Contrac
                  if (isSucc) {
                      if (request_bean.getData() != null) {
                          JSONObject json = JSONObject.parseObject(request_bean.getData().toString());
-                         welcomePageBean = JSONObject.parseObject(json.getString("launchPage"),
+                         welcomePageBean = JSONObject.parseObject(json.getString("startupdate"),
                                  Main_WelcomePageBean.class);
                          //获取本地存储启动页缓存
                          Main_WelcomePageBean share_PageBean = Main_SharePer_SdCard_Info.sharePre_GetWelcomePageBean();
