@@ -73,6 +73,18 @@
             android:theme="@style/AppDefaultStyle"
             android:launchMode="singleTask"
         />
+        <!--本人流水记录Activity-->
+        <activity
+            android:name=".MVP.View.Implement.Activity.UserInfoModule_Act_UserdealsRecord_List_View"
+            android:theme="@style/AppDefaultStyle"
+            android:launchMode="singleTask"
+        />
+        <!--三级流水记录Activity-->
+        <activity
+            android:name=".MVP.View.Implement.Activity.UserInfoModule_Act_UserThreedealsRecord_List_View"
+            android:theme="@style/AppDefaultStyle"
+            android:launchMode="singleTask"
+        />
     </application>
 
 </manifest>

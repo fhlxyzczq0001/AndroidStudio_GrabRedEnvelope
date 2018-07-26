@@ -144,4 +144,12 @@ public class Common_HttpPath {
      * 规则
      */
     public static String URL_API_USER_RULES = Common_HostPath.HTTP_HOST_PROJECT+"api/users/userrules";
+    /**
+     * 本人流水
+     */
+    public static String URL_API_USER_DEALS = Common_HostPath.HTTP_HOST_PROJECT+"api/users/userdeals";
+    /**
+     * 三级流水
+     */
+    public static String URL_API_USER_THREEDEALS = Common_HostPath.HTTP_HOST_PROJECT+"api/users/userthreedeals";
 }

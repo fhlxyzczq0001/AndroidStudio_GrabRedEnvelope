@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--本人流水记录列表的item布局-->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <LinearLayout android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:gravity="center_vertical"
+                  android:orientation="horizontal"
+                  android:paddingBottom="@dimen/x20"
+                  android:paddingTop="@dimen/x20">
+
+        <LinearLayout android:layout_width="0dp"
+                      android:layout_weight="1"
+                      android:layout_height="wrap_content"
+                      android:gravity="center_vertical"
+                      android:orientation="vertical">
+            <TextView
+                android:id="@+id/tvName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x20"
+                android:textColor="#333333"
+                android:textSize="@dimen/x28"/>
+            <TextView
+                android:id="@+id/tvTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x20"
+                android:layout_marginTop="@dimen/x5"
+                android:textColor="@color/app_text_gray2"
+                android:textSize="@dimen/x22"/>
+        </LinearLayout>
+        <LinearLayout android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_vertical">
+        <TextView
+            android:id="@+id/tvTotalMoney"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/x10"
+            android:textColor="#333333"
+            android:textSize="@dimen/x25"/>
+        <TextView
+            android:id="@+id/tvGetmoney"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/x10"
+            android:layout_marginTop="5dp"
+            android:textColor="#333333"
+            android:textSize="@dimen/x25"/>
+        <TextView
+            android:id="@+id/tvConsumemoney"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/x10"
+            android:layout_marginTop="5dp"
+            android:textColor="#333333"
+            android:textSize="@dimen/x25"/>
+        </LinearLayout>
+    </LinearLayout>
+    <View
+        android:id="@+id/viewLine"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/app_line_gray"/>
+</LinearLayout>
+

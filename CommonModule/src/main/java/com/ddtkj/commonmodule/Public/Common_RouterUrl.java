@@ -50,6 +50,10 @@ public class Common_RouterUrl {
     public final static String USERINFO_RechargeRouterUrl =USERINFO_APPHOST+"Recharge";
     //修改密码界面
     public final static String USERINFO_ChangePasswordRouterUrl =USERINFO_APPHOST+"ChangePassword";
+    //本人流水界面
+    public final static String USERINFO_UserdealsRouterUrl =USERINFO_APPHOST+"Userdeals";
+    //三级流水界面
+    public final static String USERINFO_UserthreedealsRouterUrl =USERINFO_APPHOST+"Userthreedeals";
     //==========================================业务相关============================================================
     //业务包名
     final static String GRAB_RED_ENVELOPE_APPHOST=ROUTER_HTTP+"GrabRedEnvelopeModule/";

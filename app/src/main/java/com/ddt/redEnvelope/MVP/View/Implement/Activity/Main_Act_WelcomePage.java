@@ -102,9 +102,9 @@ public class Main_Act_WelcomePage extends Main_BaseActivity<Main_Act_WelcomePage
         //设置启动页
         setWelcomePageData();
         //请求是否下载启动页
-        //mPresenter.requestStartPageUpdate();
+        mPresenter.requestStartPageUpdate();
         //5秒后跳转
-        startCountDownTimer();
+        //startCountDownTimer();
     }
 
     @Override

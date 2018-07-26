@@ -50,8 +50,8 @@ public class GrabRedEnvelopeModule_Fra_User_View extends GrabRedEnvelopeModule_B
     TextView tvUserName;
     TextView tvZuanShiNum;
     List<PopModel> mPopModels=new ArrayList<>();
-    Integer []icons={R.drawable.icon_tixian,R.drawable.icon_chongzhi,R.drawable.icon_hongbao,R.drawable.icon_xiaofei,R.drawable.icon_yijian};
-    String [] iconTitles={"提现记录","充值记录","领取红包记录","消费记录","意见反馈"};
+    Integer []icons={R.drawable.icon_tixian,R.drawable.icon_chongzhi,R.drawable.icon_xiaofei,R.drawable.icon_yijian};
+    String [] iconTitles={"本人流水记录","三级流水记录","消费记录","意见反馈"};
     int location[] = new int[2];
     //弹窗对象
     Common_CustomDialogBuilder common_customDialogBuilder;
@@ -72,18 +72,18 @@ public class GrabRedEnvelopeModule_Fra_User_View extends GrabRedEnvelopeModule_B
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     L.e("======position====",iconTitles[position]);
                     switch (iconTitles[position]){
-                        case "提现记录":
-                            getIntentTool().intent_RouterTo(context,Common_RouterUrl.USERINFO_WithdrawalsRecordRouterUrl);
+                        case "本人流水记录":
+                            getIntentTool().intent_RouterTo(context,Common_RouterUrl.USERINFO_UserdealsRouterUrl);
                             break;
-                        case "充值记录":
-                            getIntentTool().intent_RouterTo(context,Common_RouterUrl.USERINFO_RechargeRecordRouterUrl);
-                            break;
-                        case "领取红包记录":
-                            getIntentTool().intent_RouterTo(context,Common_RouterUrl.USERINFO_RedEnvelopeRecordRouterUrl);
+                        case "三级流水记录":
+                            getIntentTool().intent_RouterTo(context,Common_RouterUrl.USERINFO_UserthreedealsRouterUrl);
                             break;
                         case "消费记录":
-                            getIntentTool().intent_RouterTo(context,Common_RouterUrl.USERINFO_ConsumptionRecordRouterUrl);
+                            getIntentTool().intent_RouterTo(context,Common_RouterUrl.USERINFO_RedEnvelopeRecordRouterUrl);
                             break;
+                       /* case "消费记录":
+                            getIntentTool().intent_RouterTo(context,Common_RouterUrl.USERINFO_ConsumptionRecordRouterUrl);
+                            break;*/
                         case "意见反馈":
 
                             if (common_customDialogBuilder == null){

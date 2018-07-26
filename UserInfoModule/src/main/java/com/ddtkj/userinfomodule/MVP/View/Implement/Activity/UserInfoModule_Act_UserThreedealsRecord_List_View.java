@@ -15,11 +15,11 @@ import com.ddtkj.commonmodule.MVP.Presenter.Implement.Project.Common_ProjectUtil
 import com.ddtkj.commonmodule.MVP.Presenter.Interface.Project.Common_ProjectUtil_Interface;
 import com.ddtkj.commonmodule.Public.Common_PublicMsg;
 import com.ddtkj.commonmodule.Public.Common_RouterUrl;
-import com.ddtkj.userinfomodule.Adapter.UserInfoModule_Adapter_Act_RedEnvelopeRecord;
+import com.ddtkj.userinfomodule.Adapter.UserInfoModule_Adapter_Act_UserThreedealsRecord;
 import com.ddtkj.userinfomodule.Base.UserInfo_BaseActivity;
-import com.ddtkj.userinfomodule.MVP.Contract.Activity.UserInfoModule_Act_RedEnvelopeRecord_List_Contract;
-import com.ddtkj.userinfomodule.MVP.Model.Bean.ResponseBean.UserInfoModule_Bean_RedEnvelopeRecord;
-import com.ddtkj.userinfomodule.MVP.Presenter.Implement.Activity.UserInfoModule_Act_RedEnvelopeRecord_List_Presenter;
+import com.ddtkj.userinfomodule.MVP.Contract.Activity.UserInfoModule_Act_UserThreedealsRecord_List_Contract;
+import com.ddtkj.userinfomodule.MVP.Model.Bean.ResponseBean.UserInfoModule_Bean_UserThreedealsRecord;
+import com.ddtkj.userinfomodule.MVP.Presenter.Implement.Activity.UserInfoModule_Act_UserThreedealsRecord_List_Presenter;
 import com.ddtkj.userinfomodule.R;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
@@ -30,14 +30,14 @@ import com.utlis.lib.L;
 import java.util.List;
 
 /**
- *  红包列表
+ *  三级流水列表
  *
  *  @Author: 杨重诚
  *  @CreatTime: 2018/2/13  17:41  
  */
-@Route(Common_RouterUrl.USERINFO_RedEnvelopeRecordRouterUrl)
-public class UserInfoModule_Act_RedEnvelopeRecord_List_View extends UserInfo_BaseActivity<UserInfoModule_Act_RedEnvelopeRecord_List_Contract.Presenter,
-        UserInfoModule_Act_RedEnvelopeRecord_List_Presenter> implements UserInfoModule_Act_RedEnvelopeRecord_List_Contract.View  {
+@Route(Common_RouterUrl.USERINFO_UserthreedealsRouterUrl)
+public class UserInfoModule_Act_UserThreedealsRecord_List_View extends UserInfo_BaseActivity<UserInfoModule_Act_UserThreedealsRecord_List_Contract.Presenter,
+        UserInfoModule_Act_UserThreedealsRecord_List_Presenter> implements UserInfoModule_Act_UserThreedealsRecord_List_Contract.View  {
     //刷新布局
     private SmartRefreshLayout mSmartRefreshLayout;
     //父控件
@@ -47,7 +47,7 @@ public class UserInfoModule_Act_RedEnvelopeRecord_List_View extends UserInfo_Bas
     //总共有多少个请求网络数据的方法
     private int countHttpMethod = 1;
     //列表适配器
-    private UserInfoModule_Adapter_Act_RedEnvelopeRecord mVentureCapital2AdapterFraInvestmentList;
+    private UserInfoModule_Adapter_Act_UserThreedealsRecord mVentureCapital2AdapterFraInvestmentList;
     //项目类型
     String type;
     private Common_ProjectUtil_Interface mCommonProjectUtilInterface;
@@ -59,7 +59,7 @@ public class UserInfoModule_Act_RedEnvelopeRecord_List_View extends UserInfo_Bas
 
     @Override
     protected void setContentView() {
-        setContentView(R.layout.userinfomodule_act_withdrawals_record_list_layout);
+        setContentView(R.layout.userinfomodule_act_userthreedeals_record_list_layout);
     }
 
     @Override
@@ -100,7 +100,7 @@ public class UserInfoModule_Act_RedEnvelopeRecord_List_View extends UserInfo_Bas
     @Override
     protected void setTitleBar() {
         //设置Actionbar
-        setActionbarBar("消费记录", R.color.app_gray, R.color.white, true,false);
+        setActionbarBar("三级流水记录", R.color.app_gray, R.color.white, true,false);
     }
 
     @Override
@@ -139,10 +139,10 @@ public class UserInfoModule_Act_RedEnvelopeRecord_List_View extends UserInfo_Bas
      * @param investmentProductData
      */
     @Override
-    public void setInvestmentProductData(List<UserInfoModule_Bean_RedEnvelopeRecord> investmentProductData){
+    public void setInvestmentProductData(List<UserInfoModule_Bean_UserThreedealsRecord> investmentProductData){
         //设置Adapter
         if (mVentureCapital2AdapterFraInvestmentList == null) {
-            mVentureCapital2AdapterFraInvestmentList = new UserInfoModule_Adapter_Act_RedEnvelopeRecord(context,investmentProductData);
+            mVentureCapital2AdapterFraInvestmentList = new UserInfoModule_Adapter_Act_UserThreedealsRecord(context,investmentProductData);
             mEmptyRecyclerView.setAdapter(mVentureCapital2AdapterFraInvestmentList);
         } else {
             if(mPresenter.getPageNum()==1){

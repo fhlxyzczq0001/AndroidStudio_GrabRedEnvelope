@@ -92,7 +92,8 @@ public class Main_Act_WelcomePage_Presenter extends Main_Act_WelcomePage_Contrac
                          //获取本地存储启动页缓存
                          Main_WelcomePageBean share_PageBean = Main_SharePer_SdCard_Info.sharePre_GetWelcomePageBean();
                          if (null != share_PageBean) {
-                             // 获取到的图片路径
+                             L.e("bbbbbbbbbb","bbbbbbbbbbbb");
+                           /*  // 获取到的图片路径
                              String start_page_url = share_PageBean.getUrl();
                              // 取得下载路径的文件名和本地图片名称比对，若本地路径中有不下载，没有则执行下载
                              String webFileName = "";
@@ -102,12 +103,14 @@ public class Main_Act_WelcomePage_Presenter extends Main_Act_WelcomePage_Contrac
                              }
                              //获取本地文件名
                              String localFileName = start_page_url.substring(start_page_url
-                                     .lastIndexOf("/") + 1);
-                             if (!webFileName.equals(localFileName) || share_PageBean.getVersion() < welcomePageBean.getVersion()) {
+                                     .lastIndexOf("/") + 1);*/
+                             if (/*!webFileName.equals(localFileName) ||*/ share_PageBean.getVersion() < welcomePageBean.getVersion()) {
                                  //启动service下载图片
                                  startWelcomePageService(welcomePageBean);
                              }
                          } else {
+                             L.e("aaaaaaaaaaaaaa","aaaaaaaaaaaaa");
+                             L.e("ssssssssssssss",welcomePageBean.getUrl());
                              //启动service下载图片
                              startWelcomePageService(welcomePageBean);
                          }

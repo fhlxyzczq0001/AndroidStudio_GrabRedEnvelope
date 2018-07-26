@@ -3,8 +3,6 @@ package com.ddt.redEnvelope.MVP.Model.Bean.RequestBean;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.alibaba.fastjson.annotation.JSONField;
-
 /**启动页bean
  * @ClassName: com.ygworld.MVP.Model.Bean
  * @author: Administrator 杨重诚
@@ -12,11 +10,9 @@ import com.alibaba.fastjson.annotation.JSONField;
  */
 
 public class Main_WelcomePageBean implements Parcelable {
-    @JSONField(name="common_image")
     private String url;//android启动图
-    @JSONField(name = "linkUrl")
     private String link;//跳转链接
-    private int version = 1;
+    private int version = 0;
     private String imgServicePath;//图片路径域名
 
     public String getUrl() {

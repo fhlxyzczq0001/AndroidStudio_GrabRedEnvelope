@@ -13,6 +13,7 @@ import com.ddtkj.commonmodule.Public.Common_SD_FilePath;
 import com.ddt.redEnvelope.MVP.Model.Bean.RequestBean.Main_WelcomePageBean;
 import com.ddt.redEnvelope.Util.Main_SharePer_SdCard_Info;
 import com.utlis.lib.FileUtils;
+import com.utlis.lib.L;
 
 import java.io.File;
 
@@ -92,9 +93,11 @@ public class Main_WelcomePageService extends IntentService {
                 Main_SharePer_SdCard_Info.sharePre_PutWelcomePageBean(null);//初始化本地缓存
         }
 
-        String[] str = uploadFilePath.split("/");
+        /*String[] str = uploadFilePath.split("/");*/
         String filePath = saveFilePath + "/"
-                + str[str.length - 1];
+                + "webpage.png"/*str[str.length - 1]*/;
+        L.e("======filePath=====",filePath);
+        L.e("======uploadFilePath=====",uploadFilePath);
         mCommon_base_httpRequest_interface.FileDownloader(filePath, uploadFilePath, new Common_ResultDataListener() {
             @Override
             public void onResult(boolean isSucc, String msg, Common_RequestBean request_bean) {
