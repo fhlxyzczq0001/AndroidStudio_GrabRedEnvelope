@@ -1,6 +1,7 @@
 package com.ddtkj.grabRedEnvelopeModule.MVP.Presenter.Implement.Activity;
 
 import android.os.Handler;
+import android.text.TextUtils;
 
 import com.alibaba.fastjson.JSONObject;
 import com.ddtkj.commonmodule.Base.Common_Application;
@@ -155,13 +156,14 @@ public class GrabRedEnvelopeModule_Act_RedGroup_List_Presenter extends GrabRedEn
                         businessCode=jsonObject.getString("businessCode");
                     if(jsonObject.containsKey("businessMsg"))
                         businessMsg=jsonObject.getString("businessMsg");
+                    if(!TextUtils.isEmpty(businessMsg))
+                        msg=businessMsg;
                     switch (businessCode){
                         case "1":
-                            commonResultDataListener.onResult(true,businessMsg,null);
+                            commonResultDataListener.onResult(true,msg,null);
                             break;
                             default:
-                                ToastUtils.WarnImageToast(context,businessMsg);
-
+                                ToastUtils.WarnImageToast(context,msg);
                                 break;
                     }
                 }

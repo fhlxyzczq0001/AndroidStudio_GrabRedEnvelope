@@ -13,6 +13,7 @@ import com.ddtkj.commonmodule.MVP.Model.Interface.Common_Base_HttpRequest_Interf
 import com.ddtkj.commonmodule.MVP.Presenter.Implement.Project.Common_UserAll_Presenter_Implement;
 import com.ddtkj.commonmodule.MVP.Presenter.Interface.Project.Common_UserAll_Presenter_Interface;
 import com.ddtkj.userinfomodule.MVP.Contract.Activity.UserInfoModule_Act_Withdraw_Contract;
+import com.utlis.lib.ToastUtils;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -70,9 +71,13 @@ public class UserInfoModule_Act_Withdraw_Presenter extends UserInfoModule_Act_Wi
                         businessCode=jsonObject.getString("businessCode");
                     if(jsonObject.containsKey("businessMsg"))
                         businessMsg=jsonObject.getString("businessMsg");
-                    if(businessCode.equals("1")&& !TextUtils.isEmpty(businessMsg))
+                    if(!TextUtils.isEmpty(businessMsg))
                         msg=businessMsg;
-                    mView.withdrawSuccess(msg);
+                    if(businessCode.equals("1")){
+                        mView.withdrawSuccess(msg);
+                    }else {
+                        ToastUtils.WarnImageToast(context,msg);
+                    }
                 }
             }
         },true, Common_HttpRequestMethod.GET);

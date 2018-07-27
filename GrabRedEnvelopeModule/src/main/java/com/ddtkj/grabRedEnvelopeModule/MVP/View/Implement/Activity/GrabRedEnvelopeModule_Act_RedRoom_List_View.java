@@ -247,6 +247,11 @@ public class GrabRedEnvelopeModule_Act_RedRoom_List_View extends GrabRedEnvelope
         } else {
             return;
         }
-        mPresenter.requestShareResult();
+        switch(eventBus.getSareCode()){
+            case SHARE_FAVORITE:
+                 SHARE_SUCCESS:
+                 mPresenter.requestShareResult();
+                break;
+        }
     }
 }

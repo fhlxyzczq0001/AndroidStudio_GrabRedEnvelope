@@ -1,6 +1,7 @@
 package com.ddtkj.userinfomodule.MVP.Presenter.Implement.Activity;
 
 import android.os.Handler;
+import android.text.TextUtils;
 
 import com.alibaba.fastjson.JSONObject;
 import com.ddtkj.commonmodule.HttpRequest.Common_HttpPath;
@@ -11,6 +12,7 @@ import com.ddtkj.commonmodule.MVP.Model.Implement.Common_Base_HttpRequest_Implem
 import com.ddtkj.commonmodule.MVP.Model.Interface.Common_Base_HttpRequest_Interface;
 import com.ddtkj.userinfomodule.MVP.Contract.Activity.UserInfoModule_Act_UnblockRecord_List_Contract;
 import com.ddtkj.userinfomodule.MVP.Model.Bean.ResponseBean.UserInfoModule_Bean_UnblockRecord;
+import com.utlis.lib.ToastUtils;
 
 import java.util.HashMap;
 import java.util.List;
@@ -159,8 +161,14 @@ public class UserInfoModule_Act_UnblockRecord_List_Presenter extends UserInfoMod
                         businessCode = jsonObject.getString("businessCode");
                     if (jsonObject.containsKey("businessMsg"))
                         businessMsg = jsonObject.getString("businessMsg");
-                    if (businessCode.equals("1"))
-                        commonResultDataListener.onResult(true, businessMsg, null);
+                    if(!TextUtils.isEmpty(businessMsg))
+                        msg=businessMsg;
+                    if (businessCode.equals("1")){
+                        commonResultDataListener.onResult(true, msg, null);
+                    }else {
+                        ToastUtils.WarnImageToast(context,msg);
+                    }
+
                 }
             }
         }, true, Common_HttpRequestMethod.GET);
@@ -190,8 +198,13 @@ public class UserInfoModule_Act_UnblockRecord_List_Presenter extends UserInfoMod
                         businessCode = jsonObject.getString("businessCode");
                     if (jsonObject.containsKey("businessMsg"))
                         businessMsg = jsonObject.getString("businessMsg");
-                    if (businessCode.equals("1"))
-                        commonResultDataListener.onResult(true, businessMsg, null);
+                    if(!TextUtils.isEmpty(businessMsg))
+                        msg=businessMsg;
+                    if (businessCode.equals("1")){
+                        commonResultDataListener.onResult(true, msg, null);
+                    }else {
+                        ToastUtils.WarnImageToast(context,msg);
+                    }
                 }
             }
         }, true, Common_HttpRequestMethod.GET);

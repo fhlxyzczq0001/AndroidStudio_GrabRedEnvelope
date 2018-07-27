@@ -66,7 +66,7 @@
                           android:paddingLeft="@dimen/x10"
                           android:paddingRight="@dimen/x10"
             >
-                <TextView android:layout_width="wrap_content"
+               <!-- <TextView android:layout_width="wrap_content"
                           android:layout_height="wrap_content"
                           android:paddingBottom="@dimen/x20"
                           android:paddingTop="@dimen/x20"
@@ -75,7 +75,7 @@
                           android:textSize="@dimen/x23"/>
                 <View android:layout_width="match_parent"
                       android:layout_height="0.5dp"
-                      android:background="#EBE49C"/>
+                      android:background="#EBE49C"/>-->
                 <!--PullToRefreshRecyclerView列表-->
                 <RelativeLayout android:id="@+id/lyPullRecy"
                                 android:layout_width="match_parent"
