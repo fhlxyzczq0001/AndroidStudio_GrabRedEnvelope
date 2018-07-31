@@ -28,6 +28,7 @@ public class UserInfoModule_Act_UserInfo_View extends UserInfo_BaseActivity<User
         UserInfoModule_Act_UserInfo_Presenter> implements UserInfoModule_Act_UserInfo_Contract.View  {
 
     ClearEditText cetName;
+    ClearEditText cetPhone;
     ClearEditText cetNum;
     ClearEditText cetPassword;
     ClearEditText cetCard;
@@ -42,7 +43,7 @@ public class UserInfoModule_Act_UserInfo_View extends UserInfo_BaseActivity<User
     public void onClick(View v) {
         super.onClick(v);
         if(v.getId()==R.id.tvBtnOk){
-            mPresenter.submit(Textutils.getEditText(cetName),Textutils.getEditText(cetNum),
+            mPresenter.submit(Textutils.getEditText(cetName),Textutils.getEditText(cetPhone),Textutils.getEditText(cetNum),
                     Textutils.getEditText(cetCard),Textutils.getEditText(cetBankname),
                     Textutils.getEditText(cetPassword),Textutils.getEditText(cetUpcode));
         }else if (v.getId()==R.id.activityLogin_imgPasswordIsShowBtn){
@@ -59,6 +60,7 @@ public class UserInfoModule_Act_UserInfo_View extends UserInfo_BaseActivity<User
     @Override
     protected void initMyView() {
          cetName=findViewById(R.id.cetName);
+        cetPhone=findViewById(R.id.cetPhone);
          cetNum=findViewById(R.id.cetNum);
          cetPassword=findViewById(R.id.cetPassword);
         cetCard=findViewById(R.id.cetCard);

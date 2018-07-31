@@ -39,9 +39,12 @@ public class UserInfoModule_Act_UserInfo_Presenter extends UserInfoModule_Act_Us
      * @param password
      */
     @Override
-    public  void submit(String userName, String userNum,String bankcode,String bankName,String password,String upcode) {
+    public  void submit(String userName,String phone, String userNum,String bankcode,String bankName,String password,String upcode) {
         if(TextUtils.isEmpty(userName)){
             ToastUtils.WarnImageToast(context,"姓名不可为空");
+            return;
+        }else if(TextUtils.isEmpty(phone)){
+            ToastUtils.WarnImageToast(context,"手机号不可为空");
             return;
         }else if(TextUtils.isEmpty(userNum)){
             ToastUtils.WarnImageToast(context,"身份证号不可为空");
@@ -60,6 +63,7 @@ public class UserInfoModule_Act_UserInfo_Presenter extends UserInfoModule_Act_Us
         Map<String,Object> params = new HashMap<String, Object>();
         params.put("user_id", Common_Application.getInstance().getUseInfoVo().getUserId());//当前页
         params.put("name",userName);
+        params.put("mobile",phone);
         params.put("admin_id",userNum);
         params.put("dealpassword",password);
         params.put("bankcode",bankcode);

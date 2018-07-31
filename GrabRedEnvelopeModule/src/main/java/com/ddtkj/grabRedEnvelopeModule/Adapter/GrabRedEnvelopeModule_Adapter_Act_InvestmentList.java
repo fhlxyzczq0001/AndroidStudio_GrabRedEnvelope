@@ -48,7 +48,7 @@ public class GrabRedEnvelopeModule_Adapter_Act_InvestmentList extends SuperAdapt
         if (holder instanceof ViewHolder) {
             final ViewHolder holder1 = (ViewHolder) holder;
             holder1.tvName.setText(Textutils.checkText(bean.getHousename()));
-            //holder1.tvNum.setText("还差"+Textutils.checkText(bean.getHousestatus())+"位");
+            holder1.tvNum.setText("在线玩家"+Textutils.checkText(bean.getHousestatus())+"位");
             if(layoutPosition<getData().size()-1){
                 holder1.viewLine.setVisibility(View.VISIBLE);
             }else {
@@ -58,12 +58,12 @@ public class GrabRedEnvelopeModule_Adapter_Act_InvestmentList extends SuperAdapt
     }
     public class ViewHolder extends SuperViewHolder {
         private TextView tvName;
-        //private TextView tvNum;
+        private TextView tvNum;
         private View viewLine;
         public ViewHolder(View itemView) {
             super(itemView);
             tvName=itemView.findViewById(R.id.tvName);
-            //tvNum=itemView.findViewById(R.id.tvNum);
+            tvNum=itemView.findViewById(R.id.tvNum);
             viewLine=itemView.findViewById(R.id.viewLine);
         }
     }
