@@ -41,6 +41,10 @@ public interface GrabRedEnvelopeModule_Act_RedGroup_List_Contract {
          * @param hb_id
          */
         public  void requestRedpacketPacketinfodetail(String hb_id, Common_ResultDataListener commonResultDataListener);
+        /**
+         * 启动倒计时
+         */
+        public void startCountDownTimer();
     }
 
     abstract class Presenter extends Common_BasePresenter<View> {

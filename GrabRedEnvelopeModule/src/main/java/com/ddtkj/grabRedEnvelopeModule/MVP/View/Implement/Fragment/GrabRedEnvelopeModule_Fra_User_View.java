@@ -11,7 +11,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.ddtkj.commonmodule.Base.Common_Application;
 import com.ddtkj.commonmodule.MVP.Model.Bean.ResponseBean.Common_UserInfoBean;
 import com.ddtkj.commonmodule.Public.Common_Main_PublicCode;
 import com.ddtkj.commonmodule.Public.Common_RouterUrl;
@@ -48,10 +47,11 @@ public class GrabRedEnvelopeModule_Fra_User_View extends GrabRedEnvelopeModule_B
     TextView tvBtnChongZhi;
     ImageView imgUserIcon;
     TextView tvUserName;
+    TextView tvId;
     TextView tvZuanShiNum;
     List<PopModel> mPopModels=new ArrayList<>();
     Integer []icons={R.drawable.icon_tixian,R.drawable.icon_chongzhi,R.drawable.icon_xiaofei,R.drawable.icon_yijian};
-    String [] iconTitles={"本人流水记录","三级流水记录","消费记录","意见反馈"};
+    String [] iconTitles={"本人收益记录","三级流水记录","消费记录","意见反馈"};
     int location[] = new int[2];
     //弹窗对象
     Common_CustomDialogBuilder common_customDialogBuilder;
@@ -72,7 +72,7 @@ public class GrabRedEnvelopeModule_Fra_User_View extends GrabRedEnvelopeModule_B
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     L.e("======position====",iconTitles[position]);
                     switch (iconTitles[position]){
-                        case "本人流水记录":
+                        case "本人收益记录":
                             getIntentTool().intent_RouterTo(context,Common_RouterUrl.USERINFO_UserdealsRouterUrl);
                             break;
                         case "三级流水记录":
@@ -131,11 +131,12 @@ public class GrabRedEnvelopeModule_Fra_User_View extends GrabRedEnvelopeModule_B
         }else if(v.getId()==R.id.tvBtnJieFeng){
             getIntentTool().intent_RouterTo(context,Common_RouterUrl.USERINFO_UnblockRecordRouterUrl);
         }else if(v.getId()==R.id.tvBtnTiXian){
-            if(Common_Application.getInstance().getUseInfoVo().getIsFull().equals("0")){
+            /*if(Common_Application.getInstance().getUseInfoVo().getIsFull().equals("0")){
                 getIntentTool().intent_RouterTo(context,Common_RouterUrl.USERINFO_UserInfoRouterUrl);
             }else {
                 getIntentTool().intent_RouterTo(context,Common_RouterUrl.USERINFO_WithdrawRouterUrl);
-            }
+            }*/
+            getIntentTool().intent_RouterTo(context,Common_RouterUrl.USERINFO_UserInfoRouterUrl);
         }else if(v.getId()==R.id.tvBtnChongZhi){
             getIntentTool().intent_RouterTo(context,Common_RouterUrl.USERINFO_RechargeRouterUrl);
         }
@@ -153,6 +154,7 @@ public class GrabRedEnvelopeModule_Fra_User_View extends GrabRedEnvelopeModule_B
         tvBtnChongZhi=public_view.findViewById(R.id.tvBtnChongZhi);
          imgUserIcon=public_view.findViewById(R.id.imgUserIcon);
          tvUserName=public_view.findViewById(R.id.tvUserName);
+        tvId=public_view.findViewById(R.id.tvId);
          tvZuanShiNum=public_view.findViewById(R.id.tvZuanShiNum);
     }
 
@@ -209,6 +211,7 @@ public class GrabRedEnvelopeModule_Fra_User_View extends GrabRedEnvelopeModule_B
     public void setUserInfoData(Common_UserInfoBean userInfoData) {
         ImageLoaderUtils.getInstance(context).displayImage(userInfoData.getAvatar(),imgUserIcon);
         tvUserName.setText(userInfoData.getNikeName());
+        tvId.setText(userInfoData.getUserId());
         tvZuanShiNum.setText(userInfoData.getAccountbalance());
         if(userInfoData.getGroup_id().equals("1")){
             tvBtnJieFeng.setVisibility(View.VISIBLE);

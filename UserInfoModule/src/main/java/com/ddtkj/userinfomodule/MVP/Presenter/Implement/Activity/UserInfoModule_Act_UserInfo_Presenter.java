@@ -68,7 +68,7 @@ public class UserInfoModule_Act_UserInfo_Presenter extends UserInfoModule_Act_Us
         params.put("dealpassword",password);
         params.put("bankcode",bankcode);
         params.put("bankname",bankName);
-        if(!TextUtils.isEmpty(upcode)){
+        if(TextUtils.isEmpty(upcode)){
             upcode="";
         }
         params.put("upcode",upcode);

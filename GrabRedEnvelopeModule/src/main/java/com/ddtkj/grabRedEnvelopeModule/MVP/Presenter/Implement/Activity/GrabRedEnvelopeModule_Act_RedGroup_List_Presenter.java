@@ -85,6 +85,7 @@ public class GrabRedEnvelopeModule_Act_RedGroup_List_Presenter extends GrabRedEn
                     setInvestmentProductListData(invoiceBeanList);
                 }
                 closeRefresh();
+                mView.startCountDownTimer();
             }
         },true, Common_HttpRequestMethod.GET);
     }

@@ -100,7 +100,7 @@ public class UserInfoModule_Act_UserdealsRecord_List_View extends UserInfo_BaseA
     @Override
     protected void setTitleBar() {
         //设置Actionbar
-        setActionbarBar("本人流水记录", R.color.app_gray, R.color.white, true,false);
+        setActionbarBar("本人收益记录", R.color.app_gray, R.color.white, true,false);
     }
 
     @Override

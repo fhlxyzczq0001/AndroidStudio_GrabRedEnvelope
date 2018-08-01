@@ -49,7 +49,7 @@ public class UserInfoModule_Adapter_Act_UserdealsRecord extends SuperAdapter<Use
             final ViewHolder holder1 = (ViewHolder) holder;
             holder1.tvName.setText(Textutils.checkText(bean.getLevel()));
             holder1.tvTime.setText(Textutils.checkText(bean.getDate()));
-            holder1.tvTotalMoney.setText("总额："+Textutils.checkText(bean.getTotalmoney()));
+            holder1.tvTotalMoney.setText("盈亏："+Textutils.checkText(bean.getTotalmoney()));
             holder1.tvGetmoney.setText("得到："+Textutils.checkText(bean.getGetmoney()));
             holder1.tvConsumemoney.setText("消费："+Textutils.checkText(bean.getConsumemoney()));
 

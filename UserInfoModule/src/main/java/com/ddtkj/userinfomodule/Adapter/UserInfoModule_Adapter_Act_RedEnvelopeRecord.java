@@ -50,7 +50,7 @@ public class UserInfoModule_Adapter_Act_RedEnvelopeRecord extends SuperAdapter<U
 
             holder1.tvName.setText(Textutils.checkText(bean.getTypeName()));
             holder1.tvTime.setText(Textutils.checkText(bean.getTime()));
-            holder1.tvPrice.setText("+"+Textutils.checkText(bean.getMoney()));
+            holder1.tvPrice.setText(Textutils.checkText(bean.getMoney()));
 
             if(layoutPosition<getData().size()-1){
                 holder1.viewLine.setVisibility(View.VISIBLE);

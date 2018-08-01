@@ -119,7 +119,6 @@ public class GrabRedEnvelopeModule_Act_RedGroup_List_View extends GrabRedEnvelop
 
     }
 
-    long oldRefreshTime;
     @Override
     protected void setListeners() {
         //==================刷新列表监听===============================
@@ -193,16 +192,9 @@ public class GrabRedEnvelopeModule_Act_RedGroup_List_View extends GrabRedEnvelop
      * 请求服务器方法
      */
     private void requestHttpMethod() {
-        if((System.currentTimeMillis()-oldRefreshTime)>20*1000){
-            oldRefreshTime=System.currentTimeMillis();
             //请求理财列表数据
             mPresenter.initData(countHttpMethod);
             mPresenter.requestInvestmentProductData(house_id);
-            startCountDownTimer();
-        }else {
-            //ToastUtils.WarnImageToast(context,"您刷新太频繁，请稍后再刷新！");
-            closeRefresh();
-        }
     }
 
     @Override
@@ -356,7 +348,8 @@ public class GrabRedEnvelopeModule_Act_RedGroup_List_View extends GrabRedEnvelop
     /**
      * 启动倒计时
      */
-    private void startCountDownTimer() {
+    @Override
+    public void startCountDownTimer() {
         // 和系统普通进度条一样，0-100。
         cusCircleTextProgressbar.setProgressType(CircleTextProgressbar.ProgressType.COUNT);
         // 改变外部边框颜色。
