@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.ddtkj.commonmodule.Base.Common_Application;
 import com.ddtkj.commonmodule.MVP.Model.Bean.ResponseBean.Common_UserInfoBean;
 import com.ddtkj.commonmodule.Public.Common_Main_PublicCode;
 import com.ddtkj.commonmodule.Public.Common_RouterUrl;
@@ -131,12 +132,11 @@ public class GrabRedEnvelopeModule_Fra_User_View extends GrabRedEnvelopeModule_B
         }else if(v.getId()==R.id.tvBtnJieFeng){
             getIntentTool().intent_RouterTo(context,Common_RouterUrl.USERINFO_UnblockRecordRouterUrl);
         }else if(v.getId()==R.id.tvBtnTiXian){
-            /*if(Common_Application.getInstance().getUseInfoVo().getIsFull().equals("0")){
+            if(Common_Application.getInstance().getUseInfoVo().getIsFull().equals("0")){
                 getIntentTool().intent_RouterTo(context,Common_RouterUrl.USERINFO_UserInfoRouterUrl);
             }else {
                 getIntentTool().intent_RouterTo(context,Common_RouterUrl.USERINFO_WithdrawRouterUrl);
-            }*/
-            getIntentTool().intent_RouterTo(context,Common_RouterUrl.USERINFO_UserInfoRouterUrl);
+            }
         }else if(v.getId()==R.id.tvBtnChongZhi){
             getIntentTool().intent_RouterTo(context,Common_RouterUrl.USERINFO_RechargeRouterUrl);
         }

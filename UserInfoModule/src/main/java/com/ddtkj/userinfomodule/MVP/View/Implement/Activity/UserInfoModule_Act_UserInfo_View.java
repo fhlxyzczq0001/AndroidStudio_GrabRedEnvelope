@@ -101,5 +101,6 @@ public class UserInfoModule_Act_UserInfo_View extends UserInfo_BaseActivity<User
     public void submitSuccess(String msg) {
         ToastUtils.RightImageToast(mUserInfoApplicationInterface.getApplication(),msg);
         getIntentTool().intent_RouterTo(context,Common_RouterUrl.USERINFO_WithdrawRouterUrl);
+        finish();
     }
 }

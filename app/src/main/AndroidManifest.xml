@@ -122,7 +122,12 @@
                 <action android:name="${applicationId}.Service.WelcomePageService" />
             </intent-filter>
         </service>
-
+        <!-- 后台更新下载 -->
+        <service android:name=".Service.Main_UploadService" >
+            <intent-filter>
+                <action android:name="${applicationId}.Service.UploadService" />
+            </intent-filter>
+        </service>
         <!--*****************************receiver************************************-->
         <!--   程序更新后自启动的 receiver -->
         <!-- <receiver android:name="com.ygworld.Receiver.AppInstallReceiver"
